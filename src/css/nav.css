@@ -1,0 +1,16 @@
+.navbar {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.nav-logo {
+  width: 100px;
+  height: 90px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+}
