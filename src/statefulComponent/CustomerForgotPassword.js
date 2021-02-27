@@ -7,7 +7,8 @@ const CustomerForgotPassword = () => {
   const[value, setValue] = useState('');
   const[response, setResponse] = useState({
     message: {},
-    loading: false
+    loading: false,
+    error: '',
   });
 
   const history = useHistory();
@@ -22,11 +23,10 @@ const CustomerForgotPassword = () => {
       loading: true
     });
     if (value === '') {
-      setResponse({
-        loading: false
+      return setResponse({
+        loading: false,
+        error: 'Please Provide your email!!',
       });
-      console.log('Its email time!!')
-      return console.log('Please Provide your email or Phone Number');
     } 
 
     const data = {
@@ -52,22 +52,20 @@ const CustomerForgotPassword = () => {
         message,
       });
       localStorage.setItem("forgot_password", message.token);
-      console.log(message);
       history.push('/customer/forgot-password/verify-user');
     } else {
-      const message = await response.json()
-      console.log(message)
+      const message = await response.json();
       return setResponse({
         isAuth: false,
         loading: false,
-        data: message
+        error: message.errMessage,
       });
     }
-    // console.log(message);
     } catch (error) {
       console.log(error);
       setResponse({
         loading: false,
+        error: 'There was a problem!! Our Engineers have been Notified. Try Again!!'
       });
     }
   };

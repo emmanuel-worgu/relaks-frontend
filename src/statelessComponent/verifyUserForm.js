@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import NeedHelpTemplate from './NeedHelpTemplate';
 import logo from '../assest/logo.svg';
 import '../css/forgot_password.css';
 
@@ -15,12 +15,14 @@ const VerifyUserForm = (props) => {
 
   return (
     <div>
+      <NeedHelpTemplate />
       <div>
         <img src = {logo} alt = "Relaks Logo" className = "relaks-logo"></img>
       </div>
       <div className = "container">
         <div className = "relaks-forgot-passsword">
           <h3 id = "forgot-password-header">Please Change your password</h3>
+          <h6 className="error-message">{props.response.error}</h6>
           <label id = "email-text">Enter the Token sent to Your Email </label>
           <br />
           <input className = "relaks-input" 

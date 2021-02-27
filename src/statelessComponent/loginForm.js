@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import NeedHelpTemplate from './NeedHelpTemplate';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../assest/logo.svg';
 import '../css/loginForm.css';
@@ -17,21 +18,25 @@ const LoginForm = (props) => {
   const forgotPassword = document.location.pathname === '/handyman/login' ? '/handyman/forgot-password' : '/customer/forgot-password';
   const signupLink = document.location.pathname === '/handyman/login' ? '/handyman/register' : '/customer/register';
 
-  // const value = parseInt(props.phoneValue) === Number ? console.log('A Number') : props.emailValue;
-  // const handleLoginCredential = parseInt(props.phoneValue) === Number ? props.handlePhone : props.handleEmail
+  const loginField = document.getElementById('loginField');
+
+  const loginFieldLogic = loginField === '0' ? props.phoneValue : props.emailValue;
 
   return (
     <div>
+      <NeedHelpTemplate />
       <div>
         <img src={logo} alt="Relaks Logo" className="relaks-logo"></img>
       </div>
       <div className="container">
           <div className="relaks-login">
             <h3 id="login-header">{ loginHeader }</h3>
+            <h6 className="error-message">{props.response.error}</h6>
             <label id="email-text">Email Address or Phone Number</label>
             <input type="email" 
               name="email"
-              value={props.emailValue}
+              id="loginField"
+              value={loginFieldLogic}
               onChange={props.handleEmail} 
               className="relaks-input" 
               required>

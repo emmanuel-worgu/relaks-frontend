@@ -27,7 +27,7 @@ const CustomerDashboard = () => {
         },
       });
       const data = await response.json();
-      if(mounted.current) {
+      if(mounted.current && response.status === 200) {
         setResponse({
           loading: false,
           data: data,
@@ -37,7 +37,6 @@ const CustomerDashboard = () => {
       if(mounted.current && response.status === 401) {
         history.push('/customer/login');
       };
-      console.log(data);
     } catch (error) {
       console.log(error);
     }

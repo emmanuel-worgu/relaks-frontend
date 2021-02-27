@@ -7,7 +7,8 @@ const HandymanForgotPassword = () => {
   const[value, setValue] = useState('');
   const[response, setResponse] = useState({
     message: {},
-    loading: false
+    loading: false,
+    error: '',
   });
 
   const history = useHistory();
@@ -22,11 +23,10 @@ const HandymanForgotPassword = () => {
       loading: true
     });
     if (value === '') {
-      setResponse({
-        loading: false
+      return setResponse({
+        loading: false,
+        error: 'Please Provide Your Email!!',
       });
-      console.log('Its email time!!')
-      return console.log('Please Provide your email or Phone Number');
     } 
 
     const data = {
@@ -52,7 +52,6 @@ const HandymanForgotPassword = () => {
         message,
       });
       localStorage.setItem("forgot_password", message.token);
-      console.log(message);
       history.push('/handyman/forgot-password/verify-user');
     } else {
       const message = await response.json()
@@ -60,7 +59,7 @@ const HandymanForgotPassword = () => {
       return setResponse({
         isAuth: false,
         loading: false,
-        data: message
+        error: message.errMessage,
       });
     }
     // console.log(message);
@@ -68,6 +67,7 @@ const HandymanForgotPassword = () => {
       console.log(error);
       setResponse({
         loading: false,
+        error: 'There was a problem!! Our Engineers have been Notified. Try Again!!'
       });
     }
   };

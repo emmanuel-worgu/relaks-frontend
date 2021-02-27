@@ -8,12 +8,13 @@ const HandymanRegister = () => {
   const[emailValue, setEmailValue] = useState('');
   const[phoneValue, setPhoneValue] = useState('');
   const[primaryService, setPrimaryService] = useState({
-    value: 'Electrical'
+    value: ''
   });
   const[passwordValue, setPasswordValue] = useState('');
   const[data, setResponse] = useState({
     message: {},
     loading: false,
+    error: ''
   });
 
   const history = useHistory();
@@ -49,30 +50,30 @@ const HandymanRegister = () => {
       loading: true
     });
     if (nameValue === '') {
-      setResponse({
-        loading: false
+      return setResponse({
+        loading: false,
+        error: 'Name Field is Empty!!'
       });
-      return console.log('Name required');
     } else if (emailValue === '') {
-      setResponse({
-        loading: false
+      return setResponse({
+        loading: false,
+        error: 'Email Field is Empty!!'
       });
-      return console.log('email is required')
     } else if (phoneValue === '') {
-      setResponse({
-        loading: false
+      return setResponse({
+        loading: false,
+        error: 'Phone Number Field is Empty!!'
       });
-      return console.log('Phone number required')
-    } else if (primaryService === '') {
-      setResponse({
-        loading: false
+    } else if (primaryService.value === '') {
+      return setResponse({
+        loading: false,
+        error: 'What is your primary service!!'
       });
-      return console.log('Primary Service required')
     } else if (passwordValue === '') {
-      setResponse({
-        loading: false
+      return setResponse({
+        loading: false,
+        error: 'Please Provide a Password!!'
       });
-      return console.log('Password required')
     };
     const data = {
       name: nameValue,
@@ -105,18 +106,22 @@ const HandymanRegister = () => {
     }
     if (response.status === 201) {
       const message = await response.json();
-      console.log(message);
       setResponse({
         loading: false,
-        message: message.errMessage,
+        error: message.errMessage || message,
       });
-      // console.log(data);
-      // return alert(message.errMessage);
+    }
+    if (response.status === 400) {
+      const message = await response.json();
+      setResponse({
+        loading: false,
+        error: message.errMessage,
+      });
     }
     } catch (error) {
       setResponse({
         loading: false,
-        data: error
+        error: 'There was a problem!! Our Engineers have been Notified. Try Again!!'
       })
       console.log(error);
     }

@@ -10,13 +10,14 @@ const CustomerLogin = () => {
     message: {},
     isAuth: false,
     loading: false,
-  })
+    error: '',
+  });
 
   const history = useHistory();
   let mounted = useRef(true);
 
   const handleEmail = (e) => {
-    setEmailValue(e.target.value);
+    setEmailValue(e.target.value) || setPhoneValue(e.target.value);
     e.preventDefault();
   };
 
@@ -34,23 +35,19 @@ const CustomerLogin = () => {
     setResponse({
       loading: true
     });
-    if (emailValue === '') {
-      setResponse({
-        loading: false
-      });
-      console.log('Its email time!!')
-      return console.log('Please Provide your email or Phone Number');
-    } else if (parseInt(phoneValue)) {
-      setResponse({
+    if (emailValue === '' || phoneValue === '') {
+      return setResponse({
         loading: false,
+        error: 'Please Use either your email or phone number!!',
       });
-      return console.log('Its phone time!!')
     } else if (passwordValue === '') {
       setResponse({
         loading: false,
+        error: 'Password Field Is Empty!!'
       });
     }
-
+    console.log(emailValue);
+    console.log(phoneValue);
     const data = {
       email: emailValue,
       password: passwordValue,
@@ -75,22 +72,20 @@ const CustomerLogin = () => {
         message,
       });
       localStorage.setItem("jwt_token", message.token);
-      console.log(message);
       history.push('/customer');
     } else {
-      const message = await response.json()
-      console.log(message)
+      const message = await response.json();
       return setResponse({
         isAuth: false,
         loading: false,
-        data: message
+        error: message.errMessage || message,
       });
     }
     // console.log(message);
     } catch (error) {
-      console.log(error);
-      setResponse({
+      return setResponse({
         loading: false,
+        error: 'There was a problem!! Our Engineers have been Notified. Try Again!!'
       });
     }
   };

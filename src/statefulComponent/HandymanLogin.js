@@ -10,7 +10,8 @@ const HandymanLogin = () => {
     message: {},
     isAuth: false,
     loading: false,
-  })
+    error: ''
+  });
 
   const history = useHistory();
   let mounted = useRef(true);
@@ -35,19 +36,19 @@ const HandymanLogin = () => {
       loading: true
     });
     if (emailValue === '') {
-      setResponse({
-        loading: false
+      return setResponse({
+        loading: false,
+        error: 'Email Is Empty!!'
       });
-      console.log('Its email time!!')
-      return console.log('Please Provide your email or Phone Number');
     } else if (parseInt(phoneValue)) {
-      setResponse({
+      return setResponse({
         loading: false,
+        error: 'Phone Number is Required!!'
       });
-      return console.log('Its phone time!!')
     } else if (passwordValue === '') {
-      setResponse({
+      return setResponse({
         loading: false,
+        error: 'Password Is Empty!!'
       });
     }
 
@@ -55,44 +56,46 @@ const HandymanLogin = () => {
       email: emailValue,
       password: passwordValue,
     }
-    try {
-      const url = 'http://localhost:5000/api/handyman/login';
-
-    const response = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Access-Control-Allow-Origin-": "no-cors"
+    setTimeout(async () => {
+      try {
+        const url = 'http://localhost:5000/api/handymen/login';
+  
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "Access-Control-Allow-Origin-": "no-cors"
+        }
+      });
+      if (response.status === 200) {
+        const message = await response.json();
+        setResponse({
+          loading: false,
+          isAuth: true,
+          message,
+        });
+        localStorage.setItem("jwt_token", message.token);
+        console.log(message);
+        history.push('/handyman');
+      } else {
+        const message = await response.json();
+        return setResponse({
+          isAuth: false,
+          loading: false,
+          error: message.errMessage || message,
+        });
       }
-    });
-    if (response.status === 200) {
-      const message = await response.json();
-      setResponse({
-        loading: false,
-        isAuth: true,
-        message,
-      });
-      localStorage.setItem("jwt_token", message.token);
-      console.log(message);
-      history.push('/customer');
-    } else {
-      const message = await response.json()
-      console.log(message)
-      return setResponse({
-        isAuth: false,
-        loading: false,
-        data: message
-      });
-    }
-    // console.log(message);
-    } catch (error) {
-      console.log(error);
-      setResponse({
-        loading: false,
-      });
-    }
+      // console.log(message);
+      } catch (error) {
+        console.log(error);
+        return setResponse({
+          loading: false,
+          error: 'There was a problem!! Our Engineers have been Notified. Try Again!!'
+        });
+      }
+    }, 1000)
   };
 
   useEffect(() => {

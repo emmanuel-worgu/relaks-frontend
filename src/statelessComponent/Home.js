@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Nav from './Nav';
 import Footer from './Footer';
+import NeedHelpTemplate from './NeedHelpTemplate';
 
 import '../css/home.css';
 import HomeBackground from '../assest/home_background.jpg';
@@ -10,9 +12,7 @@ const Home = () => {
   return (
     <div className="container-fluid">
       <div>
-        <div className="need-help">
-          <p className="need-help-para">Need Help? Call 09055681975</p>
-        </div>
+        <NeedHelpTemplate />
       </div>
       <Nav />
       <div>
@@ -22,8 +22,9 @@ const Home = () => {
           </div>
           <div className="hero-content">
             <h3>Live A Frustration Free Life!!</h3>
+            <p>Get all your home repairs done for a monthly fee</p>
             <div className="hero-button">
-              <button className="submit-button">Book Service</button>
+              <button className="submit-button"><Link to="/customer/register">Become a Member</Link></button>
             </div>
           </div>
         </div>

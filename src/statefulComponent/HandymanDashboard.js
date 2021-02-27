@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
+import HandymanIsVerified from '../statelessComponent/HandymanIsVerified';
 
 const HandymanDashboard = () => {
   const[response, setResponse] = useState({
@@ -37,6 +38,11 @@ const HandymanDashboard = () => {
       if(mounted.current && response.status === 401) {
         history.push('/handyman/login');
       };
+      if(mounted.current && response.status === 201) {
+        return (
+          <HandymanIsVerified />
+        );
+      };
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -50,11 +56,12 @@ const HandymanDashboard = () => {
   if (!response.loading) {
     return (
       <div>
-        <p>
-          <li>{response.data.name}</li>
+        {/* <p>
+          <li>{response.data.name || response.data.errMessage}</li>
           <li>{response.data.email}</li>
           <li>{response.data.phone}</li>
-        </p>
+        </p> */}
+        <HandymanIsVerified />
     </div>
     );
   }

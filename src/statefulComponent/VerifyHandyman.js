@@ -8,7 +8,8 @@ const VerifyHandyman = () => {
   const[newPassword, setNewPassword] = useState('');
   const[response, setResponse] = useState({
     message: {},
-    loading: false
+    loading: false,
+    error: '',
   });
 
   const history = useHistory();
@@ -23,25 +24,22 @@ const VerifyHandyman = () => {
   };
 
   const handleSubmit = async () => {
-    console.log('clicked');
     setResponse({
       loading: true
     });
     
     if (token === '') {
-      setResponse({
-        loading: false
+      return setResponse({
+        loading: false,
+        error: 'Please Enter the Token Sent to Your Email!'
       });
-      console.log('Its email time!!')
-      return console.log('Please Provide your email or Phone Number');
     }
 
     if (newPassword === '') {
-      setResponse({
-        loading: false
+      return setResponse({
+        loading: false,
+        error: 'Please Provide a New Password!',
       });
-      console.log('Its email time!!')
-      return console.log('Please Provide your email or Phone Number');
     }
 
     const data = {
@@ -69,23 +67,21 @@ const VerifyHandyman = () => {
         isAuth: true,
         message,
       });
-      localStorage.setItem("forgot_password", message.token);
-      console.log(message);
+      localStorage.clear('forgot_password');
       history.push('/handyman/login');
     } else {
-      const message = await response.json()
-      console.log(message)
+      const message = await response.json();
       return setResponse({
         isAuth: false,
         loading: false,
-        data: message
+        error: message.errMessage,
       });
     }
     // console.log(message);
     } catch (error) {
-      console.log(error);
       setResponse({
         loading: false,
+        error: 'There Was a problem!! Our Engineers have been Notified. Try Again!'
       });
     }
   };

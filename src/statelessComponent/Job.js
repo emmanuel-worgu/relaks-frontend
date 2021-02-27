@@ -1,5 +1,6 @@
 import React from 'react';
 import MiniFooter from './MiniFooter';
+import NeedHelpTemplate from './NeedHelpTemplate';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../assest/logo.svg';
 import '../css/registerForm.css';
@@ -9,51 +10,57 @@ import '../css/registerForm.css';
 const Job = (props) => {
   return (
     <div>
+      <NeedHelpTemplate />
       <div>
         <img src={logo} alt="Relaks Logo" className="relaks-logo"></img>
       </div>
       <div className="container">
         <div className="relaks-register">
             <h3 id="register-header">How Can We Help You</h3>
+            <h6 className="error-message">{props.response.error}</h6>
             <label id="name-text">What do you want to fix</label>
             <br/>
             <input type="text" 
-              name="name" 
+              name="work"
+              autoComplete="off" 
               className="relaks-input" 
-              placeholder="e.g Emmanuel Worgu"
-              value={props.nameValue}
-              onChange={props.handleName}
+              placeholder="e.g. Fix my light switch"
+              value={props.work}
+              onChange={props.handleWork}
               required>
             </input>
             <br/>
             <label htmlFor="job-category">What Categroy best fit your job</label>
             <br/>
-            <select name="job-category" id="job-category" className="relaks-input">
-              <option value="Electrical">Electrical</option>
-              <option value="Electrical">Plumbering</option>
-              <option value="Electrical">Carpentering</option>
-              <option value="Electrical">Painting</option>
+            <select name="job-category" 
+              id="job-category" 
+              className="relaks-input"
+              value={props.serviceCategory}
+              onChange={props.handleServiceCategory}>
+                <option value="">Choose a category</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Electrical">Plumbering</option>
+                <option value="Electrical">Carpentering</option>
+                <option value="Electrical">Painting</option>
             </select>
             <br/>
             <label>When Should We Come</label>
             <br/>
             <input type="date" 
-              name="email" 
+              name="date" 
               className="relaks-input" 
-              // placeholder="e.g emmanuelworgu@gmail.com"
-              value={props.emailValue}
-              onChange={props.handleEmail}
+              value={props.dateToCome}
+              onChange={props.handleDateToCome}
               required>
             </input>
             <br/>
             <label>At What Time</label>
             <br/>
             <input type="time" 
-              name="email" 
-              className="relaks-input" 
-              // placeholder="e.g emmanuelworgu@gmail.com"
-              value={props.emailValue}
-              onChange={props.handleEmail}
+              name="time" 
+              className="relaks-input"
+              value={props.timeToCome}
+              onChange={props.handleTimeToCome}
               required>
             </input>
             <br/>
@@ -62,13 +69,13 @@ const Job = (props) => {
             <textarea
               id="job-description"
               autoComplete="off"
-              name="phone"
+              name="job-description"
               rows="4"
               cols="35"
               className="relaks-textarea"
               placeholder="I need a Ladder"
-              value={props.phoneValue}
-              onChange={props.handlePhone}
+              value={props.workInfo}
+              onChange={props.handleWorkInfo}
               required>
             </textarea>
             <br/>
@@ -78,51 +85,51 @@ const Job = (props) => {
             <label id="name-text">Address</label>
             <br/>
             <input type="text" 
-              name="name" 
+              name="address" 
               className="relaks-input" 
               placeholder="e.g No. 9 malik street elelenwo"
-              value={props.nameValue}
-              onChange={props.handleName}
+              value={props.homeAddress}
+              onChange={props.handleHomeAddress}
               required>
             </input>
             <br/>
             <label>Nearest Bus Stop</label>
             <br/>
             <input type="text" 
-              name="name" 
+              name="bus-stop" 
               className="relaks-input" 
               placeholder="e.g Oil Mill Bus Stop"
-              value={props.nameValue}
-              onChange={props.handleName}
+              value={props.busStop}
+              onChange={props.handleBusStop}
               required>
             </input>
             <br/>
             <label>City</label>
             <br/>
             <input type="text" 
-              name="name" 
+              name="city" 
               className="relaks-input" 
               placeholder="e.g Port Harcourt"
-              value={props.nameValue}
-              onChange={props.handleName}
+              value={props.city}
+              onChange={props.handleCity}
               required>
             </input>
             <br/>
             <label>State</label>
             <br/>
             <input type="text" 
-              name="name" 
+              name="state" 
               className="relaks-input" 
               placeholder="e.g Rivers State"
-              value={props.nameValue}
-              onChange={props.handleName}
+              value={props.state}
+              onChange={props.handleState}
               required>
             </input>
             <br/>
             <button type="submit"
               onClick={props.handleSubmit}
               className="submit-button">
-              <b>Next</b>
+              <b>{props.response.loading ? 'Loading...' : 'Book'}</b>
             </button>
           </div>
       </div>

@@ -1,10 +1,12 @@
 import React from 'react';
+import NeedHelpTemplate from './NeedHelpTemplate';
 import logo from '../assest/logo.svg';
 import '../css/forgot_password.css';
 
 const ForgotPasswordForm = (props) => {
   return (
     <div>
+      <NeedHelpTemplate />
       <div>
         <img src = {logo} alt = "Relaks Logo" className = "relaks-logo"></img>
       </div>
@@ -13,6 +15,7 @@ const ForgotPasswordForm = (props) => {
           <h3 id = "forgot-password-header">Sorry to hear you forgot your passsword</h3>
           <br/>
           <p>Please enter your email and we will send a One Time Password which will expire in ten minutes</p>
+          <h6 className="error-message">{props.response.error}</h6>
           <label id = "email-text">Email Address</label>
           <br />
           <input className = "relaks-input" 

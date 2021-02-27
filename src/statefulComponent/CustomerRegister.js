@@ -11,6 +11,7 @@ const Register = () => {
   const[data, setResponse] = useState({
     message: {},
     loading: false,
+    error: '',
   });
 
   const history = useHistory();
@@ -41,26 +42,32 @@ const Register = () => {
       loading: true
     });
     if (nameValue === '') {
-      setResponse({
-        loading: false
+      return setResponse({
+        loading: false,
+        error: 'Name Field Is Empty!!'
       });
-      return console.log('Name required');
     } else if (emailValue === '') {
-      setResponse({
-        loading: false
+      return setResponse({
+        loading: false,
+        error: 'Email Field Is Empty!!'
       });
-      return console.log('email is required')
     } else if (phoneValue === '') {
-      setResponse({
-        loading: false
+      return setResponse({
+        loading: false,
+        error: 'Phone Number is Field Is Empty!!'
       });
-      return console.log('Phone number required')
+    } else if (phoneValue.length !== 11) {
+      return setResponse({
+        loading: false,
+        error: 'The Phone Number You Provided is not a Valid Phone Number!!'
+      });
     } else if (passwordValue === '') {
-      setResponse({
-        loading: false
+      return setResponse({
+        loading: false,
+        error: 'Password Field Is Empty!!'
       });
-      return console.log('Password required')
-    };
+    }
+
     const data = {
       name: nameValue,
       email: emailValue,
@@ -87,20 +94,28 @@ const Register = () => {
       });
       localStorage.setItem('jwt_token', message.token);
       console.log(message);
-      history.push('/customer');
+      history.push('/customer/pricing');
     }
     if (response.status === 201) {
       const message = await response.json();
       console.log(message);
+      return setResponse({
+        loading: false,
+        error: message.errMessage || message,
+      });
+    }
+    if (response.status === 400) {
+      const message = await response.json();
       setResponse({
         loading: false,
-        message: message.errMessage,
+        error: message.errMessage,
       });
-      console.log(data);
-      return alert(message.errMessage);
     }
     } catch (error) {
-      console.log(error);
+      setResponse({
+        loading: false,
+        error: 'There was a problem!! Our Engineers have Notified. Try Again!!'
+      });
     }
   };
 

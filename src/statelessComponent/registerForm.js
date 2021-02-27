@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import NeedHelpTemplate from './NeedHelpTemplate';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../assest/logo.svg';
 import '../css/registerForm.css';
@@ -18,12 +19,14 @@ const RegisterForm = (props) => {
     // This will check if it is the handyman route and add a extra input called primary service
     return (
       <div>
+        <NeedHelpTemplate />
         <div>
           <img src={logo} alt="Relaks Logo" className="relaks-logo"></img>
         </div>
         <div className="container">
           <div className="relaks-register">
               <h3 id="register-header">Find Jobs Easily!!!</h3>
+              <h6 className="error-message">{props.response.error}</h6>
               <label id="name-text">Full Name</label>
               <br/>
               <input type="text" 
@@ -64,6 +67,7 @@ const RegisterForm = (props) => {
                 className="relaks-input" 
                 value={props.primaryServiceValue}
                 onChange={props.handlePrimaryService}>
+                  <option value="">Select a Service</option>
                   <option value="Electrical">Electrical</option>
                   <option value="Plumbering">Plumbering</option>
                   <option value="Carpentering">Carpentering</option>
@@ -102,12 +106,14 @@ const RegisterForm = (props) => {
   } else {
     return (
       <div>
+        <NeedHelpTemplate />
         <div>
           <img src={logo} alt="Relaks Logo" className="relaks-logo"></img>
         </div>
         <div className="container">
           <div className="relaks-register">
-              <h3 id="register-header">Live A Frustration Free Life!!!</h3>
+              <h3 id="register-header">Create An Account!!!</h3>
+              <h6 className="error-message">{props.response.error}</h6>
               <label id="name-text">Full Name</label>
               <br/>
               <input type="text" 
@@ -162,7 +168,7 @@ const RegisterForm = (props) => {
               <button type="submit"
                 onClick={props.handleSubmit}
                 className="submit-button">
-                <b>{props.response.loading ? 'Please Wait...' : 'Get Started'}</b>
+                <b>{props.response.loading ? 'Please Wait...' : 'Create account'}</b>
               </button>
               <br/>
               <p id="login">Have an account ? <b id="login-text"><Link to = "/customer/login">Log In</Link></b></p>
