@@ -13,14 +13,25 @@
 .hero-img {
   width: 100%;
   height: 540px;
-  opacity: 1;
+  /* background-color: aquamarine; */
+  opacity: 0.3;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  filter: blur(1.5px);
+  /* filter: blur(1.5px); */
 }
 
+#setImg {
+  background: #818181;
+  overflow: hidden;
+}
+
+.hero-text {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
 
 .hero-content {
   position: absolute;
@@ -35,6 +46,11 @@
   margin-left: 120px;
 }
 
+.hero-or {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
 
 .book-service {
   width: 70%;
@@ -48,10 +64,89 @@
 
 .svg, #svg-content {
   width: 100%;
-  height: 540px;
+  height: 300px;
   /* opacity: 1; */
   /* background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative; */
+}
+
+.happiness, .happiness-content {
+  display: flex;
+  justify-content: center;
+}
+
+.happiness-button {
+  display: flex;
+  justify-content: center;
+}
+
+.happiness-div {
+  margin-top: 100px;
+}
+
+.how-its-works {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  padding-top: 2em;
+  padding-bottom: 3px;
+  width: 100%;
+}
+
+.button-text {
+  color: black;
+}
+
+.row {
+  width: 100%;
+  margin-right: 0;
+  padding-left: 2px;
+}
+
+.benefits {
+  display: flex;
+  justify-content: center;
+}
+
+.pricing {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 480px) {
+  .how-its-works-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .how-its-works-text {
+    display: flex;
+    justify-content: center;
+    padding-left: 30px;
+  }
+
+  .pricing-text {
+    display: flex;
+    justify-content: center;
+    padding-left: 30px;
+  }
+
+  .card {
+    padding-left: 30px;
+  }
+
+  .how-its-works-items {
+    padding-bottom: 20px;
+  }
+
+  .happiness-button {
+    padding-left: 30px;
+  }
+
+  .hero-button {
+    margin-left: 0;
+  }
 }
