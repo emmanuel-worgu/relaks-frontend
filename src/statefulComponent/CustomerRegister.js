@@ -114,7 +114,7 @@ const Register = () => {
     } catch (error) {
       setResponse({
         loading: false,
-        error: 'There was a problem!! Our Engineers have Notified. Try Again!!'
+        error: 'There was a problem!! Our Engineers have been Notified. Try Again!!'
       });
     }
   };

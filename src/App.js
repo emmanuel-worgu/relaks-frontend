@@ -16,13 +16,20 @@ import VerifyHandyman from './statefulComponent/VerifyHandyman';
 import Flutterwave from './statefulComponent/Flutterwave';
 import NotFoundPage from './statelessComponent/404';
 import ThankYouPage from './statelessComponent/ThankYouPage';
+import ContactUs from './statelessComponent/ContactUs';
+import CustomerJob from './statefulComponent/CustomerJob';
+import Review from './statefulComponent/Review';
+import JobList from './statefulComponent/JobList'
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route path = '/' exact component = {Home} />
+        <Route path = '/contact-us' component = {ContactUs} />
         <Route path = '/customer' exact component = {CustomerDashboard} />
+        <Route path = '/customer/job' component = {CustomerJob} />
+        <Route path = '/customer/review' component={Review} />
         <Route path = '/customer/login' component = {CustomerLogin} />
         <Route path = '/customer/Register' component = {CustomerRegister} />
         <Route path = '/customer/book-service' exact component = {BookJob} />
@@ -33,6 +40,7 @@ function App() {
         <Route path = '/customer/pay' component = {Flutterwave} />
         <Route path = '/customer/thank-you' component = {ThankYouPage} />
         <Route path = '/handyman' exact component = {HandymanDashboard} />
+        <Route path = '/handyman/accept-job' component = {JobList} />
         <Route path = '/handyman/login' component = {HandymanLogin} />
         <Route path = '/handyman/register' component = {HandymanRegister} />
         <Route path = '/handyman/forgot-password' exact component = {HandymanForgotPassword} />

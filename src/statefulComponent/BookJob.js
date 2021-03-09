@@ -64,7 +64,7 @@ const BookJob = () => {
     return async () => {
       mounted.current = false
     };
-  }, []);
+  });
 
   const handleWork = (e) => {
     setWork(e.target.value);
@@ -240,7 +240,7 @@ const BookJob = () => {
     <div>
       <Job work={work}
         handleWork={handleWork}
-        serviceCategory={serviceCategory}
+        serviceCategory={serviceCategory.value}
         handleServiceCategory={handleServiceCategory}
         dateToCome={dateToCome}
         handleDateToCome={handleDateToCome} 

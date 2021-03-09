@@ -1,0 +1,15 @@
+ #pricing-page {
+   margin-left: 2em;
+   color: blue;
+ }
+
+ #pricing-page-text {
+   display: flex;
+   justify-content: center;
+   padding-bottom: 1em;
+   margin-bottom: 1em;
+ }
+
+ #benefit-id {
+   padding-top: 8em;
+ }

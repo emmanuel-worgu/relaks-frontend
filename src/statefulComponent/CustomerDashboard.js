@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
+import Dashboard from '../statelessComponent/Dashboard';
+import NeedHelpTemplate from '../statelessComponent/NeedHelpTemplate';
+import Nav from '../statelessComponent/Nav';
 
 const CustomerDashboard = () => {
   const[response, setResponse] = useState({
@@ -46,19 +49,12 @@ const CustomerDashboard = () => {
       mounted.current = false
     };
   }, []);
-  if (!response.loading) {
-    return (
-      <div>
-        <p>
-          <li>{response.data.name}</li>
-          <li>{response.data.email}</li>
-          <li>{response.data.phone}</li>
-        </p>
+  return (
+    <div>
+      <NeedHelpTemplate />
+      <Nav />
+      <Dashboard />
     </div>
-    );
-  }
-  return(
-    <p>Loading....</p>
   );
 };
 

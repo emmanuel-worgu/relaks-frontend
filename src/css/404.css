@@ -1,0 +1,33 @@
+.notfound-img {
+  width: 100%;
+  height: 540px;
+  /* background-color: aquamarine; */
+  /* opacity: 0.3; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  /* filter: blur(1.5px); */
+}
+
+#notfound-content {
+  top: 50%;
+  height: 0;
+}
+
+#notfound-header-two {
+  color: red;
+  font-size: 40px;
+}
+
+#notfound {
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
+}
+
+.hero-content-button {
+  display: flex;
+  justify-content: center;
+  border-radius: 4em;
+}

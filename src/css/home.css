@@ -38,12 +38,21 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 379px;
+  /* width: 379px; */
+  width: 450px;
   height: 60px;
 }
 
 .hero-button {
-  margin-left: 120px;
+  /* margin-left: 120px; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-radius: 1em;
+}
+
+#home-button {
+  border-radius: 4em;
 }
 
 .hero-or {
@@ -72,7 +81,21 @@
   position: relative; */
 }
 
+#svg-section {
+  padding-top: 3em;
+  padding-bottom: 7em;
+  margin-bottom: 12px;
+}
+
 .happiness, .happiness-content {
+  display: flex;
+  justify-content: center;
+}
+
+#pricing-para {
+  color: green;
+  /* font-size: 17.7px; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   justify-content: center;
 }
@@ -109,23 +132,85 @@
 .benefits {
   display: flex;
   justify-content: center;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  padding-top: 2em;
+  padding-bottom: 3px;
+  width: 100%;
 }
 
 .pricing {
   display: flex;
   justify-content: center;
+  /* padding-bottom: 30px; */
 }
 
+.card {
+  padding-bottom: 30px;
+}
+
+#footer {
+  /* background-color: #818181; */
+  background-color: black;
+  padding-top: 20px;
+  margin-top: 3em;
+}
+
+ul {
+  list-style: none;
+  color: white;
+}
+
+.footer-header {
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+li {
+  padding-bottom: 10px;
+}
+
+.footer-text {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+  color: white;
+}
+
+.relaks-footer-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.benefit-section {
+  padding-bottom: 5em;
+  margin-bottom: 20px;
+}
+
+.how-its-works-items {
+  padding-left: 30px;
+}
+
+/* This Style is For smaller Device */
 @media screen and (max-width: 480px) {
   .how-its-works-content {
     display: flex;
     justify-content: center;
   }
 
-  .how-its-works-text {
+  .how-its-works-text, #pricing-para, .happiness-content {
     display: flex;
     justify-content: center;
     padding-left: 30px;
+  }
+
+  .benefits-contents {
+    display: flex;
+    justify-content: center;
+    padding-left: 30px;
+    padding-bottom: 20px;
   }
 
   .pricing-text {
@@ -138,7 +223,7 @@
     padding-left: 30px;
   }
 
-  .how-its-works-items {
+  .how-its-works-items, .benefits-items {
     padding-bottom: 20px;
   }
 
@@ -148,5 +233,20 @@
 
   .hero-button {
     margin-left: 0;
+    width: 100%;
+  }
+
+  .hero-content {
+    width: 379px;
+  }
+
+  #svg-section {
+    padding-bottom: 2em;
+    margin-bottom: 0;
+    padding-top: 2.5em;
+  }
+
+  .how-its-works-items {
+    padding-left: 0;
   }
 }

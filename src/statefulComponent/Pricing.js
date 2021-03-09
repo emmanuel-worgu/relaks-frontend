@@ -5,6 +5,7 @@ import PricingPlan from '../statelessComponent/PricingPlan';
 const Pricing = () => {
   const[user, setUser] = useState('');
   const[plan, setPlan] = useState('');
+  const[isAuth, setIsAuth] = useState(false);
   const[loading, setLoading] = useState({
     _gold: false,
     _silver: false,
@@ -15,24 +16,26 @@ const Pricing = () => {
 
   const token = localStorage.getItem('jwt_token');
 
-  // const getData = async () => {
-  //   const url = 'http://localhost:5000/api/customers/dashboard';
-  //   const response = await fetch(url, {
-  //     method: 'GET',
-  //     headers: {
-  //       'auth-token': token,
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json'
-  //     }
-  //   });
-  //   const user = await response.json();
-  //   console.log(user);
-  //   setUser(user);
-  // };
+  const getData = async () => {
+    const url = 'http://localhost:5000/api/customers/dashboard';
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'auth-token': token,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    });
+    if (response.status === 200) {
+      setIsAuth(true);
+    } else {
+      setIsAuth(false);
+    }
+  };
 
-  // useEffect(() => {
-  //   getData()
-  // }, []);
+  useEffect(() => {
+    getData()
+  });
     
     // Each of Package function will redirect to the payment page once the response status is 200
     const gold = async() => {
@@ -169,6 +172,7 @@ const Pricing = () => {
         silver={silver}
         platinum={platinum}
         loading={loading}
+        isAuth={isAuth}
         plan={plan}
       />
     </div>

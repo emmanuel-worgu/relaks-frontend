@@ -1,21 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import NeedHelpTemplate from './NeedHelpTemplate';
-import MiniFooter from './MiniFooter';
+// import MiniFooter from './MiniFooter';
+import Footer from './Footer';
+import Nav from './Nav';
+import Superhero from '../assest/superhero.svg';
+import '../css/404.css';
 
 const NotFoundPage = () => {
+  const history = useHistory();
+
+  const findMe = () => {
+    history.push('/');
+  };
   return (
     <div>
+      <NeedHelpTemplate />
+      <Nav />
       <div>
-        <NeedHelpTemplate />
+        <div>
+          <img src={Superhero} alt="404 Pics" className="notfound-img" />
+        </div>
+        <div id="notfound-content" className="hero-content">
+          <div className="hero-content-header">
+            <h2 id="notfound"><b>404 Page</b></h2>
+            <h4 id="notfound-header-two">Oopps!! You have hit a broken Link</h4>
+          </div>
+          <div className="hero-content-button">
+            <button onClick={findMe} className="submit-button"><h4><b>Find Me</b></h4></button>
+          </div>
+        </div>
       </div>
-      <div>
-        <h3 className="hero-content">You have hit a broken Link... No worries we got your back!!!</h3>
-        <button><Link to="/">Find Me</Link></button>
-      </div>
-      <div>
-        <MiniFooter />
-      </div>
+      <Footer />
     </div>
   );
 };

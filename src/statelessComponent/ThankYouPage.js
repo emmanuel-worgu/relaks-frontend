@@ -10,11 +10,17 @@ const ThankYouPage = () => {
     history.push('/')
   };
 
-  setTimeout(redirect, 5000)
+  const style = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center',
+  }
+
+  // setTimeout(redirect, 5000)
   return (
     <div>
       <div>
-        <h3>{confirmationMessage}</h3>
+        <h3 style={style}>{confirmationMessage}</h3>
         {/* {redirect()} */}
       </div>
     </div>

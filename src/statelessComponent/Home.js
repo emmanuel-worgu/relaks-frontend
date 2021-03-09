@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Nav from './Nav';
 import Footer from './Footer';
@@ -10,13 +10,17 @@ import Relaks from '../assest/relaxing.svg';
 
 const Home = () => {
 
+  const[loading, setLoading] = useState(false);
+
   const history = useHistory();
 
   const customerRoute = () => {
+    setLoading(true);
     history.push('/customer/register');
   };
 
   const handymanRoute = () => {
+    setLoading(true);
     history.push('/handyman/register');
   };
   return (
@@ -34,8 +38,8 @@ const Home = () => {
             <h3 className="hero-text">Live A Frustration Free Life!!</h3>
             <p className="hero-text">Get all your home repairs done for a monthly fee</p>
             <div className="hero-button">
-              <button className="submit-button" onClick={customerRoute}>
-                <b className="button-text">Get Your Home Fixed</b>
+              <button id="home-button" className="submit-button" onClick={customerRoute}>
+                <b className="button-text">{loading ? 'Loading...' : 'Get Your Home Fixed'}</b>
               </button>
             </div>
             <div className="hero-or">
@@ -44,7 +48,7 @@ const Home = () => {
             <h3 className="hero-text">Join Relaks Technicians</h3>
             <p className="hero-text">Earn Money by helping Homeowners get their home fixed</p>
             <div className="hero-button">
-              <button className="submit-button" onClick={handymanRoute}>
+              <button className="submit-button" id="home-button" onClick={handymanRoute}>
                 <b className="button-text">Join Relaks Technicians</b>
               </button>
             </div>
@@ -52,6 +56,9 @@ const Home = () => {
         </div>
         <div className="how-its-works">
           <h2>How Relaks Works</h2>
+        </div>
+        <div className="pricing">
+          <p id="pricing-para">Relaks makes it easy for you to take care of your home. Get Started with Relaks with just three easy steps!!</p>
         </div>
         <div className="row">
           <div className="col-sm-12 col-md-4 col-xl-4">
@@ -73,7 +80,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div  id="svg-section" className="row">
           <div className="col-sm-6 col-md-6">
             <div>
               <img src={Relaks} alt="relaxing" className="svg" />
@@ -81,8 +88,8 @@ const Home = () => {
           </div>
           <div className="col-sm-6 col-md-6" id="svg-content">
             <div className="happiness-div">
-              <h4 className="happiness">Happiness Guarante</h4>
-              <p className="happiness-content">Your Happiness is our top most prority</p>
+              <h4 className="happiness">Happiness Guaranteed</h4>
+              <p className="happiness-content">If for whatever reason you are not happy with the service. We will try to make it right!! </p>
               <div className="happiness-button">
                 <button className="submit-button" onClick={customerRoute}>
                   <b className="button-text">Get Your Home Fixed</b>
@@ -91,12 +98,35 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="benefits">
-          <h2>Benefits of Relaks</h2>
-        </div>
-        <div className="row">
-          <div className="col-sm-12 col-md-4 col-xl-4">
-            <p>Benefits of Relaks</p>
+        <div className="benefit-section">
+          <div className="how-its-works">
+            <h2>Benefit of Relaks</h2>
+          </div>
+          <div className="row">
+            <div className="col-sm-12 col-md-6 col-xl-3">
+              <div className="how-its-works-items">
+                <h4 className="how-its-works-content">Saves Time!! Saves Cost!!</h4>
+                <p className="how-its-works-text">Avoid unneccessary wastage of time and cost. Get covered with Relaks and fix your home with just a click of a buuton.</p>
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-6 col-xl-3">
+              <div className="how-its-works-items">
+                <h4 className="how-its-works-content">No Worry!! No Stress!!</h4>
+                <p className="how-its-works-text">Relaks only send well screened, vetted and professional technicians so that you can feel RELAKS and do what matters to you most</p>
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-6 col-xl-3">
+              <div className="how-its-works-items">
+                <h4 className="how-its-works-content">Transparent Pricing</h4>
+                <p className="how-its-works-text">What you see is what you pay!! No strings attached</p>
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-6 col-xl-3">
+              <div className="how-its-works-items">
+                <h4 className="how-its-works-content">Secured Payment</h4>
+                <p className="how-its-works-text">Relaks uses industry standard payment security to make to sure your payment are secured</p>
+              </div>
+            </div>
           </div>
         </div>
         <div className="pricing">

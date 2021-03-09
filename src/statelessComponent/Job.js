@@ -35,7 +35,7 @@ const Job = (props) => {
             <select name="job-category" 
               id="job-category" 
               className="relaks-input"
-              value={props.serviceCategory}
+              value={props.serviceCategory.value}
               onChange={props.handleServiceCategory}>
                 <option value="">Choose a category</option>
                 <option value="Electrical">Electrical</option>

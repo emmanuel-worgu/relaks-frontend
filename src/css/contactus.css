@@ -1,0 +1,27 @@
+.contact-us-header {
+  display: flex;
+  justify-content: center;
+  padding-top: 5em;
+  padding-bottom: 2em;
+}
+
+#faq-header {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  padding-top: 2em;
+}
+
+.contact-us-text {
+  margin-left: 5em;
+  /* display: flex; */
+  justify-content: center;
+  margin-bottom: 7px;
+}
+
+@media screen and (max-width: 480px) {
+  .contact-us-text {
+    width: 100%;
+    margin-left: 8.5%;
+  }
+}
