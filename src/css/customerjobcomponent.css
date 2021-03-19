@@ -1,0 +1,10 @@
+#job-card {
+  margin-left: 30em;
+  margin-right: 30em;
+}
+
+.review-button {
+  display: flex;
+  justify-content: center;
+  border-radius: 4em;
+}

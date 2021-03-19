@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import Dashboard from '../statelessComponent/Dashboard';
 import NeedHelpTemplate from '../statelessComponent/NeedHelpTemplate';
-import Nav from '../statelessComponent/Nav';
+import { CustomerDashboardNav } from '../statelessComponent/Nav';
+import MiniFooter from '../statelessComponent/MiniFooter';
 
 const CustomerDashboard = () => {
   const[response, setResponse] = useState({
@@ -51,9 +52,9 @@ const CustomerDashboard = () => {
   }, []);
   return (
     <div>
-      <NeedHelpTemplate />
-      <Nav />
+      <CustomerDashboardNav />
       <Dashboard />
+      <MiniFooter />
     </div>
   );
 };

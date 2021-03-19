@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import NeedHelpTemplate from './NeedHelpTemplate';
 // import MiniFooter from './MiniFooter';
 import Footer from './Footer';
-import Nav from './Nav';
+import { NormalNav } from './Nav';
 import Superhero from '../assest/superhero.svg';
 import '../css/404.css';
 
@@ -16,7 +16,7 @@ const NotFoundPage = () => {
   return (
     <div>
       <NeedHelpTemplate />
-      <Nav />
+      <NormalNav />
       <div>
         <div>
           <img src={Superhero} alt="404 Pics" className="notfound-img" />

@@ -1,0 +1,101 @@
+.relaks-setting {
+  display: block;
+  margin-left: 40%;
+  margin-right: 12%;
+  width: 50%;
+}
+
+#setting-header {
+  margin-left: 0%;
+  margin-right: 0;
+  padding-bottom: 2em;
+  text-align: center;
+}
+
+#name-setting-text {
+  margin-top: 5px;
+}
+
+hr {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.relaks-setting-input {
+  width: 70%;
+  height: 2.5em;
+  margin-bottom: 1em;
+  border: 1px solid #c4cdd5;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 780px) {
+  .container {
+    padding: 30px;
+    min-height: 300px;
+    max-height: 480px;
+    overflow: auto;
+    position: relative;
+  }
+  
+  /* .relaks-logo {
+    margin-right: 0;
+    width: 200px;
+    height: 200px;
+    margin-left: 10%;
+    margin-bottom: 0;
+  } */
+
+  .relaks-setting {
+    margin: 0;
+    width: auto;
+  }
+
+  #setting-header {
+    margin-left: 0;
+    margin-top: 0px;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  /* label {
+    margin-left: 50px;
+  } */
+
+  .relaks-setting-input {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 1.43;
+    border: 1px solid #c4cdd5;
+    border-radius: 4px;
+    height: 3.5em;
+    margin-bottom: 0;
+    outline: none;
+    resize: none;
+  }
+
+  /* .relaks-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    display: block;
+    border: 1px solid #c4cdd5;
+    border-radius: 4px;
+    margin-bottom: 0;
+    outline: none;
+    resize: none;
+  } */
+
+  .submit-button {
+    width: 100%;
+    display: block;
+    padding: 14px 16px;
+    line-height: 1.71;
+    text-align: center;
+  }
+
+  #login {
+    margin-top: 0.5em;
+  }
+}

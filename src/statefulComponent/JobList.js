@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import Footer from '../statelessComponent/Footer';
 import HandymanJob from '../statelessComponent/HandymanJob';
-import Nav from '../statelessComponent/Nav';
+import { HandymanDashboardNav } from '../statelessComponent/Nav';
 import NeedHelpTemplate from '../statelessComponent/NeedHelpTemplate';
 
 const JobList =  () => {
@@ -35,10 +35,10 @@ const JobList =  () => {
 
       if (mounted.current && response.status === 200) {
         const job = await response.json();
-        // console.log(job);
+        console.log(job.jobs);
         setSuccess(true);
         setLoading(false);
-        return setJobs(job);
+        return setJobs(job.jobs);
       } else if (mounted.current && response.status === 201) {
         const job = await response.json();
 
@@ -83,7 +83,7 @@ const JobList =  () => {
     };
   }, []);
 
-  console.log(jobs);
+  // console.log(jobs[0].jobs[0].hasPaid);
 
 
   const logic = () => {
@@ -94,7 +94,9 @@ const JobList =  () => {
     }
 
     if (success) {
-      console.log(jobs)
+      // const arrayJob = jobs.jobs;
+      // console.log(arrayJob);
+      console.log(jobs);
       const mappedJob = jobs.map(job => <HandymanJob job={job} key={job._id} />);
       return mappedJob;
     }
@@ -107,10 +109,11 @@ const JobList =  () => {
 
   return (
     <div>
-      <NeedHelpTemplate />
-      <Nav />
+      {/* <NeedHelpTemplate /> */}
+      {/* <Nav /> */}
+      <HandymanDashboardNav />
       {logic()}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

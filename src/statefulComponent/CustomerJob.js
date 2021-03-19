@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import CustomerJobComponent from '../statelessComponent/CustomerJobComponent';
 import Footer from '../statelessComponent/Footer';
-import Nav from '../statelessComponent/Nav';
+import MiniFooter from '../statelessComponent/MiniFooter';
+import Nav, { CustomerDashboardNav } from '../statelessComponent/Nav';
 import NeedHelpTemplate from '../statelessComponent/NeedHelpTemplate';
 
 const CustomerJob = () => {
@@ -35,7 +36,7 @@ const CustomerJob = () => {
 
     if (mounted.current && response.status === 200) {
       const job = await response.json();
-      // console.log(job);
+      console.log(job);
       setSuccess(true);
       setLoading(false);
       return setJobs(job);
@@ -111,10 +112,9 @@ const CustomerJob = () => {
   // const mappedJob = jobs.map(job => <p className="card-tex">{job.Description}</p>)
   return (
     <div>
-      <NeedHelpTemplate />
-      <Nav />
+      <CustomerDashboardNav />
       {logic()}
-      <Footer />
+      <MiniFooter />
     </div>
   );
 };

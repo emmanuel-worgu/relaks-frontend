@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from './Footer';
-import Nav from './Nav';
+import { NormalNav } from './Nav';
 import NeedHelpTemplate from './NeedHelpTemplate';
 import '../css/contactus.css';
 
@@ -8,7 +8,7 @@ const ContactUs = () => {
   return (
     <div>
       <NeedHelpTemplate />
-      <Nav />
+      <NormalNav />
       <div className="contact-us-header">
         <h2><b>CONTACT RELAKS</b></h2>
       </div>

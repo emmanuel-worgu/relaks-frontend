@@ -1,4 +1,39 @@
-.dashboard-list {
+/* .dashboard-list {
   color: black;
   overflow-y: visible;
+} */
+
+.dashboard {
+  margin-left: 15em;
+  margin-top: 5em;
+}
+
+.dashboard-manage {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+
+#joblist {
+  margin-top: 3em;
+}
+
+#handyman-accept-job {
+  padding-bottom: 5em;
+}
+
+@media screen and (max-width: 780px) {
+  .dashboard {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  #job-card {
+    margin-left: 26.6px;
+    margin-bottom: 30px;
+  }
+  
+  .dashboard-manage {
+    margin-top: 2em;
+  }
 }

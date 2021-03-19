@@ -20,6 +20,7 @@ import ContactUs from './statelessComponent/ContactUs';
 import CustomerJob from './statefulComponent/CustomerJob';
 import Review from './statefulComponent/Review';
 import JobList from './statefulComponent/JobList'
+import Settings from './statefulComponent/Settings';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path = '/customer/review' component={Review} />
         <Route path = '/customer/login' component = {CustomerLogin} />
         <Route path = '/customer/Register' component = {CustomerRegister} />
+        <Route path = '/customer/setting' component = {Settings} />
         <Route path = '/customer/book-service' exact component = {BookJob} />
         <Route path = '/customer/book-service/confirm' exact component = {ThankYouPage} />                        
         <Route path = '/customer/forgot-password' exact component = {CustomerForgotPassword} />

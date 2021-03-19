@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import Nav from './Nav';
+import { NormalNav } from './Nav';
 import Footer from './Footer';
 import NeedHelpTemplate from './NeedHelpTemplate';
 
@@ -28,7 +28,7 @@ const Home = () => {
       <div>
         <NeedHelpTemplate />
       </div>
-      <Nav />
+      <NormalNav />
       <div>
         <div id="setImg">
           <div>
@@ -69,7 +69,7 @@ const Home = () => {
           </div>
           <div className="col-sm-12 col-md-4 col-xl-4">
             <div className="how-its-works-items">
-              <h4 className="how-its-works-content">Subscribe to any of our Plan</h4>
+              <h4 className="how-its-works-content" id="subcribe-h4">Subscribe to any of our Plan</h4>
               <p className="how-its-works-text">Save cost by paying for our plan and never worry about your home repair needs</p>
             </div>
           </div>
@@ -105,7 +105,7 @@ const Home = () => {
           <div className="row">
             <div className="col-sm-12 col-md-6 col-xl-3">
               <div className="how-its-works-items">
-                <h4 className="how-its-works-content">Saves Time!! Saves Cost!!</h4>
+                <h4 className="how-its-works-content" id="subcribe-h4">Saves Time!! Saves Cost!!</h4>
                 <p className="how-its-works-text">Avoid unneccessary wastage of time and cost. Get covered with Relaks and fix your home with just a click of a buuton.</p>
               </div>
             </div>
@@ -129,20 +129,42 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="pricing">
-          <h2>Relaks Pricing</h2>
+        <div className="pricing" id="subcribe-h4">
+          <h2>Available in these Cities</h2>
         </div>
         <div className="pricing">
-          <p className="pricing-text">Pay Once every year and be covered for your home repair needs</p>
+          <p className="pricing-text">We are working to bring Relaks to many cities as possible. But for now we only operate in these cities.</p>
         </div>
-        <div className="row">
-          <div className="col-sm-12 col-md-4 col-xl-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Gold</h5>
-                <p className="card-tex">
-                  <b>Amount: 50000</b>
-                </p>
+        <div className="pricing-card">
+          <div className="row">
+            <div className="col-sm-12 col-md-4 col-xl-4">
+              <div className="card" id="card-pricing1">
+                <div className="card-body">
+                  <h5 className="card-title">Port Harcourt</h5>
+                  <p className="card-text">
+                    <b></b>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-4 col-xl-4">
+              <div className="card" id="card-pricing1">
+                <div className="card-body">
+                  <h5 className="card-title">Lagos</h5>
+                  <p className="card-text">
+                    <b></b>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-4 col-xl-4">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Abuja</h5>
+                  <p className="card-text">
+                    <b></b>
+                  </p>
+                </div>
               </div>
             </div>
           </div>

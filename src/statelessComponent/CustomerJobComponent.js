@@ -1,5 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import NeedHelpTemplate from './NeedHelpTemplate';
+import '../css/customerjobcomponent.css';
 
 const CustomerJobComponent = (props) => {
 
@@ -12,21 +14,24 @@ const CustomerJobComponent = (props) => {
     history.push('/customer/review')
   };
   return (
-    <div className="how-its-works">
-      <div className="row">
-        <div className="col-sm-12 col-md-12 col-xl-12">
-          <div className="card">
-            <div className="card-body">
-              <h4 className="card-title">Testing</h4>
-              {/* <p className=" card-text error">{props.err}</p> */}
-              <p className="card-text">{props.job.jobDescription}</p>
-              <div>
-                <button className="submit-button" onClick={giveReviewButton}>Give Review</button>
+    <div>
+      <NeedHelpTemplate />
+      <div className="how-its-works" id="job-card">
+        <div className="row">
+          <div className="col-sm-12 col-md-12 col-xl-12">
+            <div className="card">
+              <div className="card-body">
+                <h4 className="card-title">Testing</h4>
+                {/* <p className=" card-text error">{props.err}</p> */}
+                <p className="card-text">{props.job.jobDescription}</p>
+                <div className="review-button">
+                  <button className="submit-button" onClick={giveReviewButton}>Give Review</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+    </div>
     </div>
   );
 };

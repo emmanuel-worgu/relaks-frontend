@@ -11,7 +11,7 @@ const HandymanIsVerified = () => {
           <p className="need-help-para">Need Help? Call 09055681975</p>
         </div>
       </div>
-      <Nav />
+      {/* <Nav /> */}
       <div>
         <div className="container-fluid">
           <div className="row">

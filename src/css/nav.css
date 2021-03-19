@@ -4,13 +4,110 @@
 }
 
 .nav-logo {
-  width: 100px;
-  height: 90px;
-  padding-top: 0;
-  padding-bottom: 0;
+  height: 6em;
 }
 
 .navbar-brand {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.nav-content {
+  display: flex;
+  height: 80px;
+  margin-left: 12px;
+  /* margin-bottom: 3em */
+}
+
+.nav-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-top: 30px;
+  padding-right: 15px;   
+}
+
+.nav-login {
+  padding-right: 1em;
+}
+
+.nav-subcribe-button {
+  background-color: #52C8FA;
+  border-radius: 1em;
+  border: none;
+  width: 9em;
+}
+
+.nav-subcribe-button:hover {
+  background-color: aquamarine;
+}
+
+/* .dashboardnav {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+} */
+
+.dashboardnav {
+  display: flex;
+  position: relative;
+}
+
+.dashboardnav .dashboardnav-content {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  /* margin-top: 8%; */
+  background-color: aqua;
+  padding: 30px 0;
+  margin-right: 100px;
+}
+
+.dashboardnav-li {
+  color: black;
+  margin: 15px;
+  text-decoration: none;
+}
+.dashboardnav-ul {
+  margin-top: 5em;
+}
+
+.dashboardnav-li:active {
+  color: blue;
+}
+
+.dashboard-header {
+  padding-top: 2em;
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin-left: 40px;
+}
+
+.harmburger {
+  display: none;
+}
+
+/* @media screen and (max-width: 780px) {
+  .harmburger {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .dashboardnav {
+    width: ;
+  }
+
+  .dashboardnav, .dashboardnav-content {
+    display: none;
+  }
+} */
+
+@media screen and (max-width: 380px) {
+  .nav-subcribe-button {
+    width: 100%;
+  }
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef} from 'react';
 import { useHistory } from 'react-router-dom';
 import Job from '../statelessComponent/Job';
+import { CustomerDashboardNav } from '../statelessComponent/Nav';
 
 const BookJob = () => {
   const[jobPoster, setJobPoster] = useState('');
@@ -238,6 +239,7 @@ const BookJob = () => {
   });
   return (
     <div>
+      <CustomerDashboardNav />
       <Job work={work}
         handleWork={handleWork}
         serviceCategory={serviceCategory.value}

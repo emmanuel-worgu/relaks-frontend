@@ -10,7 +10,7 @@ const HandymanJob = (props) => {
   });
 
 
-  const acceptJob = () => {
+  const acceptJob = async () => {
     setData({
       loading: true
     });
@@ -20,7 +20,7 @@ const HandymanJob = (props) => {
     const url = 'http://localhost:5000/api/handymen/find-job';
     const token = localStorage.getItem('jwt_token');
 
-    const response = fetch(url, {
+    const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -31,7 +31,7 @@ const HandymanJob = (props) => {
     });
 
     if (response.status !== 200) {
-      const  message = response.json();
+      const  message = await response.json();
 
       setData({
         message,
@@ -42,7 +42,7 @@ const HandymanJob = (props) => {
       alert(message);
     }
 
-    const message = response.json();
+    const message = await response.json();
     setData({
       message,
       loading: false,
@@ -88,7 +88,7 @@ const HandymanJob = (props) => {
             <div className="card-body">
               <h4 className="card-title">Testing</h4>
               {/* <p className=" card-text error">{props.err}</p> */}
-              <p className="card-text">{props.job.jobDescription}</p>
+              <p className="card-text">{props.job.jobPoster.name}</p>
               <div>
                 {/* {textLogic} */}
                 <button className="submit-button" onClick={acceptJob}>{logic()}</button>

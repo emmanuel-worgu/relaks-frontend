@@ -4,6 +4,7 @@ import NeedHelpTemplate from './NeedHelpTemplate';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../assest/logo.svg';
 import '../css/loginForm.css';
+import Error from './Error';
 // import loginImg from '../assest/login.svg';
 
 
@@ -64,6 +65,8 @@ const LoginForm = (props) => {
             <br></br>
             <button type="submit"
               className="submit-button"
+              data-toggle="modal"
+              data-target="#errorModalLabel"
               onClick={props.handleSubmit}>
                 <b>{props.response.loading ? 'Please Wait...' : 'Login to your dashboard'}</b>
             </button>
@@ -71,6 +74,7 @@ const LoginForm = (props) => {
             <p id="signup">New to Relaks ? <b id="signup-text"><Link to = {signupLink}>Sign Up</Link></b></p>
           </div>
         </div>
+        <Error />
     </div>
   );
 };
