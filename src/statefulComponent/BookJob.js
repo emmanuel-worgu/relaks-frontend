@@ -4,7 +4,7 @@ import Job from '../statelessComponent/Job';
 import { CustomerDashboardNav } from '../statelessComponent/Nav';
 
 const BookJob = () => {
-  const[jobPoster, setJobPoster] = useState('');
+  // const[jobPoster, setJobPoster] = useState('');
   const[work, setWork] = useState('')
   const[workInfo, setWorkInfo] = useState('');
   const[dateToCome, setDateToCome] = useState('');
@@ -164,19 +164,19 @@ const BookJob = () => {
     };
 
     const data = {
-      jobBooked: {
-        jobName: work
-      },
-      jobScheduled: {
-        date: dateToCome
-      },
+      jobName: work,
+      jobCategory: serviceCategory.value,
+      date: new Date(dateToCome),
+      time: timeToCome,
       jobDescription: workInfo,
-      location: {
-        state,
-        city,
-        nearestBusStop: busStop
-      }
+      houseAddress: homeAddress,
+      state,
+      city,
+      busStop,
     }
+
+    console.log(data);
+
     try {
       const url = 'http://localhost:5000/api/customers/book-service';
       const token = localStorage.getItem('jwt_token');
@@ -196,7 +196,7 @@ const BookJob = () => {
         loading: false,
         message,
       });
-      console.log(message);
+      // console.log(message);
       history.push('/customer/book-service/confirm');
     }
     if (response.status === 201) {

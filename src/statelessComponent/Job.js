@@ -12,9 +12,9 @@ const Job = (props) => {
   return (
     <div>
       <NeedHelpTemplate />
-      <div>
+      {/* <div>
         <img src={logo} alt="Relaks Logo" className="relaks-logo"></img>
-      </div>
+      </div> */}
       <div className="container">
         <div className="relaks-register">
             <h3 id="register-header">How Can We Help You</h3>

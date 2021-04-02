@@ -75,7 +75,7 @@
 }
 
 .dashboardnav-li:active {
-  color: blue;
+  color: rgb(111, 111, 122);
 }
 
 .dashboard-header {
@@ -91,20 +91,46 @@
   display: none;
 }
 
-/* @media screen and (max-width: 780px) {
+@media screen and (max-width: 780px) {
   .harmburger {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
+  }
+
+  .menu-button {
+    margin-right: 30px;
+  }
+
+  /* .dashboardnav {
+    width: ;
+  } */
+
+  .mystyle .dashboardnav-content {
+    position: static;
+    margin-top: 0;
+    background-color: aqua;
+    padding: 0;
+    margin-right: 0;
+  }
+
+  .dashboardnav-ul {
+    margin-top: 20px;
+  }
+
+  .dashboardnav-li {
+    display: flex;
+    justify-content: center;
+  }
+
+  .dashboard-header {
+    width: inherit;
   }
 
   .dashboardnav {
-    width: ;
-  }
-
-  .dashboardnav, .dashboardnav-content {
     display: none;
   }
-} */
+}
+
 
 @media screen and (max-width: 380px) {
   .nav-subcribe-button {

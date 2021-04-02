@@ -39,7 +39,7 @@ const PricingPlan = (props) => {
             <div className="card" id="card-pricing1">
               <div className="card-body">
                 <h3 className="card-title">Relaks Basic</h3>
-                <h4 className="card-title">$30,000/yr</h4>
+                <h4 className="card-title">₦30,000/yr</h4>
                 <p className="card-text">5 jobs/Mon/Yr</p>
                 <p className="card-text">One Electrical Work</p>
                 <p className="card-text">One Carpentary Work</p>
@@ -56,7 +56,7 @@ const PricingPlan = (props) => {
             <div className="card" id="card-pricing2">
               <div className="card-body">
                 <h3 className="card-title">Relaks Xtra</h3>
-                <h4 className="card-title">$60,000/yr</h4>
+                <h4 className="card-title">₦60,000/yr</h4>
                 <p className="card-text">10 jobs/Mon/Yr</p>
                 <p className="card-text">Five Electrical Work</p>
                 <p className="card-text">Five Carpentary Work</p>
@@ -73,7 +73,7 @@ const PricingPlan = (props) => {
             <div className="card" id="card-pricing3">
               <div className="card-body">
                 <h3 className="card-title">Relaks Prime</h3>
-                <h4 className="card-title">$120,000/yr</h4>
+                <h4 className="card-title">₦120,000/yr</h4>
                 <p className="card-text">25 jobs/Mon/Yr</p>
                 <p className="card-text">Ten Electricals Works</p>
                 <p className="card-text">Ten Carpentary Work</p>

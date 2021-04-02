@@ -29,6 +29,10 @@ hr {
   border-radius: 4px;
 }
 
+#setting-header {
+  margin-top: 40px;
+}
+
 @media screen and (max-width: 780px) {
   .container {
     padding: 30px;

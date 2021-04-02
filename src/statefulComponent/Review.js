@@ -44,7 +44,7 @@ const Review = () => {
         setLoading(false);
 
         setTimeout(() => {
-          history.push('/customer');
+          history.push('/customer/job');
         }, 5000);
       } else {
         const data = await response.json();

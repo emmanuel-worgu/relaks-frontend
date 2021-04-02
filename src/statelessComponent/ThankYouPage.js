@@ -16,7 +16,7 @@ const ThankYouPage = () => {
     alignContent: 'center',
   }
 
-  // setTimeout(redirect, 5000)
+  setTimeout(redirect, 5000)
   return (
     <div>
       <div>

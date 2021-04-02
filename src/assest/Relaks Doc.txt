@@ -1,0 +1,7 @@
+Is the JobsChosen that we get the jobs from the handymen/get-all-jobs route.
+
+Once the customer give reviews it clears the jobChosen Array which will return undefined in our frontend.
+
+If we don't clear the jobsChosen Array our handymen can't be able to choose another job..
+
+So we should make it Possible that the job is not loaded from the jobsChosen Array.

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
-import Footer from '../statelessComponent/Footer';
 import HandymanJob from '../statelessComponent/HandymanJob';
+import MiniFooter from '../statelessComponent/MiniFooter';
 import { HandymanDashboardNav } from '../statelessComponent/Nav';
 import NeedHelpTemplate from '../statelessComponent/NeedHelpTemplate';
 
@@ -98,7 +98,16 @@ const JobList =  () => {
       // console.log(arrayJob);
       console.log(jobs);
       const mappedJob = jobs.map(job => <HandymanJob job={job} key={job._id} />);
-      return mappedJob;
+      return (
+        <div>
+          <NeedHelpTemplate />
+          {mappedJob}
+          <MiniFooter style={{
+            position: 'fixed',
+            bottom: '0',
+          }} />
+        </div>
+      );
     }
 
     return (
@@ -109,11 +118,8 @@ const JobList =  () => {
 
   return (
     <div>
-      {/* <NeedHelpTemplate /> */}
-      {/* <Nav /> */}
       <HandymanDashboardNav />
       {logic()}
-      {/* <Footer /> */}
     </div>
   );
 };

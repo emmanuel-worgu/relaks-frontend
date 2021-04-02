@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import NeedHelpTemplate from './NeedHelpTemplate';
-// import MiniFooter from './MiniFooter';
 import Footer from './Footer';
 import { NormalNav } from './Nav';
 import Superhero from '../assest/superhero.svg';

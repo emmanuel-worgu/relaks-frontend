@@ -15,11 +15,17 @@ const CustomerJobComponent = (props) => {
   };
   return (
     <div>
-      <NeedHelpTemplate />
-      <div className="how-its-works" id="job-card">
+      {/* <NeedHelpTemplate /> */}
+      <div style={{
+        marginBottom: '1.5em',
+        marginTop: '1.5em',
+        // marginLeft: '25px'
+      }} className="dashboard">
         <div className="row">
           <div className="col-sm-12 col-md-12 col-xl-12">
-            <div className="card">
+            <div style={{
+              marginLeft: '25px'
+            }}className="card">
               <div className="card-body">
                 <h4 className="card-title">Testing</h4>
                 {/* <p className=" card-text error">{props.err}</p> */}

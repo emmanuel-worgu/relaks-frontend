@@ -264,6 +264,10 @@ li {
   #home-button {
     width: 95%;
   }
+
+  .footer-header {
+    font-size: 1rem;
+  }
 }
 
 @media screen and (max-width: 380px) {
@@ -277,6 +281,14 @@ li {
 
   #subcribe-h4 {
     margin-left: 35px;
+  }
+
+  .footer-header {
+    font-size: 1rem;
+  }
+
+  .footer-text {
+    font-size: 15px;
   }
 }
 

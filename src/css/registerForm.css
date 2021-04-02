@@ -83,12 +83,16 @@ button:active {
   background-color: black;
   margin-top: 2em;
   width: 100%;
-  height: 3em;
+  height: 5em;
+  /* position: fixed;
+  bottom: 0; */
 }
 
 .mini-footer-text {
   color: white;
-  margin-left: 50%;
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
 }
 
 @media screen and (max-width: 480px) {

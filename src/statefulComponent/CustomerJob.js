@@ -101,7 +101,12 @@ const CustomerJob = () => {
 
     if (success) {
       const mappedJob = jobs.map(job =>  <CustomerJobComponent job={job} key={job._id} />);
-      return mappedJob;
+      return (
+        <div>
+          <NeedHelpTemplate />
+          {mappedJob}
+        </div>
+      );
     }
 
     return (

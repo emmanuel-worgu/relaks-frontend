@@ -1,25 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Dashboard from '../statelessComponent/Dashboard';
-import NeedHelpTemplate from '../statelessComponent/NeedHelpTemplate';
 import { CustomerDashboardNav } from '../statelessComponent/Nav';
 import MiniFooter from '../statelessComponent/MiniFooter';
 
 const CustomerDashboard = () => {
-  const[response, setResponse] = useState({
-    loading: true,
-    isAuth: false,
-    data: 'The fist Render!!'
-  });
+  const[userInfo, setUserInfo] = useState([]);
+  const[jobs, setJobs] = useState([]);
+  const[loading, setLoading] = useState(false);
+  const[error, setError] = useState(false);
   let history = useHistory();
   let mounted = useRef(true);
 
   useEffect(() => {
-    const getData = async ()  => {
+    const getUserInfo = async ()  => {
     try {
-      setResponse({
-        loading: true,
-      });
+      setLoading(true);
       const url = 'http://localhost:5000/api/customers/dashboard';
       const token = localStorage.getItem('jwt_token');
       const response = await fetch(url, {
@@ -32,28 +28,67 @@ const CustomerDashboard = () => {
       });
       const data = await response.json();
       if(mounted.current && response.status === 200) {
-        setResponse({
-          loading: false,
-          data: data,
-          isAuth: true
-        });
+        setLoading(false);
+        setUserInfo(data);
       }
       if(mounted.current && response.status === 401) {
         history.push('/customer/login');
       };
     } catch (error) {
-      console.log(error);
+      setLoading(false);
+      setError(true);
+      setUserInfo(error)
     }
   };
-  getData();
+  getUserInfo();
     return async () => {
       mounted.current = false
     };
   }, []);
+
+  // Get the User Jobs
+  useEffect(() => {
+    const getJobs = async ()  => {
+    try {
+      setLoading(true);
+      const url = 'http://localhost:5000/api/customers/get-all-jobs';
+      const token = localStorage.getItem('jwt_token');
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'auth-token': token,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      if(mounted.current && response.status === 200) {
+        setJobs(data);
+        setLoading(false);
+      }
+      if(mounted.current && response.status === 401) {
+        history.push('/customer/login');
+      };
+    } catch (error) {
+      setError(true);
+      setJobs(error);
+      console.log(error);
+    }
+  };
+  getJobs();
+    return async () => {
+      mounted.current = false
+    };
+  }, []);
+
   return (
     <div>
       <CustomerDashboardNav />
-      <Dashboard />
+      <Dashboard userInfo={userInfo}
+        jobs={jobs}
+        loading={loading}
+        error={error}
+      />
       <MiniFooter />
     </div>
   );

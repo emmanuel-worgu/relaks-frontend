@@ -28,6 +28,41 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <div style={{marginTop: '30px'}} className="row">
+        <div className="col-6">
+          <h4 className="footer-header">Solutions</h4>
+          <div className="footer-text">
+            <ul>
+              <li><Link to='/customer'>Relaks For Customers</Link></li>
+              <li><Link to='/handyman'>Relaks For Technicians</Link></li>
+            </ul>
+          </div>
+        </div>
+        <div className="col-6">
+          <h4 className="footer-header">Connect With Us</h4>
+          <div className="footer-text">
+            <ul>
+              <li><a href="https://facebook.com" target="blank">Facebook</a></li>
+              <li><a href="https://twitter.com" target="blank">Twitter</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr style={{
+        backgroundColor: 'aqua',
+      }}/>
+      <div>
+        <h6 style={{
+          color: 'white',
+          marginLeft: '35px',
+          marginRight: '35px',
+          display: 'flex',
+          justifyContent: 'center',
+          fontFamily: 'fangsong',
+        }}>
+          At Relaks We are making it easier for you to keep your home in good shape while doing what matters to you most
+        </h6>
+      </div>
       <div className="relaks-footer-logo">
         <img src={Logo} alt="Relaks Logo" className="footer-logo" />
       </div>

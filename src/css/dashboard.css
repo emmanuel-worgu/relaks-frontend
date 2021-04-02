@@ -22,6 +22,30 @@
   padding-bottom: 5em;
 }
 
+.revenue-card {
+  display: flex;
+  justify-content: center;
+  margin-left: 12%;
+  margin-right: 20%;
+  margin-bottom: 2em;
+}
+
+#card-border {
+  border-radius: 2em;
+}
+
+table {
+  width: 100%;
+}
+
+tr, th, td {
+  border: 1px solid;
+}
+
+#table {
+  overflow-x: auto;
+}
+
 @media screen and (max-width: 780px) {
   .dashboard {
     margin-left: 0;
@@ -35,5 +59,7 @@
   
   .dashboard-manage {
     margin-top: 2em;
+    margin-left: 35px;
+    margin-right: 20px;
   }
 }
