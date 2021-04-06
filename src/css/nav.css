@@ -95,10 +95,17 @@
   .harmburger {
     display: flex;
     justify-content: flex-start;
+    height: 80px;
   }
 
   .menu-button {
     margin-right: 30px;
+  }
+  
+  .harmburger-icon {
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
   }
 
   /* .dashboardnav {

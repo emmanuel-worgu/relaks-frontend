@@ -4,6 +4,11 @@ import { Link, useHistory } from 'react-router-dom';
 
 import '../css/nav.css'
 import NavLogo from '../assest/RelaksLogo.png';
+import {
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 // This is the Homepage Nav when not authenticated
 export const NormalNav = () => {
@@ -124,7 +129,7 @@ export const HandymanDashboardNav = () => {
   return (
     <nav>
       <div className="harmburger">
-        <button onClick={handleMenuButton}>Menu</button>
+      <FontAwesomeIcon icon={faBars} size="3x" onClick={handleMenuButton} className="harmburger-icon" />
         <div>
           <img src={NavLogo} className="nav-logo" alt="relaks logo" />
         </div>
@@ -202,7 +207,7 @@ export const CustomerDashboardNav = () => {
   return (
     <nav>
       <div className="harmburger">
-        <button className="menu-button" onClick={handleMenuButton}>Menu</button>
+        <FontAwesomeIcon icon={faBars} size="3x" onClick={handleMenuButton} className="harmburger-icon" />
         <div>
           <img src={NavLogo} className="nav-logo" alt="relaks logo" />
         </div>

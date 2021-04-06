@@ -4,4 +4,7 @@ Once the customer give reviews it clears the jobChosen Array which will return u
 
 If we don't clear the jobsChosen Array our handymen can't be able to choose another job..
 
-So we should make it Possible that the job is not loaded from the jobsChosen Array.
+So we should make it Possible that the job is not loaded from the jobsChosen Array
+
+
+Our Home is the last place we feel love to feel relax after our day to day activity 

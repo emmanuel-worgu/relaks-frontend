@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Dashboard from '../statelessComponent/Dashboard';
 import { CustomerDashboardNav } from '../statelessComponent/Nav';
 import MiniFooter from '../statelessComponent/MiniFooter';
+import Loading from '../statelessComponent/Loading';
 
 const CustomerDashboard = () => {
   const[userInfo, setUserInfo] = useState([]);
@@ -81,6 +82,12 @@ const CustomerDashboard = () => {
     };
   }, []);
 
+  if (loading) {
+    return (
+      <Loading />
+    );
+  }
+  
   return (
     <div>
       <CustomerDashboardNav />

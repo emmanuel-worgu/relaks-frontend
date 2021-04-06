@@ -83,8 +83,7 @@
 }
 
 #svg-section {
-  padding-top: 3em;
-  padding-bottom: 7em;
+  padding-bottom: 4.5em;
   margin-bottom: 12px;
 }
 
@@ -186,6 +185,7 @@ li {
 }
 
 .benefit-section {
+  background-color: rgb(231,247,255);
   padding-bottom: 5em;
   margin-bottom: 20px;
 }
@@ -202,6 +202,28 @@ li {
 .how-its-works-text, #pricing-para {
   display: flex;
   justify-content: center;
+}
+
+.what-is-relaks-div {
+  margin-left: 35px;
+}
+
+#family-bg {
+  background-image: url('../assest/family-home.svg');
+}
+
+.what-is-relaks-button {
+  border: none;
+  background-color: #52C8FA;
+  height: 2.578em;
+  width: 13em;
+  border-radius: 2em;
+}
+
+.how-its-works-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
 /* This Style is For smaller Device */

@@ -5,7 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../assest/logo.svg';
 import '../css/loginForm.css';
 import Error from './Error';
-// import loginImg from '../assest/login.svg';
+
+import {
+  faSpinner
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const LoginForm = (props) => {
@@ -68,7 +72,15 @@ const LoginForm = (props) => {
               data-toggle="modal"
               data-target="#errorModalLabel"
               onClick={props.handleSubmit}>
-                <b>{props.response.loading ? 'Please Wait...' : 'Login to your dashboard'}</b>
+                <b>{props.response.loading ?
+                  <>
+                    <div>
+                    <FontAwesomeIcon icon={faSpinner} size="1.5x" /> Please Wait...
+                    </div>
+                  </>
+                  :
+                  'Login to see your Dashboard'
+                }</b>
             </button>
             <br/>
             <p id="signup">New to Relaks ? <b id="signup-text"><Link to = {signupLink}>Sign Up</Link></b></p>

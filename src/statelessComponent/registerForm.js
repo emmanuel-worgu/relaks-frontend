@@ -4,7 +4,11 @@ import NeedHelpTemplate from './NeedHelpTemplate';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../assest/logo.svg';
 import '../css/registerForm.css';
-// import loginImg from '../assest/login.svg';
+
+import {
+  faSpinner
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const RegisterForm = (props) => {
@@ -95,7 +99,15 @@ const RegisterForm = (props) => {
               <button type="submit"
                 onClick={props.handleSubmit}
                 className="submit-button">
-                <b>{props.response.loading ? 'Please Wait...' : 'Get Started'}</b>
+                <b>{props.response.loading ? 
+                  <>
+                  <div>
+                    <FontAwesomeIcon icon={faSpinner} size="1.5x" /> Please Wait...
+                  </div>
+                  </>
+                 : 
+                  'Get Started'
+                }</b>
               </button>
               <br/>
               <p id="login">Have an account ? <b id="login-text"><Link to = "/handyman/login">Log In</Link></b></p>
@@ -168,7 +180,15 @@ const RegisterForm = (props) => {
               <button type="submit"
                 onClick={props.handleSubmit}
                 className="submit-button">
-                <b>{props.response.loading ? 'Please Wait...' : 'Create account'}</b>
+                <b>{props.response.loading ?
+                  <>
+                  <div>
+                  <FontAwesomeIcon icon={faSpinner} size="1.5x" /> Creating account...
+                  </div>
+                  </>
+                :
+                  'Create Account'
+                }</b>
               </button>
               <br/>
               <p id="login">Have an account ? <b id="login-text"><Link to = "/customer/login">Log In</Link></b></p>

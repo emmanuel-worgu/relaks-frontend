@@ -1,44 +1,81 @@
- #pricing-page {
-   margin-left: 2em;
-   color: blue;
- }
+#pricing-page {
+  margin-left: 2em;
+  color: blue;
+}
 
- #pricing-page-text {
-   display: flex;
-   justify-content: center;
-   padding-bottom: 1em;
-   margin-bottom: 1em;
- }
+#pricing-page-text {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
 
- #benefit-id {
-   padding-top: 8em;
- }
+#benefit-id {
+  padding-top: 8em;
+}
 
- .pricing-card {
-   padding-left: 30px;
- }
+.pricing-card {
+  padding-left: 30px;
+}
 
- #card-pricing1, #card-pricing2, #card-pricing3 {
-   margin-bottom: 50px;
-   display: flex;
-   justify-content: center;
- }
+#card-pricing1, #card-pricing2, #card-pricing3 {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 14px 28px rgb(0 0 0 / 15%), 0 10px 10px rgb(0 0 0 / 5%);
+}
 
- .card-title {
-   display: flex;
-   justify-content: center;
- }
+.card-title {
+  display: flex;
+  justify-content: center;
+}
 
- .card-text {
-   display: flex;
-   justify-content: center;
- }
+.card-text {
+  display: flex;
+  justify-content: center;
+}
 
- .pricing-button {
-   display: flex;
-   justify-content: center;
- }
+.pricing-button {
+  display: flex;
+  justify-content: center;
+}
 
- #pricing-button {
-   border-radius: 1.8em;
- }
+#pricing-button {
+  border-radius: 1.8em;
+}
+
+.pricing__plan__note {
+  border: 1px solid #acb3bc;
+  /* margin-left: 25em;
+  margin-right: 30em; */
+  /* margin-left: 35%;
+  margin-right: 35%; */
+  /* border: 1px solid #acb3bc; */
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: left;
+  padding: 20px 40px;
+  border-radius: 5px;
+  margin: 0 auto 60px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #566270;
+  line-height: 24px;
+}
+
+.pricing__plan__call__relaks {
+  display: inline-flex;
+}
+
+@media screen and (max-width: 780px) {
+  .pricing__plan__note {
+    /* margin-left: auto;
+    margin-right: auto; */
+    width: 100%;
+  }
+}
+

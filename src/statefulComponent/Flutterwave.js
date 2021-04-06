@@ -35,8 +35,8 @@ function Flutterwave() {
         name: user.name,
         email: user.email,
         phonenumber: user.phone,
-        // planName: user.subscriptionPlan.planName,
-        // amount: user.subscriptionPlan.amount,
+        planName: user.subscriptionPlan.planName,
+        amount: user.subscriptionPlan.planAmount,
       });
       setLoading(false);
     } else {
@@ -53,7 +53,7 @@ function Flutterwave() {
   const config = {
     public_key: 'FLWPUBK_TEST-a69503fa38db11ad11dc4ea595059e4c-X',
     tx_ref: `${user.name.slice(0,3)}-${Date.now()}${Math.floor(Math.random() * 1000000)}-X`,
-    amount: 1,
+    amount: user.amount,
     currency: 'NGN',
     payment_options: 'card,mobilemoney,ussd',
     customer: {
@@ -62,7 +62,7 @@ function Flutterwave() {
       name: user.name,
     },
     customizations: {
-      title: 'Plan Name',
+      title: `Relaks ${user.planName}`,
       description: 'Payment for items in cart',
       logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
     },
@@ -102,7 +102,7 @@ function Flutterwave() {
 
            const verificationResponse = await verifyTransaction.json();
            console.log(verificationResponse);
-           if (verificationResponse.status !== 200) {
+           if (verifyTransaction.status !== 200) {
              console.log('We could not verify your transaction');
            }
            

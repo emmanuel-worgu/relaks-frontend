@@ -4,6 +4,12 @@ import NeedHelpTemplate from './NeedHelpTemplate';
 import { AuthNav, NormalNav } from './Nav';
 import Footer from './Footer';
 import '../css/pricingplan.css';
+import { faUserAlt,
+  faCreditCard,
+  faHeadset,
+  faTools,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const PricingPlan = (props) => {
 
@@ -45,8 +51,8 @@ const PricingPlan = (props) => {
                 <p className="card-text">One Carpentary Work</p>
                 <p className="card-text">Unlimited for other jobs</p>
                 <div className="pricing-button">
-                  <button className="submit-button" id="pricing-button" onClick={props.isAuth ? props.platinum : handleButton}>
-                    {props.loading._platinum ? <h5><b>Loading...</b></h5> : <h5><b>Basic</b></h5>}
+                  <button className="submit-button" id="pricing-button" onClick={props.isAuth ? props.basic : handleButton}>
+                    {props.loading._basic ? <h5><b>Loading...</b></h5> : <h5><b>Buy Basic</b></h5>}
                   </button>
                 </div>
               </div>
@@ -62,8 +68,8 @@ const PricingPlan = (props) => {
                 <p className="card-text">Five Carpentary Work</p>
                 <p className="card-text">Unlimited for other works</p>
                 <div className="pricing-button">
-                  <button className="submit-button" id="pricing-button" onClick={props.isAuth ? props.silver : handleButton}>
-                    {props.loading._silver ? <h5><b>Loading...</b></h5> : <h5><b>Xtra</b></h5>}
+                  <button className="submit-button" id="pricing-button" onClick={props.isAuth ? props.xtra : handleButton}>
+                    {props.loading._xtra ? <h5><b>Loading...</b></h5> : <h5><b>Buy Xtra</b></h5>}
                   </button>
                 </div>
               </div>
@@ -79,11 +85,29 @@ const PricingPlan = (props) => {
                 <p className="card-text">Ten Carpentary Work</p>
                 <p className="card-text">Unlimited for other jobs</p>
                 <div className="pricing-button">
-                  <button className="submit-button" id="pricing-button" onClick={props.isAuth ? props.gold : handleButton}>
-                    {props.loading._gold ? <h5><b>Loading...</b></h5> : <h5><b>Prime</b></h5>}
+                  <button className="submit-button" id="pricing-button" onClick={props.isAuth ? props.prime : handleButton}>
+                    {props.loading._prime ? <h5><b>Loading...</b></h5> : <h5><b>Buy Prime</b></h5>}
                   </button>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style={{display: 'flex'}}>
+        <div className="pricing__plan__note">
+          <div style={{
+            marginRight: '8px'
+          }}className="pricing__plan__call__relaks">
+            <FontAwesomeIcon icon={faHeadset} size="3x" />
+          </div>
+          <div>
+            <div>
+              Not Sure which plan is right for you?
+            </div>
+            <div>
+              Give Us A Call at
+              <a href="tel:+2349055681975"> (+234)9055681975</a>
             </div>
           </div>
         </div>
@@ -97,18 +121,27 @@ const PricingPlan = (props) => {
         <div className="row">
           <div className="col-sm-12 col-md-4 col-xl-4">
             <div className="how-its-works-items">
+              <div className="how-its-works-icon">
+                <FontAwesomeIcon icon={faUserAlt} size="4x" />
+              </div>
               <h4 className="how-its-works-content">Create An Account</h4>
               <p className="how-its-works-text">Register with us by just filling your name, email, phone number and password. That is it!!</p>
             </div>
           </div>
           <div className="col-sm-12 col-md-4 col-xl-4">
             <div className="how-its-works-items">
+              <div className="how-its-works-icon">
+                <FontAwesomeIcon icon={faCreditCard} size="4x" />
+              </div>
               <h4 className="how-its-works-content" id="subcribe-h4">Subscribe to any of our Plan</h4>
               <p className="how-its-works-text">Save cost by paying for our plan and never worry about your home repair needs</p>
             </div>
           </div>
           <div className="col-sm-12 col-md-4 col-xl-4">
             <div className="how-its-works-items">
+              <div className="how-its-works-icon">
+                <FontAwesomeIcon icon={faTools} size="4x" />
+              </div>
               <h4 className="how-its-works-content">Get your home fixed</h4>
               <p className="how-its-works-text">Get your home fixed whenever it happens. You don't have to worry about getting good artisan or the cost of getting it done.</p>
             </div>
