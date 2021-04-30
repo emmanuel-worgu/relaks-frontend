@@ -64,7 +64,7 @@ const HandymanDashboard = () => {
     const getJobs = async ()  => {
     try {
       setLoading(true);
-      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/get-all-job';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/get-all-jobs';
       const token = localStorage.getItem('jwt_token');
       const response = await fetch(url, {
         method: 'GET',
