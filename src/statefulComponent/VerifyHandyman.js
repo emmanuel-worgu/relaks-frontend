@@ -47,7 +47,7 @@ const VerifyHandyman = () => {
       password: newPassword
     }
     try {
-      const url = 'http://localhost:5000/api/handymen/verify-user';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/verify-user';
       const token = localStorage.getItem("forgot_password");
 
     const response = await fetch(url, {
@@ -77,7 +77,6 @@ const VerifyHandyman = () => {
         error: message.errMessage,
       });
     }
-    // console.log(message);
     } catch (error) {
       setResponse({
         loading: false,

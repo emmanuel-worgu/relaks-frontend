@@ -6,7 +6,8 @@ import logo from '../assest/logo.svg';
 import '../css/registerForm.css';
 
 import {
-  faSpinner
+  faSpinner,
+  faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -96,6 +97,11 @@ const RegisterForm = (props) => {
                 onChange={handleSeePassword}>
               </input>
               <br/>
+              <i style={{
+                fontSize: '0.7em',
+                marginBottom: '15px'
+              }}><FontAwesomeIcon icon={faInfoCircle} size="1x"/> By Creating an Account you agree to Relaks<Link to='/privacy-policy'> Privacy Policy</Link> and Terms and Condition</i>
+              <br/>
               <button type="submit"
                 onClick={props.handleSubmit}
                 className="submit-button">
@@ -176,6 +182,11 @@ const RegisterForm = (props) => {
                 checked={seePassword} 
                 onChange={handleSeePassword}>
               </input>
+              <br/>
+              <i style={{
+                fontSize: '0.7em',
+                marginBottom: '15px'
+              }}><FontAwesomeIcon icon={faInfoCircle} size="1x"/> By Creating an Account you agree to Relaks<Link to='/privacy-policy'> Privacy Policy</Link> and Terms and Condition</i>
               <br/>
               <button type="submit"
                 onClick={props.handleSubmit}

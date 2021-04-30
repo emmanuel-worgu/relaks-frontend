@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import CustomerJobComponent from '../statelessComponent/CustomerJobComponent';
-import Footer from '../statelessComponent/Footer';
 import MiniFooter from '../statelessComponent/MiniFooter';
-import Nav, { CustomerDashboardNav } from '../statelessComponent/Nav';
+import { CustomerDashboardNav } from '../statelessComponent/Nav';
 import NeedHelpTemplate from '../statelessComponent/NeedHelpTemplate';
 
 const CustomerJob = () => {
@@ -23,7 +22,7 @@ const CustomerJob = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('jwt_token');
-    const url = 'http://localhost:5000/api/customers/get-all-jobs';
+    const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/get-all-jobs';
 
     const response = await fetch(url, {
       method: 'GET',
@@ -36,7 +35,6 @@ const CustomerJob = () => {
 
     if (mounted.current && response.status === 200) {
       const job = await response.json();
-      console.log(job);
       setSuccess(true);
       setLoading(false);
       return setJobs(job);
@@ -62,8 +60,6 @@ const CustomerJob = () => {
     }
 
     } catch (error) {
-      console.log(error);
-      // console.log(jobs);
       setLoading(false);
       setJobs(error)
       setSuccess(false);
@@ -81,21 +77,20 @@ const CustomerJob = () => {
     };
   }, []);
 
-  // const mappedJob = jobs.map(job => {
-  //   console.log(job.jobDescription);
-  //   return(
-  //     <CustomerJobComponent key={job._id}
-  //     job={job}
-  //   />
-  //   );
-  // });
-
-  // const mappedJob = jobs.map(job =>  <CustomerJobComponent job={job} key={job._id} />);
-
   const logic = () => {
     if (loading) {
       return (
-        <h4 className="how-its-works">Fetching Your Jobs...</h4>
+        <div>
+          <h4 style={{
+            marginTop: '20%'
+          }}className="how-its-works">Fetching Your Jobs...</h4>
+          <div style={{
+            position: 'fixed',
+            bottom: '0',
+          }} className="mini-footer">
+            <p className="mini-footer-text">© Relaks 2021</p>
+          </div>
+        </div>
       );
     }
 
@@ -105,6 +100,7 @@ const CustomerJob = () => {
         <div>
           <NeedHelpTemplate />
           {mappedJob}
+          <MiniFooter />
         </div>
       );
     }
@@ -119,7 +115,6 @@ const CustomerJob = () => {
     <div>
       <CustomerDashboardNav />
       {logic()}
-      <MiniFooter />
     </div>
   );
 };

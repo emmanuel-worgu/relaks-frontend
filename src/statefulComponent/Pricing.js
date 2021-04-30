@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router-dom';
 import PricingPlan from '../statelessComponent/PricingPlan';
+import mixpanel from 'mixpanel-browser';
 
 const Pricing = () => {
-  const[user, setUser] = useState('');
-  const[plan, setPlan] = useState('');
+  mixpanel.init("784360e9005522fb8d2cccd326b57f78");
+  // const[user, setUser] = useState('');
+  // const[plan, setPlan] = useState('');
   const[isAuth, setIsAuth] = useState(false);
   const[loading, setLoading] = useState({
     _prime: false,
@@ -17,7 +20,7 @@ const Pricing = () => {
   const token = localStorage.getItem('jwt_token');
 
   const getData = async () => {
-    const url = 'http://localhost:5000/api/customers/dashboard';
+    const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/dashboard';
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -26,7 +29,21 @@ const Pricing = () => {
         'Accept': 'application/json'
       }
     });
-    if (response.status === 200) {
+    if (response.status === 200 || response.status === 201) {
+      if (response.status === 200) {
+        setIsAuth(true);
+        const user = await response.json()
+
+        mixpanel.identify(user._id)
+      } else if (response.status === 201) {
+        setIsAuth(true);
+        const user = await response.json();
+
+        mixpanel.identify(user.authUser._id);
+        mixpanel.people.set({
+          stage: 'Pricing Page',
+        });
+      }
       setIsAuth(true);
     } else {
       setIsAuth(false);
@@ -37,7 +54,7 @@ const Pricing = () => {
     getData()
   });
     
-    // Each of Package function will redirect to the payment page once the response status is 200
+    // Each of Package function will redirect to the payment page once the response status is 200 or 201
     const prime = async() => {
       const data = {
         planName: 'Prime'
@@ -47,7 +64,7 @@ const Pricing = () => {
         setLoading({
           _prime: true,
         });
-        const url = 'http://localhost:5000/api/customers/choose-plan'
+        const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/choose-plan';
 
         const response = await fetch(url, {
           method: 'POST',
@@ -60,15 +77,14 @@ const Pricing = () => {
         })
 
         if (response.status === 200) {
-          const message = await response.json()
-          console.log(message);
+          mixpanel.people.set({
+            planName: 'Relaks Prime'
+          });
           setLoading({
             _prime: false
           });
           history.push('/customer/pay');
         } else {
-          const message = await response.json()
-          console.log(message);
           setLoading({
             _prime: false,
           });
@@ -77,7 +93,6 @@ const Pricing = () => {
         setLoading({
           _prime: false,
         });
-        console.log(error);
       }
     };
 
@@ -89,7 +104,7 @@ const Pricing = () => {
         setLoading({
           _basic: true,
         });
-        const url = 'http://localhost:5000/api/customers/choose-plan'
+        const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/choose-plan';
 
         const response = await fetch(url, {
           method: 'POST',
@@ -102,15 +117,14 @@ const Pricing = () => {
         })
 
         if (response.status === 200) {
-          const message = response.json()
-          console.log(message);
+          mixpanel.people.set({
+            planName: 'Relaks Prime'
+          });
           setLoading({
             _basic: false,
           });
           history.push('/customer/pay');
         } else {
-          const message = await response.json();
-          console.log(message);
           setLoading({
             _basic: false,
           });
@@ -119,7 +133,6 @@ const Pricing = () => {
         setLoading({
           _basic: false,
         });
-        console.log(error);
       }
     };
 
@@ -131,8 +144,7 @@ const Pricing = () => {
         setLoading({
           _xtra: true,
         });
-        console.log('Silver Package');
-        const url = 'http://localhost:5000/api/customers/choose-plan'
+        const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/choose-plan';
 
         const response = await fetch(url, {
           method: 'POST',
@@ -145,15 +157,14 @@ const Pricing = () => {
         })
 
         if (response.status === 200) {
-          const message = await response.json()
-          console.log(message);
+          mixpanel.people.set({
+            planName: 'Relaks Prime'
+          });
           setLoading({
             _xtra: false,
           });
           history.push('/customer/pay');
         } else {
-          const message = await response.json()
-          console.log(message);
           setLoading({
             _xtra: false,
           });
@@ -162,18 +173,27 @@ const Pricing = () => {
         setLoading({
           _xtra: false,
         });
-        console.log(error);
       }
     };
 
   return (
     <div>
+      <Helmet>
+        <title>Relaks Pricing</title>
+        <meta name="description" content="Let's pay for your next home project" />
+        {/* <script>
+          fbq('track', 'ViewContent', {
+            value: 0,
+            currency: 'NGN',
+          });
+        </script> */}
+      </Helmet>
       <PricingPlan basic={basic}
         xtra={xtra}
         prime={prime}
         loading={loading}
         isAuth={isAuth}
-        plan={plan}
+        // plan={plan}
       />
     </div>
   );

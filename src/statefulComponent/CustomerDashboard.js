@@ -4,8 +4,13 @@ import Dashboard from '../statelessComponent/Dashboard';
 import { CustomerDashboardNav } from '../statelessComponent/Nav';
 import MiniFooter from '../statelessComponent/MiniFooter';
 import Loading from '../statelessComponent/Loading';
+import mixpanel from 'mixpanel-browser';
 
 const CustomerDashboard = () => {
+
+  mixpanel.init("784360e9005522fb8d2cccd326b57f78");
+  mixpanel.track('Customer Dashboard Loaded');
+
   const[userInfo, setUserInfo] = useState([]);
   const[jobs, setJobs] = useState([]);
   const[loading, setLoading] = useState(false);
@@ -17,7 +22,7 @@ const CustomerDashboard = () => {
     const getUserInfo = async ()  => {
     try {
       setLoading(true);
-      const url = 'http://localhost:5000/api/customers/dashboard';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/dashboard';
       const token = localStorage.getItem('jwt_token');
       const response = await fetch(url, {
         method: 'GET',
@@ -30,7 +35,19 @@ const CustomerDashboard = () => {
       const data = await response.json();
       if(mounted.current && response.status === 200) {
         setLoading(false);
+        mixpanel.identify(data._id);
+        mixpanel.people.set({
+          "$name": data.name,
+          "$email": data.email,
+          "$phone": data.phone,
+          "planActive": data.subscriptionPlan.isActive,
+          "plan_name": data.subscriptionPlan.planName,
+        });
         setUserInfo(data);
+      }
+      if (mounted.current && response.status === 201) {
+        setLoading(false);
+        setUserInfo(data.authUser)
       }
       if(mounted.current && response.status === 401) {
         history.push('/customer/login');
@@ -45,14 +62,14 @@ const CustomerDashboard = () => {
     return async () => {
       mounted.current = false
     };
-  }, []);
+  }, [history]);
 
   // Get the User Jobs
   useEffect(() => {
     const getJobs = async ()  => {
     try {
       setLoading(true);
-      const url = 'http://localhost:5000/api/customers/get-all-jobs';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/get-all-jobs';
       const token = localStorage.getItem('jwt_token');
       const response = await fetch(url, {
         method: 'GET',
@@ -73,14 +90,13 @@ const CustomerDashboard = () => {
     } catch (error) {
       setError(true);
       setJobs(error);
-      console.log(error);
     }
   };
   getJobs();
     return async () => {
       mounted.current = false
     };
-  }, []);
+  }, [history]);
 
   if (loading) {
     return (

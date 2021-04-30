@@ -1,10 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import LoginForm from '../statelessComponent/loginForm';
+import mixpanel from 'mixpanel-browser';
 
 const HandymanLogin = () => {
+  mixpanel.init("784360e9005522fb8d2cccd326b57f78");
+  mixpanel.track('Handyman Login Page Loaded');
+
+
   const[emailValue, setEmailValue] = useState('');
-  const[phoneValue, setPhoneValue] = useState('');
   const[passwordValue, setPasswordValue] = useState('');
   const[response, setResponse] = useState({
     message: {},
@@ -21,11 +25,6 @@ const HandymanLogin = () => {
     e.preventDefault();
   };
 
-  const handlePhone = (e) => {
-    setPhoneValue(e.target.value);
-    e.preventDefault();
-  };
-
   const handlePassword = (e) => {
     setPasswordValue(e.target.value);
     e.preventDefault();
@@ -38,12 +37,7 @@ const HandymanLogin = () => {
     if (emailValue === '') {
       return setResponse({
         loading: false,
-        error: 'Email Is Empty!!'
-      });
-    } else if (parseInt(phoneValue)) {
-      return setResponse({
-        loading: false,
-        error: 'Phone Number is Required!!'
+        error: 'Please Use either Phone number or Email!!'
       });
     } else if (passwordValue === '') {
       return setResponse({
@@ -52,13 +46,25 @@ const HandymanLogin = () => {
       });
     }
 
-    const data = {
-      email: emailValue,
-      password: passwordValue,
+    let data = {};
+
+    if (parseInt(emailValue)) {
+
+      data = {
+        phone: emailValue,
+        password: passwordValue
+      }
+    } else {
+      data = {
+        email: emailValue,
+        password: passwordValue,
+      }
+  
     }
+
     setTimeout(async () => {
       try {
-        const url = 'http://localhost:5000/api/handymen/login';
+        const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/login';
   
       const response = await fetch(url, {
         method: "POST",
@@ -77,7 +83,6 @@ const HandymanLogin = () => {
           message,
         });
         localStorage.setItem("jwt_token", message.token);
-        console.log(message);
         history.push('/handyman');
       } else {
         const message = await response.json();
@@ -87,9 +92,7 @@ const HandymanLogin = () => {
           error: message.errMessage || message,
         });
       }
-      // console.log(message);
       } catch (error) {
-        console.log(error);
         return setResponse({
           loading: false,
           error: 'There was a problem!! Our Engineers have been Notified. Try Again!!'
@@ -109,10 +112,8 @@ const HandymanLogin = () => {
     <div>
       <LoginForm
         emailValue={emailValue}
-        phoneValue={phoneValue}
         passwordValue={passwordValue}
         handleEmail={handleEmail}
-        handlePhone={handlePhone}
         handlePassword={handlePassword}
         handleSubmit={handleSubmit}
         response={response}

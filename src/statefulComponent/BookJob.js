@@ -24,18 +24,13 @@ const BookJob = () => {
   const[isAuth, setIsAuth] = useState(false);
   const history = useHistory();
   let mounted = useRef(true);
-  
-  // Variable to abort the fetch request
-  // Will work on it later
-  const abortController = new AbortController();
-  const signal = abortController.signal;
 
   // This function will check if the user is authenticated
   // it also fetch the user info from the server and return isAuth true
   useEffect(() => {
     const getData = async ()  => {
     try {
-      const url = 'http://localhost:5000/api/customers/dashboard';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/dashboard';
       const token = localStorage.getItem('jwt_token');
       const response = await fetch(url, {
         method: 'GET',
@@ -45,18 +40,15 @@ const BookJob = () => {
           'Content-Type': 'application/json',
         },
       });
-      const data = await response.json();
+      // const data = await response.json();
       if(mounted.current && response.status === 200) {
-        console.log(data);
         setIsAuth(true);
       }
       if(mounted.current && response.status === 401) {
-        console.log(data);
-        console.log('Not Authenticated!!')
         history.push('/customer/login');
       };
     } catch (error) {
-      console.log(error);
+      setIsAuth(false);
     }
   };
 
@@ -175,10 +167,9 @@ const BookJob = () => {
       busStop,
     }
 
-    console.log(data);
 
     try {
-      const url = 'http://localhost:5000/api/customers/book-service';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/book-service';
       const token = localStorage.getItem('jwt_token');
       const response = await fetch(url, {
         method: "POST",
@@ -196,7 +187,6 @@ const BookJob = () => {
         loading: false,
         message,
       });
-      // console.log(message);
       history.push('/customer/book-service/confirm');
     }
     if (response.status === 201) {
@@ -228,7 +218,6 @@ const BookJob = () => {
         loading: false,
         error: 'There was a problem!! Our Engineers have been Notified. Try Again!!'
       })
-      console.log(error);
     }
   };
 
@@ -260,6 +249,7 @@ const BookJob = () => {
         handleState={handleState}
         handleSubmit={handleSubmit}
         response={response}
+        isAuth={isAuth}
       />
     </div>
   )

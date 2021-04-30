@@ -50,6 +50,7 @@ svg:not(:root) {
   height: 4em;
   background-color: #52C8FA;
   border: none;
+  outline: none !important;
 }
 
 #forgot-password, #signup-text {
@@ -57,7 +58,6 @@ svg:not(:root) {
 }
 
 .checkbox {
-  margin-bottom: 3em;
   margin-top: 0.7em;
   margin-left: 0.5em;
 }

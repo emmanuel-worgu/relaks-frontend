@@ -7,7 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Loading = () => {
   return (
-    <div className="loading">
+    <div className="loading" style={{
+      marginTop: '40%',
+    }}>
       <div className="loading-text">
         Please Wait...
       </div>

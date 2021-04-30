@@ -7,7 +7,7 @@ import '../css/loginForm.css';
 import Error from './Error';
 
 import {
-  faSpinner
+  faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -23,10 +23,6 @@ const LoginForm = (props) => {
   const forgotPassword = document.location.pathname === '/handyman/login' ? '/handyman/forgot-password' : '/customer/forgot-password';
   const signupLink = document.location.pathname === '/handyman/login' ? '/handyman/register' : '/customer/register';
 
-  const loginField = document.getElementById('loginField');
-
-  const loginFieldLogic = loginField === '0' ? props.phoneValue : props.emailValue;
-
   return (
     <div>
       <NeedHelpTemplate />
@@ -34,15 +30,15 @@ const LoginForm = (props) => {
         <img src={logo} alt="Relaks Logo" className="relaks-logo"></img>
       </div>
       <div className="container">
-          <div className="relaks-login">
-            <h3 id="login-header">{ loginHeader }</h3>
+          <div className="relaks-register">
+            <h3 id="register-header">{ loginHeader }</h3>
             <h6 className="error-message">{props.response.error}</h6>
             <label id="email-text">Email Address or Phone Number</label>
-            <input type="email" 
+            <input type="email"
               name="email"
               id="loginField"
-              value={loginFieldLogic}
-              onChange={props.handleEmail} 
+              value={props.emailValue}
+              onChange={props.handleEmail}
               className="relaks-input" 
               required>
             </input>
@@ -75,7 +71,7 @@ const LoginForm = (props) => {
                 <b>{props.response.loading ?
                   <>
                     <div>
-                    <FontAwesomeIcon icon={faSpinner} size="1.5x" /> Please Wait...
+                    <FontAwesomeIcon icon={faSpinner} size="1x" /> Please Wait...
                     </div>
                   </>
                   :

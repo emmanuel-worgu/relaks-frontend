@@ -57,20 +57,6 @@ const SettingsForm = (props) => {
             <br/>
             <hr/>
             <br/>
-            {/* <label htmlFor="job-category">What Categroy best fit your job</label>
-            <br/>
-            <select name="job-category" 
-              id="job-category" 
-              className="relaks-input"
-              // value={props.serviceCategory.value}
-              onChange={props.handleServiceCategory}>
-                <option value="">Choose a category</option>
-                <option value="Electrical">Electrical</option>
-                <option value="Electrical">Plumbering</option>
-                <option value="Electrical">Carpentering</option>
-                <option value="Electrical">Painting</option>
-            </select>
-            <br/> */}
             <h5>Reset Password</h5>
             <label id="name-setting-text">Old Password</label>
             <br/>

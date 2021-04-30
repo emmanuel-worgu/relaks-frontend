@@ -59,7 +59,7 @@ Link {
 }
 
 .checkbox {
-  margin-bottom: 3em;
+  margin-bottom: 20px;
   margin-top: 0.7em;
   margin-left: 0.5em;
 }
@@ -95,7 +95,7 @@ button:active {
   padding-top: 25px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 780px) {
   .container {
     padding: 30px;
     min-height: 300px;

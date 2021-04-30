@@ -1,7 +1,4 @@
-/* .dashboard-list {
-  color: black;
-  overflow-y: visible;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
 .dashboard {
   margin-left: 15em;
@@ -18,6 +15,12 @@
   margin-top: 3em;
 }
 
+#dash-head {
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  margin-top: 3em;
+}
+
 #handyman-accept-job {
   padding-bottom: 5em;
 }
@@ -25,25 +28,42 @@
 .revenue-card {
   display: flex;
   justify-content: center;
-  margin-left: 12%;
+  margin-left: 20%;
   margin-right: 20%;
   margin-bottom: 2em;
 }
 
 #card-border {
   border-radius: 2em;
+  box-shadow: 0 14px 28px rgb(0 0 0 / 15%), 0 10px 10px rgb(0 0 0 / 5%);
 }
 
+/* .table-div {
+  background-color: white;
+  margin-right: 20px;
+} */
+
 table {
+  table-layout: auto;
   width: 100%;
+  /* max-width: inherit;
+  width: inherit; */
+  /* background-color: white; */
 }
 
 tr, th, td {
-  border: 1px solid;
+  border-bottom: 1px solid grey;
+}
+
+th, td {
+  padding: 12px;
 }
 
 #table {
   overflow-x: auto;
+  background-color: white;
+  margin-right: 20px;
+  box-shadow: 0 14px 28px rgb(0 0 0 / 15%), 0 10px 10px rgb(0 0 0 / 5%);
 }
 
 @media screen and (max-width: 780px) {
@@ -59,7 +79,26 @@ tr, th, td {
   
   .dashboard-manage {
     margin-top: 2em;
-    margin-left: 35px;
+    /* margin-left: 35px; */
     margin-right: 20px;
+  }
+
+  .quick-start-div {
+    margin-left: 20px;
+  }
+
+  #dash-head {
+    font-size: larger;
+  }
+
+  #table {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .revenue-card {
+    margin-left: 0;
+    margin-right: 0;
   }
 }

@@ -9,6 +9,11 @@ const RequestPayment = () => {
   const[bank, setBank] = useState('');
   const[withdrawalFund, setWithdrawalFund] = useState('');
   const[loading, setLoading] = useState(false);
+  const[data, setData] = useState({
+    message: '',
+    error: false,
+    success: false
+  })
 
   const handleBankCode = (e) => {
     setBankCode(e.target.value)
@@ -34,7 +39,7 @@ const RequestPayment = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('jwt_token');
-      const url = 'http://localhost:5000/api/handymen/request-payment';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/request-payment';
       const body = {
         account_bank: bankCode,
         account_number: accountNumber,
@@ -52,16 +57,21 @@ const RequestPayment = () => {
       });
 
       if (response.status === 200) {
-        const message = response.json();
-        console.log(message);
+        const message = await response.json();
+        setData({
+          message: message.successMessage,
+          success: true,
+        });
         setLoading(false);
       } else {
-        const message = response.json();
-        console.log(message);
+        const message = await response.json();
+        setData({
+          message: message.errMessage,
+          error: true
+        })
         setLoading(false);
       }
     } catch (error) {
-      console.log(error);
       setLoading(false);
     }
   };
@@ -71,6 +81,9 @@ const RequestPayment = () => {
       <HandymanDashboardNav />
       <RequestPaymentForm bankCode={bankCode}
         accountNumber={accountNumber}
+        error={data.error}
+        success={data.success}
+        message={data.message}
         bank={bank}
         withdrawalFund={withdrawalFund}
         loading={loading}

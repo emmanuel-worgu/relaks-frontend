@@ -43,7 +43,7 @@ const Settings = ()  => {
     try {
       setLoading(true);
       const token = localStorage.getItem('jwt_token');
-      const url = document.location.pathname === '/customer/setting' ? 'http://localhost:5000/api/customers/update-user' : 'http://localhost:5000/api/handymen/update-user'
+      const url = document.location.pathname === '/customer/setting' ? 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/update-user' : 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/update-user'
       const data = {
         name: name,
         email: email,
@@ -64,12 +64,10 @@ const Settings = ()  => {
         const message = await response.json();
         setLoading(false);
         setPersonalInfoRes(message.successMessage);
-        console.log(message);
       } else {
         const message = await response.json()
         setLoading(false);
         setPersonalInfoRes(message.errMessage);
-        console.log(message);
       }
     } catch (error) {
       setLoading(false);
@@ -81,7 +79,7 @@ const Settings = ()  => {
     try {
       setLoading(true);
       const token = localStorage.getItem('jwt_token');
-      const url = document.location.pathname === '/customer/reset-password' ? 'http://localhost:5000/api/customers/reset-password' : 'http://localhost:5000/api/handymen/reset-password'
+      const url = document.location.pathname === '/customer/reset-password' ? 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/reset-password' : 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/reset-password'
       const data = {
         oldPassword,
         newPassword,

@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from './Nav';
 import SuperImg from '../assest/superhero.svg';
 import '../css/handymanIsVerify.css';
 

@@ -21,7 +21,7 @@ const Review = () => {
     try {
       const token = localStorage.getItem('jwt_token');
       const id = localStorage.getItem('id');
-      const url = 'http://localhost:5000/api/customers/end-job';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/end-job';
       const data = {
         id,
         message: reviewMessage,
@@ -53,7 +53,6 @@ const Review = () => {
         return setResponseMessage(data.errMessage);
       };
     } catch (error) {
-      console.log(error);
       setLoading(false);
       return setResponseMessage('Something went wrong!!!');
     }

@@ -2,8 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import RegisterForm from '../statelessComponent/registerForm';
+import mixpanel from 'mixpanel-browser';
 
 const Register = () => {
+  mixpanel.init("784360e9005522fb8d2cccd326b57f78");
+  mixpanel.track('Customer Registration Page Loaded');
+
   const[nameValue, setNameValue] = useState('')
   const[emailValue, setEmailValue] = useState('');
   const[phoneValue, setPhoneValue] = useState('');
@@ -68,6 +72,14 @@ const Register = () => {
       });
     }
 
+    const splitName = nameValue.split(' ');
+    if (splitName.length === 1) {
+      return setResponse({
+        loading: false,
+        error: 'Please Tell us your full name. You use space to seperate your names.',
+      })
+    }
+
     const data = {
       name: nameValue,
       email: emailValue,
@@ -75,7 +87,7 @@ const Register = () => {
       password: passwordValue,
     }
     try {
-      const url = 'http://localhost:5000/api/customers/register';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/register';
 
     const response = await fetch(url, {
       method: "POST",
@@ -93,12 +105,10 @@ const Register = () => {
         message,
       });
       localStorage.setItem('jwt_token', message.token);
-      console.log(message);
       history.push('/customer/pricing');
     }
     if (response.status === 201) {
       const message = await response.json();
-      console.log(message);
       return setResponse({
         loading: false,
         error: message.errMessage || message,

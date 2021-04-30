@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Dashboard from '../statelessComponent/Dashboard';
 import HandymanIsVerified from '../statelessComponent/HandymanIsVerified';
+import Loading from '../statelessComponent/Loading';
 import MiniFooter from '../statelessComponent/MiniFooter';
 import { HandymanDashboardNav } from '../statelessComponent/Nav';
 
@@ -24,7 +25,7 @@ const HandymanDashboard = () => {
     const getUserInfo = async ()  => {
     try {
       setLoading(true);
-      const url = 'http://localhost:5000/api/handymen/dashboard';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/dashboard';
       const token = localStorage.getItem('jwt_token');
       const response = await fetch(url, {
         method: 'GET',
@@ -38,6 +39,7 @@ const HandymanDashboard = () => {
       if(mounted.current && response.status === 200) {
         setLoading(false);
         setData(data);
+        localStorage.setItem('earned_amount', data.amountEarned);
       }
       if(mounted.current && response.status === 401) {
          history.push('/handyman/login');
@@ -47,9 +49,7 @@ const HandymanDashboard = () => {
           <HandymanIsVerified />
         );
       };
-      // console.log(data);
     } catch (error) {
-      console.log(error);
       setLoading(false);
     }
   };
@@ -64,7 +64,7 @@ const HandymanDashboard = () => {
     const getJobs = async ()  => {
     try {
       setLoading(true);
-      const url = 'http://localhost:5000/api/handymen/get-all-jobs';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/get-all-job';
       const token = localStorage.getItem('jwt_token');
       const response = await fetch(url, {
         method: 'GET',
@@ -89,7 +89,6 @@ const HandymanDashboard = () => {
       };
 
       setJobs(data);
-      // console.log(jobs);
     } catch (error) {
       setLoading(false);
       setJobs(error);
@@ -101,7 +100,10 @@ const HandymanDashboard = () => {
     };
   }, []);
 
-  // data.length === 0 ? console.log('fetching...') : console.log(data.jobsChosen);
+  if (loading) {
+    return <Loading />
+  }
+
   return (
     <div>
       <HandymanDashboardNav />

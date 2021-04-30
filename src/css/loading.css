@@ -1,12 +1,13 @@
 .loading {
   display: block;
+  /* margin-bottom: 25%; */
 }
 
 .loading-text {
-  font-size: 3em;
+  font-size: 2em;
   display: flex;
   justify-content: center;
-  margin-top: 17.77rem;
+  /* margin-top: 20%; */
 }
 
 .loading-icon {

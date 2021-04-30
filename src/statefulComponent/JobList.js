@@ -22,7 +22,7 @@ const JobList =  () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('jwt_token');
-      const url = 'http://localhost:5000/api/handymen/all-jobs';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/all-jobs';
 
       const response = await fetch(url, {
         method: 'GET',
@@ -35,7 +35,6 @@ const JobList =  () => {
 
       if (mounted.current && response.status === 200) {
         const job = await response.json();
-        console.log(job.jobs);
         setSuccess(true);
         setLoading(false);
         return setJobs(job.jobs);
@@ -63,8 +62,6 @@ const JobList =  () => {
       }
 
     } catch (error) {
-      console.log(error);
-      // console.log(jobs);
       setJobs(error);
       setSuccess(false);
       setLoading(false);
@@ -83,35 +80,47 @@ const JobList =  () => {
     };
   }, []);
 
-  // console.log(jobs[0].jobs[0].hasPaid);
-
 
   const logic = () => {
     if (loading) {
       return (
-        <h4 className="how-its-works">Loading Jobs...</h4>
+        <div>
+          <h4 style={{
+            marginTop: '20%'
+          }}className="how-its-works">Loading Jobs...</h4>
+          <div style={{
+            position: 'fixed',
+            bottom: '0',
+          }} className="mini-footer">
+            <p className="mini-footer-text">© Relaks 2021</p>
+          </div>
+        </div>
       );
     }
 
     if (success) {
-      // const arrayJob = jobs.jobs;
-      // console.log(arrayJob);
-      console.log(jobs);
       const mappedJob = jobs.map(job => <HandymanJob job={job} key={job._id} />);
       return (
         <div>
           <NeedHelpTemplate />
           {mappedJob}
-          <MiniFooter style={{
-            position: 'fixed',
-            bottom: '0',
-          }} />
+          <MiniFooter />
         </div>
       );
     }
 
     return (
-      <h4 className="how-its-works">{error.message}</h4>
+      <div>
+        <h4 style={{
+            marginTop: '20%'
+          }}className="how-its-works">{error.message}</h4>
+          <div style={{
+            position: 'fixed',
+            bottom: '0',
+          }} className="mini-footer">
+            <p className="mini-footer-text">© Relaks 2021</p>
+          </div>
+      </div>
     );
 
   };

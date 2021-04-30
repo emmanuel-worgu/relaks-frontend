@@ -4,6 +4,20 @@ import NeedHelpTemplate from './NeedHelpTemplate';
 
 
 const RequestPaymentForm = (props) => {
+  const amount = localStorage.getItem('earned_amount');
+
+  const handleError = () => {
+    if (props.error) {
+      return <h6 className="error-message">{props.message}</h6>
+    }
+
+    if (props.success) {
+      return <h6 style={{color: 'green', marginTop: '1rem'}}>{props.message}</h6>
+    }
+
+    return null;
+  }
+
   return (
     <div>
       <NeedHelpTemplate />
@@ -47,8 +61,8 @@ const RequestPaymentForm = (props) => {
             <br/>
             <hr/>
             <h5>How much should we Pay</h5>
-            <h6>Available Income - <b>₦{120000 - (120000 * 0.05)}</b></h6>
-            <p>(This the amount of the money you can withdraw)</p>
+            <h6>Available Income - <b>₦{amount - (amount * 0.05)}</b></h6>
+            <p><em>(This the amount of the money you can withdraw. You can input all of it or still choose how much to withdraw)</em></p>
             <label id="name-setting-text">How much do you want to withdraw ?</label>
             <br/>
             <input type="text" 
@@ -63,8 +77,9 @@ const RequestPaymentForm = (props) => {
             <button type="submit"
               onClick={props.handleWithdrawal}
               className="submit-button">
-              <b>{props.loading ? 'Withdrawing.....' : `Withdraw ₦${props.withdrawalFund - (props.withdrawalFund * 0.05)}`}</b>
+              <b>{props.loading ? 'Withdrawing.....' : `Withdraw ₦${props.withdrawalFund - (props.withdrawalFund * 0.035)}`}</b>
             </button>
+            {handleError()}
           </div>
       </div>
     </div>

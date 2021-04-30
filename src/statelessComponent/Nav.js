@@ -6,6 +6,15 @@ import '../css/nav.css'
 import NavLogo from '../assest/RelaksLogo.png';
 import {
   faBars,
+  faCog,
+  faTachometerAlt,
+  faSignOutAlt,
+  faBullhorn,
+  faBriefcase,
+  faShoppingCart,
+  faTools,
+  faMoneyBillWave,
+  faClipboardCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -27,11 +36,11 @@ export const NormalNav = () => {
       </div>
       <div className="nav-action">
         <div className="nav-login">
-          <h4><Link to="/customer/login">Login</Link></h4>
+          <h4 className="nav-header"><Link to="/customer/login">Login</Link></h4>
         </div>
         <div className="nav-subcribe">
           <button onClick={handleNavButton} className="nav-subcribe-button">
-            <h4>
+            <h4 className="nav-header">
               <b>Subcribe</b>
             </h4>
           </button>
@@ -97,7 +106,7 @@ export const HandymanDashboardNav = () => {
       setResponse({
         loading: true,
       });
-      const url = 'http://localhost:5000/api/handymen/dashboard';
+      const url =  'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/dashboard';
       const token = localStorage.getItem('jwt_token');
       const response = await fetch(url, {
         method: 'GET',
@@ -118,7 +127,10 @@ export const HandymanDashboardNav = () => {
         history.push('/handyman/login');
       };
     } catch (error) {
-      console.log(error);
+      setResponse({
+        loading: false,
+        data: 'Something Went wrong. Try Again!!',
+      });
     }
   };
 
@@ -129,7 +141,9 @@ export const HandymanDashboardNav = () => {
   return (
     <nav>
       <div className="harmburger">
-      <FontAwesomeIcon icon={faBars} size="3x" onClick={handleMenuButton} className="harmburger-icon" />
+      <FontAwesomeIcon icon={faBars} size="3x" onClick={handleMenuButton} className="harmburger-icon" style={{
+        color: menuButton ? 'blue': null
+      }} />
         <div>
           <img src={NavLogo} className="nav-logo" alt="relaks logo" />
         </div>
@@ -138,13 +152,13 @@ export const HandymanDashboardNav = () => {
       <div className="dashboardnav-content">
         <h5 className="dashboard-header">{response.loading ? 'Loading...' : `Hi, ${response.data.name}`}</h5>
         <ul className="dashboardnav-ul">
-          <li className="dashboardnav-li"><Link to="/handyman">Dashboard</Link></li>
-          <li className="dashboardnav-li"><Link to="/handyman/accept-job">Accept Jobs</Link></li>
-          <li className="dashboardnav-li"><Link to="/handyman/job">My Jobs</Link></li>
-          <li className="dashboardnav-li"><Link to="/handyman/request-payment">Request Payment</Link></li>
-          <li className="dashboardnav-li"><Link to="/handyman/setting">Settings</Link></li>
-          <li className="dashboardnav-li" onClick={logouthandler}><Link to="/">Logout</Link></li>
-          <li className="dashboardnav-li"><Link to="#">Leave Feedback</Link></li>
+          <li className="dashboardnav-li"><Link to="/handyman"><FontAwesomeIcon icon={faTachometerAlt} /> Dashboard</Link></li>
+          <li className="dashboardnav-li"><Link to="/handyman/accept-job"><FontAwesomeIcon icon={faClipboardCheck} /> Accept Jobs</Link></li>
+          <li className="dashboardnav-li"><Link to="/handyman/job"><FontAwesomeIcon icon={faBriefcase} /> My Jobs</Link></li>
+          <li className="dashboardnav-li"><Link to="/handyman/request-payment"><FontAwesomeIcon icon={faMoneyBillWave} /> Pay Out</Link></li>
+          <li className="dashboardnav-li"><Link to="/handyman/setting"><FontAwesomeIcon icon={faCog} /> Settings</Link></li>
+          <li className="dashboardnav-li" onClick={logouthandler}><Link to="/"><FontAwesomeIcon icon={faSignOutAlt} /> Logout</Link></li>
+          <li className="dashboardnav-li"><Link to="#"><FontAwesomeIcon icon={faBullhorn} /> Feedback</Link></li>
         </ul>
       </div>
     </div>
@@ -159,6 +173,8 @@ export const CustomerDashboardNav = () => {
     loading: false,
     data: ''
   });
+
+  const history = useHistory();
   
 
 
@@ -175,7 +191,7 @@ export const CustomerDashboardNav = () => {
       setResponse({
         loading: true,
       });
-      const url = 'http://localhost:5000/api/customers/dashboard';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/dashboard';
       const token = localStorage.getItem('jwt_token');
       const response = await fetch(url, {
         method: 'GET',
@@ -192,11 +208,22 @@ export const CustomerDashboardNav = () => {
           data,
         });
       }
+      if(response.status === 201) {
+        const data = await response.json();
+        setResponse({
+          loading: false,
+          data: data.authUser,
+        })
+        history.push('/customer/pricing');
+      }
       if(response.status === 401) {
-        const data = response.json();
+        history.push('/customer/login');
       };
     } catch (error) {
-      console.log(error);
+      setResponse({
+        loading: false,
+        data: 'Something Went wrong. Try Again!!',
+      });
     }
   };
 
@@ -207,7 +234,9 @@ export const CustomerDashboardNav = () => {
   return (
     <nav>
       <div className="harmburger">
-        <FontAwesomeIcon icon={faBars} size="3x" onClick={handleMenuButton} className="harmburger-icon" />
+        <FontAwesomeIcon icon={faBars} size="3x" onClick={handleMenuButton} className="harmburger-icon" style={{
+          color: menuButton ? 'blue' : null,
+        }}/>
         <div>
           <img src={NavLogo} className="nav-logo" alt="relaks logo" />
         </div>
@@ -216,13 +245,13 @@ export const CustomerDashboardNav = () => {
       <div className="dashboardnav-content">
         <h5 className="dashboard-header">{response.loading ? 'Loading...' : `Hi, ${response.data.name}`}</h5>
         <ul className="dashboardnav-ul">
-          <li className="dashboardnav-li"><Link to="/customer">Dashboard</Link></li>
-          <li className="dashboardnav-li"><Link to="/customer/book-service">Request A Handyman</Link></li>
-          <li className="dashboardnav-li"><Link to="/customer/job">My Jobs</Link></li>
-          <li className="dashboardnav-li"><Link to="/customer/pricing">Choose A Plan</Link></li>
-          <li className="dashboardnav-li"><Link to="/customer/setting">Settings</Link></li>
-          <li className="dashboardnav-li" onClick={logouthandler}><Link to="/">Logout</Link></li>
-          <li className="dashboardnav-li"><Link to="#">Leave Feedback</Link></li>
+          <li className="dashboardnav-li"><Link to="/customer"><FontAwesomeIcon icon={faTachometerAlt} /> Dashboard</Link></li>
+          <li className="dashboardnav-li"><Link to="/customer/book-service"><FontAwesomeIcon icon={faTools} /> Request A Handyman</Link></li>
+          <li className="dashboardnav-li"><Link to="/customer/job"><FontAwesomeIcon icon={faBriefcase} /> My Jobs</Link></li>
+          <li className="dashboardnav-li"><Link to="/customer/pricing"><FontAwesomeIcon icon={faShoppingCart} /> Buy Plan</Link></li>
+          <li className="dashboardnav-li"><Link to="/customer/setting"><FontAwesomeIcon icon={faCog} /> Settings</Link></li>
+          <li className="dashboardnav-li" onClick={logouthandler}><Link to="/"><FontAwesomeIcon icon={faSignOutAlt} /> Logout</Link></li>
+          <li className="dashboardnav-li"><Link to="#"><FontAwesomeIcon icon={faBullhorn} /> Feedback</Link></li>
         </ul>
       </div>
     </div>

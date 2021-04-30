@@ -71,6 +71,10 @@
   display: inline-flex;
 }
 
+#card-pricing {
+  box-shadow: 0 14px 28px rgb(0 0 0 / 15%), 0 10px 10px rgb(0 0 0 / 5%);
+}
+
 @media screen and (max-width: 780px) {
   .pricing__plan__note {
     /* margin-left: auto;

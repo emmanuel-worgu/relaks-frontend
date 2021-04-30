@@ -47,7 +47,7 @@ const VerifyCustomer = () => {
       password: newPassword
     }
     try {
-      const url = 'http://localhost:5000/api/customers/verify-user';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/verify-user';
       const token = localStorage.getItem("forgot_password");
 
     const response = await fetch(url, {
@@ -71,14 +71,12 @@ const VerifyCustomer = () => {
       history.push('/customer/login');
     } else {
       const message = await response.json()
-      console.log(message)
       return setResponse({
         isAuth: false,
         loading: false,
         error: message.errMessage,
       });
     }
-    // console.log(message);
     } catch (error) {
       return setResponse({
         loading: false,

@@ -23,7 +23,7 @@ const VerifyUserForm = (props) => {
         <div className = "relaks-forgot-passsword">
           <h3 id = "forgot-password-header">Please Change your password</h3>
           <h6 className="error-message">{props.response.error}</h6>
-          <label id = "email-text">Enter the Token sent to Your Email </label>
+          <label id = "email-text">Enter the Token sent to Your Email <b>{localStorage.getItem("email")}</b> </label>
           <br />
           <input className = "relaks-input" 
             type = "text" 

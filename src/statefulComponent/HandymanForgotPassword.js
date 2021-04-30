@@ -29,11 +29,19 @@ const HandymanForgotPassword = () => {
       });
     } 
 
-    const data = {
-      email: value,
+    let data = {}
+    if (parseInt(value)) {
+      data = {
+        phone: value
+      }
+    } else {
+      data = {
+        email: value,
+      }
     }
+    
     try {
-      const url = 'http://localhost:5000/api/handymen/forget-password';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/forget-password';
 
     const response = await fetch(url, {
       method: "POST",
@@ -52,19 +60,17 @@ const HandymanForgotPassword = () => {
         message,
       });
       localStorage.setItem("forgot_password", message.token);
+      localStorage.setItem("email", value);
       history.push('/handyman/forgot-password/verify-user');
     } else {
       const message = await response.json()
-      console.log(message)
       return setResponse({
         isAuth: false,
         loading: false,
         error: message.errMessage,
       });
     }
-    // console.log(message);
     } catch (error) {
-      console.log(error);
       setResponse({
         loading: false,
         error: 'There was a problem!! Our Engineers have been Notified. Try Again!!'

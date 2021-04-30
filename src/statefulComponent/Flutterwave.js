@@ -1,8 +1,14 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import { useHistory } from 'react-router-dom';
+import mixpanel from 'mixpanel-browser';
 
 function Flutterwave() {
+  mixpanel.init("784360e9005522fb8d2cccd326b57f78");
+
+  mixpanel.track('Pricing Loaded', {
+    title: 'pricing page'
+  })
   const[user, setUser] = useState({
     name: '',
     email: '',
@@ -10,15 +16,12 @@ function Flutterwave() {
     planName: '',
     amount: 0,
   });
-  const[loading, setLoading] = useState(false);
 
   const history = useHistory();
-  let mounted = useRef(true);
 
   const getUser = async () => {
-    const url = 'http://localhost:5000/api/customers/dashboard';
+    const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/dashboard';
     const token = localStorage.getItem('jwt_token');
-    setLoading(true);
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -29,8 +32,6 @@ function Flutterwave() {
     });
     if (response.status === 200) {
       const user = await response.json();
-      console.log(user);
-      console.log(user.phone);
       setUser({
         name: user.name,
         email: user.email,
@@ -38,11 +39,30 @@ function Flutterwave() {
         planName: user.subscriptionPlan.planName,
         amount: user.subscriptionPlan.planAmount,
       });
-      setLoading(false);
-    } else {
-      return history.push('/customer/login');
+      mixpanel.identify(user._id);
+      mixpanel.people.set({
+        "name": user.name,
+        "$email": user.email,
+        "user_id": user._id
+      });
+    } 
+    if (response.status === 201) {
+      const user = await response.json()
+      setUser({
+        name: user.authUser.name,
+        email: user.authUser.email,
+        phonenumber: user.authUser.phone,
+        planName: user.authUser.subscriptionPlan.planName,
+        amount: user.authUser.subscriptionPlan.planAmount,
+      });
+      mixpanel.identify(user._id);
+      mixpanel.people.set({
+        "name": user.authUser.name,
+        "$email": user.authUser.email,
+        "user_id": user.authUser._id
+      });
     }
-  };
+   };
 
   useEffect(() => {
     getUser();
@@ -64,29 +84,20 @@ function Flutterwave() {
     customizations: {
       title: `Relaks ${user.planName}`,
       description: 'Payment for items in cart',
-      logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
+      // logo: NavLogo,
     },
   };
 
   const handleFlutterPayment = useFlutterwave(config);
 
   const paymentGateway = () => {
-    setLoading(true);
       handleFlutterPayment({
         callback: async (response) => {
           try {
-            console.log(response);
-            console.log(response.status);
             const data = {
               transaction_id: response.transaction_id,
             };
-           //  if (response.status !== 'successful') {
-           //    setLoading(false);
-           //    console.log('Transaction not successful');
-           //    closePaymentModal();
-           //    return history.push('/customer/thank-you');
-           //  }
-           const url = 'http://localhost:5000/api/customers/verify-payment';
+           const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/verify-payment';
            const token = localStorage.getItem('jwt_token');
 
           //  Make a request to verify if the transaction was successful
@@ -100,10 +111,9 @@ function Flutterwave() {
              }
            });
 
-           const verificationResponse = await verifyTransaction.json();
-           console.log(verificationResponse);
+          //  const verificationResponse = await verifyTransaction.json();
            if (verifyTransaction.status !== 200) {
-             console.log('We could not verify your transaction');
+             history.push('/customer/pricing');
            }
            
            closePaymentModal();  // this will close the modal programmatically
@@ -112,11 +122,11 @@ function Flutterwave() {
            // CVV = 564
            // EXPIRY DATE = 09/32
           } catch (error) {
-            console.log(error);
+            history.push('/customer/pricing');
           }
         },
         onClose: () => {
-          console.log('close')
+          history.push('/customer/pricing');
         },
       });
   };

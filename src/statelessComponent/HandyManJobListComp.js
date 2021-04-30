@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const HandymanJobComp = (props) => {
+const HandymanJobComp = ({ job }) => {
   const[loading, setLoading] = useState(false);
   const[success, setSuccess] = useState(false);
 
@@ -8,8 +8,8 @@ const HandymanJobComp = (props) => {
     try {
       setLoading(true);
       const token = localStorage.getItem('jwt_token');
-      const jobId = props.id;
-      const url = 'http://localhost:5000/api/handymen/cancel-job';
+      const jobId = job._id;
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/cancel-job';
       const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify({ jobId, }),
@@ -21,18 +21,15 @@ const HandymanJobComp = (props) => {
       });
 
       if (response.status === 200) {
-        const message = await response.json();
-        console.log(message);
+        // const message = await response.json();
         setSuccess(true);
         setLoading(false);
       } else {
-        const message = await response.json();
-        console.log(message);
+        // const message = await response.json();
         setSuccess(false);
         setLoading(false);
       }
     } catch (error) {
-      console.log(error);
       setSuccess(false);
       setLoading(false);
     }
@@ -50,7 +47,46 @@ const HandymanJobComp = (props) => {
     return <b>Cancel</b>
   };
 
+  const buttonLogic = () => {
+    if (job.jobCompleted) {
+      return null
+    }
+
+    return (
+      <button className="submit-button" 
+        style={{backgroundColor:'red', borderRadius: '4em'}} 
+        onClick={handleCancelButton}>
+          {textLogic()}
+      </button>
+    );
+  };
+
   const idLogic = success ? 'none' : null;
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+  const statusFunction = () => {
+    let chosenColor;
+    let textcolor={
+      assigned: {
+        color: 'yellow',
+        text: 'Assigned'
+      },
+      completed: {
+        color: 'green',
+        text: 'Completed'
+      },
+      notAssigned: {
+        color: 'red',
+        text: 'In Progress'
+      }
+    }
+    return{
+      color:function(jobCompleted, jobisAssigned){
+        chosenColor =jobCompleted && jobisAssigned?textcolor.completed:chosenColor = !jobCompleted &&  jobisAssigned?textcolor.assigned:textcolor.notAssigned;
+        return chosenColor
+      }
+    }
+  };
 
   return (
     <div style={{
@@ -60,16 +96,29 @@ const HandymanJobComp = (props) => {
     }} className="dashboard" id={idLogic}>
       <div className="row">
         <div className="col-sm-12 col-md-12 col-xl-12">
-          <div className="card">
+          <div style={{
+            marginLeft: '25px'
+          }}className="card" id="card-pricing">
+            <em style={{
+              backgroundColor: statusFunction().color(job.jobCompleted, job.isAssigned).color,
+              display: 'flex',
+              justifyContent: 'center'
+            }}>{statusFunction().color(job.jobCompleted, job.isAssigned).text}</em>
             <div className="card-body">
-              <h4 className="card-title">Testing</h4>
+              <h4 className="card-title">{job.jobName}</h4>
               {/* <p className=" card-text error">{props.err}</p> */}
-              <p className="card-text">Job</p>
+              <p>Date: <b>{new Date(job.dateScheduled).toLocaleDateString('en-US', options)}</b></p>
+              <p>Time: <b>{job.timeScheduled}</b></p>
+              <p>Extra Note: <b>{job.jobDescription}</b></p>
+              <p>House Address: <b>{job.houseAddress}</b></p>
+              <p>Nearest Bus Stop: <b>{job.nearestBusStop}</b></p>
+              <p>City: <b>{job.city}</b></p>
+              <p>State: <b>{job.state}</b></p>
               <div style={{
                 display: 'flex',
                 justifyContent: 'center'
               }}>
-                <button onClick={handleCancelButton}>{textLogic()}</button>
+                {buttonLogic()}
                 {/* <button></button> */}
               </div>
               <div>

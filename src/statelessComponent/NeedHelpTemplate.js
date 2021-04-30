@@ -8,7 +8,7 @@ const NeedHelpTemplate = () => {
   return (
     <div className="need-help">
       <div className="need-help-para">
-        <FontAwesomeIcon icon={faPhoneAlt} size="2x" style={{
+        <FontAwesomeIcon icon={faPhoneAlt} size="1x" style={{
           marginTop: '4px',
           marginRight: '10px'
         }}/>

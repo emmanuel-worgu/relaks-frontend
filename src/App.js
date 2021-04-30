@@ -23,6 +23,9 @@ import JobList from './statefulComponent/JobList'
 import Settings from './statefulComponent/Settings';
 import RequestPayment from './statefulComponent/RequestPayment';
 import HandymanJob from './statefulComponent/HandymanJob';
+import PrivacyPolicy from './statelessComponent/PrivacyPolicy';
+import About from './statelessComponent/About';
+import TermsAndCondition from './statelessComponent/Terms';
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
       <Switch>
         <Route path = '/' exact component = {Home} />
         <Route path = '/contact-us' component = {ContactUs} />
+        <Route path = '/about' component = {About} />
+        <Route path = '/privacy-policy' component={PrivacyPolicy} />
+        <Route path = '/terms-condition' component = {TermsAndCondition} />
         <Route path = '/customer/' exact component = {CustomerDashboard} />
         <Route path = '/customer/job' component = {CustomerJob} />
         <Route path = '/customer/review' component={Review} />

@@ -2,9 +2,7 @@ import React from 'react';
 import MiniFooter from './MiniFooter';
 import NeedHelpTemplate from './NeedHelpTemplate';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../assest/logo.svg';
 import '../css/registerForm.css';
-import { CustomerDashboardNav } from './Nav';
 // import loginImg from '../assest/login.svg';
 
 
@@ -15,11 +13,15 @@ const Job = (props) => {
       {/* <div>
         <img src={logo} alt="Relaks Logo" className="relaks-logo"></img>
       </div> */}
-      <div className="container">
+      <div style={{
+        marginLeft: '15px',
+        marginRight: '15px',
+        marginTop: '40px',
+      }}>
         <div className="relaks-register">
-            <h3 id="register-header">How Can We Help You</h3>
+            <h3 id="register-header"><b>How Can We Help You</b></h3>
             <h6 className="error-message">{props.response.error}</h6>
-            <label id="name-text">What do you want to fix</label>
+            <label>What do you want to fix</label>
             <br/>
             <input type="text" 
               name="work"
@@ -40,9 +42,9 @@ const Job = (props) => {
               onChange={props.handleServiceCategory}>
                 <option value="">Choose a category</option>
                 <option value="Electrical">Electrical</option>
-                <option value="Electrical">Plumbering</option>
-                <option value="Electrical">Carpentering</option>
-                <option value="Electrical">Painting</option>
+                <option value="Plumbering">Plumbering</option>
+                <option value="Carpentering">Carpentering</option>
+                <option value="Painting">Painting</option>
             </select>
             <br/>
             <label>When Should We Come</label>
@@ -127,7 +129,7 @@ const Job = (props) => {
               required>
             </input>
             <br/>
-            <button type="submit"
+            <button style={{ borderRadius: '3em' }} type="submit"
               onClick={props.handleSubmit}
               className="submit-button">
               <b>{props.response.loading ? 'Loading...' : 'Book'}</b>

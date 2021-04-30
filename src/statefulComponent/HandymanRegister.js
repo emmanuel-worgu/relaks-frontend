@@ -75,6 +75,16 @@ const HandymanRegister = () => {
         error: 'Please Provide a Password!!'
       });
     };
+
+    const splitName = nameValue.split(' ');
+    if (splitName.length === 1) {
+      return setResponse({
+        loading: false,
+        error: 'Please Tell us your full name. You can use space to seperate your names.',
+      })
+    }
+
+
     const data = {
       name: nameValue,
       email: emailValue,
@@ -83,7 +93,7 @@ const HandymanRegister = () => {
       password: passwordValue,
     }
     try {
-      const url = 'http://localhost:5000/api/handymen/register';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/register';
 
     const response = await fetch(url, {
       method: "POST",
@@ -101,7 +111,6 @@ const HandymanRegister = () => {
         message,
       });
       localStorage.setItem('jwt_token', message.token);
-      console.log(message);
       history.push('/handyman');
     }
     if (response.status === 201) {
@@ -123,7 +132,6 @@ const HandymanRegister = () => {
         loading: false,
         error: 'There was a problem!! Our Engineers have been Notified. Try Again!!'
       })
-      console.log(error);
     }
   };
 

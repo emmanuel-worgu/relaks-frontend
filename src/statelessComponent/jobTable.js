@@ -7,7 +7,7 @@ export const HandymanJobTable = (props) => {
       <td>{props.id}</td>
       <td>{props.customerName}</td>
       <td>{props.customerPhone}</td>
-      <td></td>
+      <td>{props.jobName}</td>
       <td style={{backgroundColor: color}}>{props.jobCompleted ? 'Completed' : 'Pending'}</td>
     </tr>
   );

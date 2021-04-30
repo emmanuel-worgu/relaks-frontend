@@ -4,8 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../assest/logo.svg';
 import '../css/registerForm.css';
 import NeedHelpTemplate from './NeedHelpTemplate';
-import Nav from './Nav';
-// import loginImg from '../assest/login.svg';
 
 
 const ReviewForm = (props) => {

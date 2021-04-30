@@ -29,11 +29,19 @@ const CustomerForgotPassword = () => {
       });
     } 
 
-    const data = {
-      email: value,
+    let data = {}
+    if (parseInt(value)) {
+      data = {
+        phone: value
+      }
+    } else {
+      data = {
+        email: value,
+      }
     }
+    
     try {
-      const url = 'http://localhost:5000/api/customers/forget-password';
+      const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/forget-password';
 
     const response = await fetch(url, {
       method: "POST",
@@ -52,6 +60,7 @@ const CustomerForgotPassword = () => {
         message,
       });
       localStorage.setItem("forgot_password", message.token);
+      localStorage.setItem("email", value);
       history.push('/customer/forgot-password/verify-user');
     } else {
       const message = await response.json();
@@ -62,7 +71,6 @@ const CustomerForgotPassword = () => {
       });
     }
     } catch (error) {
-      console.log(error);
       setResponse({
         loading: false,
         error: 'There was a problem!! Our Engineers have been Notified. Try Again!!'

@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,700&display=swap');
+
+.relaks__cta {
+  font-size: 3rem;
+  font-family: 'Source Code Pro', monospace;
+}
+
+@media screen and (max-width: 600px) {
+  .relaks__cta {
+    font-size: 1.5rem;
+  }
+}
