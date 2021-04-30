@@ -76,7 +76,7 @@ const Register = () => {
     if (splitName.length === 1) {
       return setResponse({
         loading: false,
-        error: 'Please Tell us your full name. You use space to seperate your names.',
+        error: 'Please Tell us your full name. You can use space to seperate your names.',
       })
     }
 
