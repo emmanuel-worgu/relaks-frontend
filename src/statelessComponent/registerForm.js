@@ -108,7 +108,7 @@ const RegisterForm = (props) => {
                 <b>{props.response.loading ? 
                   <>
                   <div>
-                    <FontAwesomeIcon icon={faSpinner} size="1.5x" /> Please Wait...
+                    <FontAwesomeIcon icon={faSpinner}/> Please Wait...
                   </div>
                   </>
                  : 
@@ -194,7 +194,7 @@ const RegisterForm = (props) => {
                 <b>{props.response.loading ?
                   <>
                   <div>
-                  <FontAwesomeIcon icon={faSpinner} size="1.5x" /> Creating account...
+                  <FontAwesomeIcon icon={faSpinner}/> Creating account...
                   </div>
                   </>
                 :
