@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import ReviewForm from '../statelessComponent/ReviewForm';
 
 const Review = () => {
@@ -60,6 +61,10 @@ const Review = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Review Handyman | Mark Your Job complete and pay your technician</title>
+        <meta name="description" content="Login to Your Account"/>
+      </Helmet>
       <ReviewForm responseMessage={responseMessage}
         reviewMessage={reviewMessage}
         loading={loading}

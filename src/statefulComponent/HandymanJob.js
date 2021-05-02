@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import HandymanJobComp from '../statelessComponent/HandyManJobListComp';
 import MiniFooter from '../statelessComponent/MiniFooter';
 import { HandymanDashboardNav } from '../statelessComponent/Nav';
@@ -121,6 +122,10 @@ const HandymanJob = () => {
     const mappedJob = jobs.jobs.map((job) => <HandymanJobComp key={job._id} job={job}/>);
     return (
       <div>
+        <Helmet>
+          <title>Relaks Dashboard | View your account, manage all your job request.</title>
+          <meta name = "description" content = "View Your Dashboard" />
+        </Helmet>
         <NeedHelpTemplate />
         {mappedJob}
         <MiniFooter />

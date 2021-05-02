@@ -66,7 +66,6 @@ const CustomerLogin = () => {
     
     try {
       const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/login';
-
     const response = await fetch(url, {
       method: "POST",
       body: JSON.stringify(data),
@@ -123,7 +122,7 @@ const CustomerLogin = () => {
   return (
     <div>
       <Helmet>
-        <title>Relaks Login</title>
+        <title>Relaks Login | Login in to see your Dashboard</title>
         <meta name="description" content="Login to Your Account"/>
       </Helmet>
       <LoginForm

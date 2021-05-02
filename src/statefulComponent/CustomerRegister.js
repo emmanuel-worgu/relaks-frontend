@@ -139,7 +139,7 @@ const Register = () => {
   return (
     <div>
       <Helmet>
-        <title>Relaks Register</title>
+        <title>Relaks Register | Let's pay for your next home project!!</title>
         <meta name="description" content="Register You Account"/>
       </Helmet>
       <RegisterForm

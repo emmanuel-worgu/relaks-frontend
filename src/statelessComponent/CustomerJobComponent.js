@@ -25,7 +25,7 @@ const CustomerJobComponent = (props) => {
  const cancelJob = async () => {
    setLoading(true);
    const token = localStorage.getItem('jwt_token');
-   const url = 'http://localhost:5000/api/customers/cancel-job';
+   const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/cancel-job';
    const data = {
     id: props.job._id,
    }

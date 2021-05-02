@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import HandymanJob from '../statelessComponent/HandymanJob';
 import MiniFooter from '../statelessComponent/MiniFooter';
 import { HandymanDashboardNav } from '../statelessComponent/Nav';
@@ -127,6 +128,10 @@ const JobList =  () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Relaks Jobs | Accept Jobs and Earn Money!!</title>
+        <meta name="description" content="Login to Your Account"/>
+      </Helmet>
       <HandymanDashboardNav />
       {logic()}
     </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import { useHistory } from 'react-router-dom';
 import mixpanel from 'mixpanel-browser';
+import { Helmet } from 'react-helmet';
 
 function Flutterwave() {
   mixpanel.init("784360e9005522fb8d2cccd326b57f78");
@@ -142,7 +143,12 @@ function Flutterwave() {
     return null;
   } else {
     return (
-      <div>Please Wait While we setup everything...</div>
+      <div>
+        <Helmet>
+          <title>Relaks Pay | Pay {user.amount} Let's take care of your home.</title>
+        </Helmet>
+        <div>Please Wait While we setup everything...</div>
+      </div>
     );
   }
 };

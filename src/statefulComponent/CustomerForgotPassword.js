@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import Helmet from 'react-helmet';
 
 import ForgotPasswordForm from '../statelessComponent/ForgotPasswordForm';
 
@@ -85,12 +86,18 @@ const CustomerForgotPassword = () => {
     }
   }, [])
   return (
-    <ForgotPasswordForm
-      value = {value}
-      handleValue = {handleValue}
-      handleSubmit = {handleSubmit}
-      response = {response}
-    />
+    <div>
+      <Helmet>
+        <title>Forgot Password | Let's help you recover your account</title>
+        <meta name = "description" content = "View Your Dashboard" />
+      </Helmet>
+      <ForgotPasswordForm
+        value = {value}
+        handleValue = {handleValue}
+        handleSubmit = {handleSubmit}
+        response = {response}
+      />
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Helmet from 'react-helmet';
 import MiniFooter from '../statelessComponent/MiniFooter';
 import { HandymanDashboardNav } from '../statelessComponent/Nav';
 import RequestPaymentForm from '../statelessComponent/RequestPaymentForm';
@@ -78,6 +79,10 @@ const RequestPayment = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Request Payment | Request Payment!! Receive Payment in Minutes!!</title>
+        <meta name="description" content="Login to Your Account"/>
+      </Helmet>
       <HandymanDashboardNav />
       <RequestPaymentForm bankCode={bankCode}
         accountNumber={accountNumber}

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import Dashboard from '../statelessComponent/Dashboard';
 import HandymanIsVerified from '../statelessComponent/HandymanIsVerified';
 import Loading from '../statelessComponent/Loading';
@@ -106,6 +107,10 @@ const HandymanDashboard = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Relaks Dashboard | View your account, Accept Job, Request Payment!!</title>
+        <meta name = "description" content = "View Your Dashboard" />
+      </Helmet>
       <HandymanDashboardNav />
       <Dashboard jobs={jobs.jobs}
         data={data}

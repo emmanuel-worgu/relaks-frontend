@@ -145,7 +145,7 @@ const HandymanRegister = () => {
   return (
     <div>
       <Helmet>
-        <title>Relaks Register</title>
+        <title>Relaks Register | Find Jobs Easily!!</title>
         <meta name="description" content="Register You Account"/>
       </Helmet>
       <RegisterForm

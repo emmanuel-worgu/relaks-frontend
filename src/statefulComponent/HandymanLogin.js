@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import LoginForm from '../statelessComponent/loginForm';
 import mixpanel from 'mixpanel-browser';
 
@@ -110,6 +111,10 @@ const HandymanLogin = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Relaks Login | Login in to see your Dashboard</title>
+        <meta name="description" content="Login to Your Account"/>
+      </Helmet>
       <LoginForm
         emailValue={emailValue}
         passwordValue={passwordValue}

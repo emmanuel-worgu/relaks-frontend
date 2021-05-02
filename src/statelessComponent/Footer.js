@@ -58,7 +58,7 @@ const Footer = () => {
               <li><a href="https://twitter.com" target="blank"><FontAwesomeIcon icon={faTwitter} style={{
                 marginRight: '4px'
               }} />Twitter</a></li>
-              <li><a href="email:support@tryrelaks.com"><FontAwesomeIcon icon={faEnvelope} style={{
+              <li><a href="mailto:support@tryrelaks.com"><FontAwesomeIcon icon={faEnvelope} style={{
                 marginRight: '4px',
               }}/>support@tryrelaks.com</a></li>
               <li><a href="tel:+2349055681957"><FontAwesomeIcon icon={faPhoneAlt} style={{

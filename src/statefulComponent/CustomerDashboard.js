@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import Dashboard from '../statelessComponent/Dashboard';
 import { CustomerDashboardNav } from '../statelessComponent/Nav';
 import MiniFooter from '../statelessComponent/MiniFooter';
@@ -106,6 +107,10 @@ const CustomerDashboard = () => {
   
   return (
     <div>
+      <Helmet>
+        <title>Relaks Dashboard | View your account, manage all your job request.</title>
+        <meta name = "description" content = "View Your Dashboard" />
+      </Helmet>
       <CustomerDashboardNav />
       <Dashboard userInfo={userInfo}
         jobs={jobs}

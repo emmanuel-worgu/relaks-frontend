@@ -179,7 +179,7 @@ const Pricing = () => {
   return (
     <div>
       <Helmet>
-        <title>Relaks Pricing</title>
+        <title>Relaks Pricing | Subcribe, let's Relaks pay for your next home project</title>
         <meta name="description" content="Let's pay for your next home project" />
         {/* <script>
           fbq('track', 'ViewContent', {
