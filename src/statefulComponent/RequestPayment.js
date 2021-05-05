@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Helmet from 'react-helmet';
 import MiniFooter from '../statelessComponent/MiniFooter';
 import { HandymanDashboardNav } from '../statelessComponent/Nav';
 import RequestPaymentForm from '../statelessComponent/RequestPaymentForm';
 
 const RequestPayment = () => {
-  const[bankCode, setBankCode] = useState('');
   const[accountNumber, setAccountNumber] = useState('');
-  const[bank, setBank] = useState('');
+  const[bank, setBank] = useState([]);
+  const[bankDetails, setBankDetails] = useState({
+    bankName: '',
+    bankCode: '',
+  })
   const[withdrawalFund, setWithdrawalFund] = useState('');
   const[loading, setLoading] = useState(false);
   const[data, setData] = useState({
@@ -16,10 +19,23 @@ const RequestPayment = () => {
     success: false
   })
 
-  const handleBankCode = (e) => {
-    setBankCode(e.target.value)
-    e.preventDefault();
+  const fetchBanks = async () => {
+    const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/banks';
+
+    const response = await fetch(url)
+    const banks = await response.json();
+
+    setBank(banks);
   };
+
+  useEffect(()=> {
+    fetchBanks();
+  }, [])
+
+  // const handleBankCode = (e) => {
+  //   setBankCode(e.target.value)
+  //   e.preventDefault();
+  // };
 
   const handleAccountNumber = (e) => {
     setAccountNumber(e.target.value)
@@ -27,7 +43,16 @@ const RequestPayment = () => {
   };
 
   const handleBank = (e) => {
-    setBank(e.target.value)
+    // console.log(e.target.value);
+    bank.forEach(i => {
+      if (e.target.value === i.name) {
+        console.log(i);
+        setBankDetails({
+          bankName: i.name,
+          bankCode: i.code,
+        });
+      }
+    });
     e.preventDefault();
   };
 
@@ -42,7 +67,7 @@ const RequestPayment = () => {
       const token = localStorage.getItem('jwt_token');
       const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/request-payment';
       const body = {
-        account_bank: bankCode,
+        account_bank: bankDetails.bankCode,
         account_number: accountNumber,
         amount: withdrawalFund,
       };
@@ -84,7 +109,7 @@ const RequestPayment = () => {
         <meta name="description" content="Login to Your Account"/>
       </Helmet>
       <HandymanDashboardNav />
-      <RequestPaymentForm bankCode={bankCode}
+      <RequestPaymentForm //bankCode={bankCode}
         accountNumber={accountNumber}
         error={data.error}
         success={data.success}
@@ -94,7 +119,7 @@ const RequestPayment = () => {
         loading={loading}
         handleAccountNumber={handleAccountNumber}
         handleBank={handleBank}
-        handleBankCode={handleBankCode}
+        // handleBankCode={handleBankCode}
         handleWithdrawalFund={handleWithdrawalFund}
         handleWithdrawal={handleWithdrawal}
       />

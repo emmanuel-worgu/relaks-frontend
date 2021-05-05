@@ -151,7 +151,7 @@ export const HandymanDashboardNav = () => {
       <div className={menuButton ? 'mystyle' : 'dashboardnav'}>
       <div className="dashboardnav-content">
         <h5 className="dashboard-header">{response.loading ? 'Loading...' : `Hi, ${response.data.name}`}</h5>
-        <ul className="dashboardnav-ul">
+        <ul className="dashboardnav-ul footer-ul">
           <li className="dashboardnav-li"><Link to="/handyman"><FontAwesomeIcon icon={faTachometerAlt} /> Dashboard</Link></li>
           <li className="dashboardnav-li"><Link to="/handyman/accept-job"><FontAwesomeIcon icon={faClipboardCheck} /> Accept Jobs</Link></li>
           <li className="dashboardnav-li"><Link to="/handyman/job"><FontAwesomeIcon icon={faBriefcase} /> My Jobs</Link></li>
@@ -244,9 +244,9 @@ export const CustomerDashboardNav = () => {
       <div className={menuButton ? 'mystyle' : 'dashboardnav'}>
       <div className="dashboardnav-content">
         <h5 className="dashboard-header">{response.loading ? 'Loading...' : `Hi, ${response.data.name}`}</h5>
-        <ul className="dashboardnav-ul">
+        <ul className="dashboardnav-ul footer-ul">
           <li className="dashboardnav-li"><Link to="/customer"><FontAwesomeIcon icon={faTachometerAlt} /> Dashboard</Link></li>
-          <li className="dashboardnav-li"><Link to="/customer/book-service"><FontAwesomeIcon icon={faTools} /> Request A Handyman</Link></li>
+          <li className="dashboardnav-li"><Link to="/customer/book-service"><FontAwesomeIcon icon={faTools} /> Request Service</Link></li>
           <li className="dashboardnav-li"><Link to="/customer/job"><FontAwesomeIcon icon={faBriefcase} /> My Jobs</Link></li>
           <li className="dashboardnav-li"><Link to="/customer/pricing"><FontAwesomeIcon icon={faShoppingCart} /> Buy Plan</Link></li>
           <li className="dashboardnav-li"><Link to="/customer/setting"><FontAwesomeIcon icon={faCog} /> Settings</Link></li>

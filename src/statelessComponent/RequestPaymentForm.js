@@ -6,6 +6,14 @@ import NeedHelpTemplate from './NeedHelpTemplate';
 const RequestPaymentForm = (props) => {
   const amount = localStorage.getItem('earned_amount');
 
+  const { bank } = props
+
+  const fetchedBanks = bank === '' ? <option>Loading Banks</option> : bank.map((e) => {
+    return (
+      <option key={e.id} value={e.name}>{e.name}</option>
+    );
+  })
+
   const handleError = () => {
     if (props.error) {
       return <h6 className="error-message">{props.message}</h6>
@@ -26,17 +34,6 @@ const RequestPaymentForm = (props) => {
             <h3 id="setting-header">Request Payment!! Receive your Funds in Minutes!!</h3>
             <h5>Where Should we Pay your money ?</h5>
             <h5>{}</h5>
-            <label id="name-setting-text">Bank Code</label>
-            <br/>
-            <input type="text" 
-              name="work"
-              autoComplete="off" 
-              className="relaks-setting-input" 
-              value={props.bankCode}
-              onChange={props.handleBankCode}
-              required>
-            </input>
-            <br/>
             <label id="name-setting-text">Account Number</label>
             <br/>
             <input type="text" 
@@ -50,14 +47,14 @@ const RequestPaymentForm = (props) => {
             <br/>
             <label id="name-setting-text">Bank</label>
             <br/>
-            <input type="text" 
-              name="work"
-              autoComplete="off" 
-              className="relaks-setting-input" 
-              value={props.bank}
-              onChange={props.handleBank}
-              required>
-            </input>
+            <select name="job-category" 
+              id="job-category" 
+              className="relaks-input"
+              // value={e.name}
+              onChange={props.handleBank}>
+                <option>Select Bank</option>
+                {fetchedBanks}
+            </select>
             <br/>
             <hr/>
             <h5>How much should we Pay</h5>

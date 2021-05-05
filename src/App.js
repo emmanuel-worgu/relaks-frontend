@@ -26,6 +26,7 @@ import HandymanJob from './statefulComponent/HandymanJob';
 import PrivacyPolicy from './statelessComponent/PrivacyPolicy';
 import About from './statelessComponent/About';
 import TermsAndCondition from './statelessComponent/Terms';
+import ICA from './statelessComponent/ICA';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path = '/about' component = {About} />
         <Route path = '/privacy-policy' component={PrivacyPolicy} />
         <Route path = '/terms-condition' component = {TermsAndCondition} />
+        <Route path = '/technician-agreement' component = {ICA} />
         <Route path = '/customer/' exact component = {CustomerDashboard} />
         <Route path = '/customer/job' component = {CustomerJob} />
         <Route path = '/customer/review' component={Review} />

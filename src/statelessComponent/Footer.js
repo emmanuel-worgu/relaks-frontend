@@ -19,7 +19,7 @@ const Footer = () => {
         <div className="col-6">
           <h4 className="footer-header">Company</h4>
           <div className="footer-text">
-            <ul>
+            <ul className="footer-ul">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About</Link></li>
               <li><Link to="/contact-us">Contact Us</Link></li>
@@ -30,10 +30,10 @@ const Footer = () => {
         <div className="col-6">
           <h4 className="footer-header">Legal</h4>
           <div className="footer-text">
-            <ul>
+            <ul className="footer-ul">
               <li><Link to='/terms-condition'>Terms of Service</Link></li>
               <li><Link to='/privacy-policy'>Privacy Policy</Link></li>
-              <li>Relaks Technicians Agreement</li>
+              <li><Link to='/technician-agreement'>Relaks Technicians Agreement</Link></li>
             </ul>
           </div>
         </div>
@@ -42,7 +42,7 @@ const Footer = () => {
         <div className="col-6">
           <h4 className="footer-header">Solutions</h4>
           <div className="footer-text">
-            <ul>
+            <ul className="footer-ul">
               <li><Link to='/customer'>Relaks For Customers</Link></li>
               <li><Link to='/handyman'>Relaks For Technicians</Link></li>
             </ul>
@@ -51,13 +51,10 @@ const Footer = () => {
         <div className="col-6">
           <h4 className="footer-header">Connect With Us</h4>
           <div className="footer-text">
-            <ul>
-              <li><a href="https://facebook.com" target="blank"><FontAwesomeIcon icon={faFacebook} style={{
+            <ul className="footer-ul">
+              <li><a href="https://www.facebook.com/Relaks-Home-100598445516384/" target="blank"><FontAwesomeIcon icon={faFacebook} style={{
                 marginRight: '4px'
               }}/>Facebook</a></li>
-              <li><a href="https://twitter.com" target="blank"><FontAwesomeIcon icon={faTwitter} style={{
-                marginRight: '4px'
-              }} />Twitter</a></li>
               <li><a href="mailto:support@tryrelaks.com"><FontAwesomeIcon icon={faEnvelope} style={{
                 marginRight: '4px',
               }}/>support@tryrelaks.com</a></li>

@@ -1,3 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /customer/thank-you/
+Disallow: /customer/book-service/confirm/
+Noindex: /customer/thank-you/
+Noindex: /customer/book-service/confirm/
+
+Sitemap: https://tryrelaks.com.ng/sitemap.xml
