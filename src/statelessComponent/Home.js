@@ -142,7 +142,7 @@ const Home = () => {
         <div  id="svg-section" className="row">
           <div className="col-sm-6 col-md-6">
             <div>
-              <img src={Relaks} alt="relaxing" className="svg" />
+              <img src={Relaks} alt="relaxing" className="svg" loading="lazy"/>
             </div>
           </div>
           <div className="col-sm-6 col-md-6" id="svg-content">

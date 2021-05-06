@@ -7,14 +7,26 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://tryrelaks.com.ng/register</loc>
+  <loc>https://tryrelaks.com.ng/customer/register</loc>
   <lastmod>2021-05-05</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://tryrelaks.com.ng/login</loc>
+  <loc>https://tryrelaks.com.ng/customer/login</loc>
   <lastmod>2021-05-05</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tryrelaks.com.ng/handyman/register</loc>
+  <lastmod>2021-05-06</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tryrelaks.com.ng/handyman/login</loc>
+  <lastmod>2021-05-06</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
