@@ -1,6 +1,8 @@
 import { lazy, Suspense } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
+import Loading from './statelessComponent/Loading';
+
 const Home = lazy(() => import('./statelessComponent/Home'));
 const CustomerLogin = lazy(() => import('./statefulComponent/CustomerLogin'));
 const HandymanLogin = lazy(() => import('./statefulComponent/HandymanLogin'));
@@ -33,7 +35,7 @@ const ICA = lazy(() => import('./statelessComponent/ICA'));
 function App() {
   return (
     <Router>
-      <Suspense>
+      <Suspense fallback={<Loading />}>
         <Switch>
           <Route path = '/' exact component = {Home} />
           <Route path = '/contact-us' component = {ContactUs} />

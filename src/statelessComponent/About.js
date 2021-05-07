@@ -3,6 +3,7 @@ import Footer from './Footer';
 import { NormalNav } from './Nav';
 import NeedHelpTemplate from './NeedHelpTemplate';
 import '../css/about.css';
+import '../css/contactus.css';
 
 import { faUserAlt,
   faCreditCard,

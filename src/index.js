@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/home.css';
+import './css/pricingplan.css';
+import './css/registerForm.css';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

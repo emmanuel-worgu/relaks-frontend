@@ -3,6 +3,9 @@ import MiniFooter from './MiniFooter';
 import NeedHelpTemplate from './NeedHelpTemplate';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/registerForm.css';
+import '../css/settings.css';
+import '../css/forgot_password.css';
+import '../css/loginForm.css';
 // import loginImg from '../assest/login.svg';
 
 

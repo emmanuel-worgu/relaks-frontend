@@ -1,4 +1,4 @@
-import React, { useState, lazy } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import mixpanel from 'mixpanel-browser';
 import { NormalNav } from './Nav';
@@ -16,6 +16,9 @@ import { faUserAlt,
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import '../css/home.css';
+import '../css/pricingplan.css';
+import '../css/loginForm.css';
+import '../css/about.css';
 import HomeBackground from '../assest/home_background.jpg';
 import Relaks from '../assest/relaxing.svg';
 import Family from '../assest/family.svg';

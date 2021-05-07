@@ -4,6 +4,8 @@ import NeedHelpTemplate from './NeedHelpTemplate';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../assest/logo.svg';
 import '../css/registerForm.css';
+import '../css/forgot_password.css';
+import '../css/loginForm.css';
 
 import {
   faSpinner,
