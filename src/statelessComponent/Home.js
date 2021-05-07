@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, lazy } from 'react';
 import { useHistory } from 'react-router-dom';
 import mixpanel from 'mixpanel-browser';
 import { NormalNav } from './Nav';
@@ -59,7 +59,7 @@ const Home = () => {
           </div>
           <div className="hero-content">
             <h3 className="hero-text" id="hero-text-header">Live A Frustration Free Life!!</h3>
-            <p className="hero-text" id="hero-text-text">Get all your home repairs done for a one yearly fee</p>
+            <p className="hero-text" id="hero-text-text">Get all your home repairs done for one price on Relaks</p>
             <div className="hero-button">
               <button id="home-button" className="submit-button" onClick={customerRoute}>
                 <b className="button-text">{loading ? 'Loading...' : 'Get Your Home Fixed'}</b>
