@@ -3,6 +3,7 @@ import Footer from './Footer';
 import { NormalNav } from './Nav';
 import NeedHelpTemplate from './NeedHelpTemplate';
 import '../css/about.css';
+import '../css/contactus.css';
 
 import { faUserAlt,
   faCreditCard,
@@ -30,7 +31,7 @@ const About = () => {
         marginLeft: '3em',
         marginRight: '3em',
       }}>
-        Relaks is a home subcription service that provide care and repair for your home. We'll pay for home repair and care needs when next it occurs.
+        Relaks is a home subcription service that provide care and repair for your home. We'll pay for your home repair and care needs when next it occurs.
         <br/>
         Relaks was founded in 2021 to help people live a more easier lives. It is easier to take care of our home with Relaks. Just Create an account, Subscribe to any of our plan and Relaks, let's do the hard work.
       </div>

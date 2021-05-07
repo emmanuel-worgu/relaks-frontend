@@ -16,6 +16,9 @@ import { faUserAlt,
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import '../css/home.css';
+import '../css/pricingplan.css';
+import '../css/loginForm.css';
+import '../css/about.css';
 import HomeBackground from '../assest/home_background.jpg';
 import Relaks from '../assest/relaxing.svg';
 import Family from '../assest/family.svg';
@@ -59,7 +62,7 @@ const Home = () => {
           </div>
           <div className="hero-content">
             <h3 className="hero-text" id="hero-text-header">Live A Frustration Free Life!!</h3>
-            <p className="hero-text" id="hero-text-text">Get all your home repairs done for a one yearly fee</p>
+            <p className="hero-text" id="hero-text-text">Get all your home repairs done for one price on Relaks</p>
             <div className="hero-button">
               <button id="home-button" className="submit-button" onClick={customerRoute}>
                 <b className="button-text">{loading ? 'Loading...' : 'Get Your Home Fixed'}</b>

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/settings.css';
+import '../css/loginForm.css';
 import NeedHelpTemplate from './NeedHelpTemplate';
 
 

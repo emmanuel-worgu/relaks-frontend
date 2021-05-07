@@ -8,6 +8,7 @@ import {
   faHeadset,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import RelaksCta from './relaks__cta';
 
 const ContactUs = () => {
   return (
@@ -36,27 +37,7 @@ const ContactUs = () => {
           <p>This is our FAQ Section</p>
         </div>
       </div> */}
-      <div className="jumbotron" style={{
-          backgroundColor: '#009EF7',
-          marginBottom: '0',
-          marginTop: '5rem'
-        }}>
-          <div className="row">
-            <div className="col-sm-12 col-md-12">
-              <h1 className="relaks__cta">Live Frustration Free Life with Relaks</h1>
-              <div style={{
-                marginTop: '20px'
-              }} className="member-button">
-                <button className="what-is-relaks-button" onClick='' style={{
-                  height: '4em',
-                  outline: 'none'
-                }}><b style={{
-                  fontSize: '1.2em'
-                }}>Become A Member</b></button>
-              </div>
-            </div>
-          </div>
-        </div>
+      <RelaksCta />
       <Footer />
     </div>
   );

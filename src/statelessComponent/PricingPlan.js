@@ -15,6 +15,8 @@ import { faUserAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import '../css/loginForm.css'
+
 const PricingPlan = (props) => {
 
   const history= useHistory();
