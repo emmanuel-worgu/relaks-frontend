@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import mixpanel from 'mixpanel-browser';
 import { NormalNav } from './Nav';
 import Footer from './Footer';
 import NeedHelpTemplate from './NeedHelpTemplate';
+import mixpanel from 'mixpanel-browser';
 import { faUserAlt,
   faCreditCard,
   faHeadset,
@@ -24,6 +24,7 @@ import Relaks from '../assest/relaxing.svg';
 import Family from '../assest/family.svg';
 import RelaksCta from './relaks__cta';
 
+
 const Home = () => {
 
   mixpanel.init("784360e9005522fb8d2cccd326b57f78");
@@ -32,7 +33,15 @@ const Home = () => {
     url: document.location.href,
   });
 
+  const scrollFunc = () => {
+    console.log('scrolling');
+  };
+
   const[loading, setLoading] = useState(false);
+  const[offSet, setOffSet] = useState(0);
+  const[lg, setLg] = useState('');
+  const[ph, setPh] = useState('');
+  const[abj, setAbj] = useState('')
 
   const history = useHistory();
 
@@ -49,8 +58,26 @@ const Home = () => {
     setLoading(true);
     history.push('/handyman/register');
   };
+
+  useEffect(() => {
+    // console.log(window);
+    window.onscroll = () => {
+      setOffSet(window.pageYOffset);
+    }
+
+  }, [offSet]);
+
+
+  useEffect(() => {
+    if (offSet > 4000) {
+      setPh('portharcourt');
+      setLg('lagos');
+      setAbj('abuja');
+    }
+  }, [offSet]);
+
   return (
-    <div>
+    <div onScroll={scrollFunc}>
       <div>
         <NeedHelpTemplate />
       </div>
@@ -58,7 +85,7 @@ const Home = () => {
       <div>
         <div id="setImg">
           <div>
-            <img src={HomeBackground} className="hero-img" alt="relaks-home-background" />
+            <img src={HomeBackground} className="hero-img" alt="relaks-home-background" loading="lazy" />
           </div>
           <div className="hero-content">
             <h3 className="hero-text" id="hero-text-header">Live A Frustration Free Life!!</h3>
@@ -242,7 +269,7 @@ const Home = () => {
                 background: '#818181',
                 overflow: 'hidden',
               }}className="card" id="card-pricing1">
-                <div className="card-body" id="portharcourt">
+                <div className="card-body" id={ph}>
                   <h5 style={{
                     color: 'white'
                   }}className="card-title">Port Harcourt</h5>
@@ -257,7 +284,7 @@ const Home = () => {
                 background: '#818181',
                 overflow: 'hidden',
               }}className="card" id="card-pricing1">
-                <div className="card-body" id="lagos">
+                <div className="card-body" id={lg}>
                   <h5 className="card-title">Lagos</h5>
                   <p className="card-text">
                     <b></b>
@@ -270,7 +297,7 @@ const Home = () => {
                 background: '#818181',
                 overflow: 'hidden',
               }}className="card" id="card-pricing1">
-                <div className="card-body" id="abuja">
+                <div className="card-body" id={abj}>
                   <h5 className="card-title">Abuja</h5>
                   <p className="card-text">
                     <b></b>
