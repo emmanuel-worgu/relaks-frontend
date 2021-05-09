@@ -111,6 +111,7 @@ const HandymanRegister = () => {
         message,
       });
       localStorage.setItem('jwt_token', message.token);
+      window.fbq('track', 'CompleteRegistration');
       history.push('/handyman');
     }
     if (response.status === 201) {
