@@ -41,8 +41,20 @@ const PricingPlan = (props) => {
         </div>
         <div>
           <p id="pricing-page-text" className="pricing-text">
-            Pay Once every year and be covered for your home care and repair needs
+            Pay Once and be covered for your home care and repair needs
           </p>
+        </div>
+      </div>
+      <div className="sub-plan">
+        <button className="sub-button" onClick={props.handleMon} disabled={props.mon ? true : false}><strong>Monthly</strong></button>
+        <button className="sub-button" onClick={props.handleMon} disabled={props.mon ? false : true}><strong>Yearly</strong></button>
+      </div>
+      <div className={props.err.isTrue ? "pricing-err" : "pricing-err-div"}>
+        <div className="card">
+          <div className="card-body">
+            <p className="card-text">{props.err.data}</p>
+            <button onClick={props.closeButton}>close</button>
+          </div>
         </div>
       </div>
       <div className="pricing-card">
@@ -51,8 +63,8 @@ const PricingPlan = (props) => {
             <div className="card" id="card-pricing1">
               <div className="card-body">
                 <h3 className="card-title">Relaks Basic</h3>
-                <h4 className="card-title">₦30,000/yr</h4>
-                <p className="card-text">5 jobs/Mon/Yr</p>
+                <h4 className="card-title">{props.mon ? '₦4,000/mon' : '₦46,000/yr'}</h4>
+                <p className="card-text">1 job/Mon/Yr</p>
                 <p className="card-text">One Electrical Work</p>
                 <p className="card-text">One Carpentary Work</p>
                 <p className="card-text">Unlimited for other jobs</p>
@@ -68,8 +80,8 @@ const PricingPlan = (props) => {
             <div className="card" id="card-pricing2">
               <div className="card-body">
                 <h3 className="card-title">Relaks Xtra</h3>
-                <h4 className="card-title">₦60,000/yr</h4>
-                <p className="card-text">10 jobs/Mon/Yr</p>
+                <h4 className="card-title">{props.mon ? '₦12,000/mon' : '₦100,000/yr'}</h4>
+                <p className="card-text">3 jobs/Mon/Yr</p>
                 <p className="card-text">Five Electrical Work</p>
                 <p className="card-text">Five Carpentary Work</p>
                 <p className="card-text">Unlimited for other works</p>
@@ -85,8 +97,8 @@ const PricingPlan = (props) => {
             <div className="card" id="card-pricing3">
               <div className="card-body">
                 <h3 className="card-title">Relaks Prime</h3>
-                <h4 className="card-title">₦120,000/yr</h4>
-                <p className="card-text">25 jobs/Mon/Yr</p>
+                <h4 className="card-title">{props.mon ? '₦20,000/mon' : '₦120,000/yr'}</h4>
+                <p className="card-text">5 jobs/Mon/Yr</p>
                 <p className="card-text">Ten Electricals Works</p>
                 <p className="card-text">Ten Carpentary Work</p>
                 <p className="card-text">Unlimited for other jobs</p>

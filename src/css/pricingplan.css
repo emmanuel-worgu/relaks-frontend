@@ -75,11 +75,40 @@
   box-shadow: 0 14px 28px rgb(0 0 0 / 15%), 0 10px 10px rgb(0 0 0 / 5%);
 }
 
-@media screen and (max-width: 780px) {
+.sub-plan {
+  display: flex;
+  justify-content: center;
+}
+
+.sub-button {
+  border: 1px thin grey;
+  width: 100px;
+}
+
+.pricing-err-div {
+  display: none;
+}
+
+.pricing-err {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 200px;
+  border: 3px solid red;
+  z-index: 1;
+}
+
+@media screen and (max-width: 1080px) {
   .pricing__plan__note {
     /* margin-left: auto;
     margin-right: auto; */
     width: 100%;
+  }
+
+  .pricing-err {
+    /* margin-left: 30px; */
+    left: 30px;
+    right: 30px;
   }
 }
 

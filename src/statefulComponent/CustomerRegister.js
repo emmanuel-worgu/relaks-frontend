@@ -85,6 +85,7 @@ const Register = () => {
       email: emailValue,
       phone: phoneValue,
       password: passwordValue,
+      url: document.location.href,
     }
     try {
       const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/register';

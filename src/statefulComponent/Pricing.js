@@ -3,23 +3,39 @@ import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router-dom';
 import PricingPlan from '../statelessComponent/PricingPlan';
 import mixpanel from 'mixpanel-browser';
+import Loading from '../statelessComponent/Loading';
 
 const Pricing = () => {
   mixpanel.init("784360e9005522fb8d2cccd326b57f78");
-  // const[user, setUser] = useState('');
-  // const[plan, setPlan] = useState('');
+  const[pageLoad, setPageLoad] = useState(false);
   const[isAuth, setIsAuth] = useState(false);
   const[loading, setLoading] = useState({
     _prime: false,
     _xtra: false,
     _basic: false,
   });
+  const[mon, setMon] = useState(true);
+  const[err, setErr] = useState({
+    isTrue: false,
+    data: '',
+  });
 
   const history = useHistory();
 
   const token = localStorage.getItem('jwt_token');
 
+  const handleMon = () => {
+    setMon(!mon);
+  }
+
+  const closeButton = () => {
+    setErr({
+      isTrue: false,
+    });
+  };
+
   const getData = async () => {
+    setPageLoad(true);
     const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/dashboard';
     const response = await fetch(url, {
       method: 'GET',
@@ -33,11 +49,13 @@ const Pricing = () => {
       if (response.status === 200) {
         setIsAuth(true);
         const user = await response.json()
+        setPageLoad(false);
 
         mixpanel.identify(user._id)
       } else if (response.status === 201) {
         setIsAuth(true);
         const user = await response.json();
+        setPageLoad(false)
 
         mixpanel.identify(user.authUser._id);
         mixpanel.people.set({
@@ -45,8 +63,10 @@ const Pricing = () => {
         });
       }
       setIsAuth(true);
+      setPageLoad(false);
     } else {
       setIsAuth(false);
+      setPageLoad(false);
     }
   };
 
@@ -57,8 +77,11 @@ const Pricing = () => {
     // Each of Package function will redirect to the payment page once the response status is 200 or 201
     const prime = async() => {
       const data = {
-        planName: 'Prime'
+        planName: 'Prime',
+        mon,
       }
+
+      // console.log(data);
 
       try {
         setLoading({
@@ -85,6 +108,12 @@ const Pricing = () => {
           });
           history.push('/customer/pay');
         } else {
+          const message = await response.json()
+          // console.log(message.errMessage);
+          setErr({
+            isTrue: true,
+            data: message.errMessage,
+          })
           setLoading({
             _prime: false,
           });
@@ -98,7 +127,8 @@ const Pricing = () => {
 
     const basic = async() => {
       const data = {
-        planName: 'Basic'
+        planName: 'Basic',
+        mon,
       }
       try {
         setLoading({
@@ -118,16 +148,21 @@ const Pricing = () => {
 
         if (response.status === 200) {
           mixpanel.people.set({
-            planName: 'Relaks Prime'
+            planName: 'Relaks Basic'
           });
           setLoading({
             _basic: false,
           });
           history.push('/customer/pay');
         } else {
+          const message = response.json();
           setLoading({
             _basic: false,
           });
+          setErr({
+            isTrue: true,
+            data: message.errMessage,
+          })
         }
       } catch (error) {
         setLoading({
@@ -138,7 +173,8 @@ const Pricing = () => {
 
     const xtra = async() => {
       const data = {
-        planName: 'Xtra'
+        planName: 'Xtra',
+        mon,
       }
       try {
         setLoading({
@@ -158,16 +194,21 @@ const Pricing = () => {
 
         if (response.status === 200) {
           mixpanel.people.set({
-            planName: 'Relaks Prime'
+            planName: 'Relaks Xtra'
           });
           setLoading({
             _xtra: false,
           });
           history.push('/customer/pay');
         } else {
+          const message = response.jon();
           setLoading({
             _xtra: false,
           });
+          setErr({
+            isTrue: true,
+            data: message.errMessage,
+          })
         }
       } catch (error) {
         setLoading({
@@ -175,6 +216,12 @@ const Pricing = () => {
         });
       }
     };
+
+  // if (pageLoad) {
+  //   return (
+  //     <Loading />
+  //   );
+  // }
 
   return (
     <div>
@@ -193,6 +240,10 @@ const Pricing = () => {
         prime={prime}
         loading={loading}
         isAuth={isAuth}
+        mon={mon}
+        handleMon={handleMon}
+        err={err}
+        closeButton={closeButton}
         // plan={plan}
       />
     </div>

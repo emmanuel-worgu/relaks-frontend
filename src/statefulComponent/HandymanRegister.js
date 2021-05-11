@@ -84,6 +84,7 @@ const HandymanRegister = () => {
       })
     }
 
+    const eventID = `${nameValue.slice(0,3)}-${Date.now()}${Math.floor(Math.random() * 1000000)}`;
 
     const data = {
       name: nameValue,
@@ -91,6 +92,8 @@ const HandymanRegister = () => {
       phone: phoneValue,
       service: primaryService.value,
       password: passwordValue,
+      url: document.location.href,
+      eventID,
     }
     try {
       const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/handymen/register';
@@ -111,7 +114,7 @@ const HandymanRegister = () => {
         message,
       });
       localStorage.setItem('jwt_token', message.token);
-      window.fbq('track', 'CompleteRegistration');
+      window.fbq('track', 'CompleteRegistration', eventID);
       history.push('/handyman');
     }
     if (response.status === 201) {
