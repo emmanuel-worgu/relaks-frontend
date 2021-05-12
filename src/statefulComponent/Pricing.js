@@ -136,7 +136,7 @@ const Pricing = () => {
         setLoading({
           _basic: true,
         });
-        const url = 'http://localhost:5000/api/customers/choose-plan' // 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/choose-plan';
+        const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/choose-plan';
 
         const response = await fetch(url, {
           method: 'POST',
