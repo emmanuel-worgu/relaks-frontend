@@ -72,7 +72,7 @@ const Pricing = () => {
 
   useEffect(() => {
     getData()
-  });
+  }, []);
     
     // Each of Package function will redirect to the payment page once the response status is 200 or 201
     const prime = async() => {
@@ -125,6 +125,8 @@ const Pricing = () => {
       }
     };
 
+
+  // Basic Package
     const basic = async() => {
       const data = {
         planName: 'Basic',
@@ -134,7 +136,7 @@ const Pricing = () => {
         setLoading({
           _basic: true,
         });
-        const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/choose-plan';
+        const url = 'http://localhost:5000/api/customers/choose-plan' // 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/choose-plan';
 
         const response = await fetch(url, {
           method: 'POST',
@@ -155,7 +157,8 @@ const Pricing = () => {
           });
           history.push('/customer/pay');
         } else {
-          const message = response.json();
+          const message = await response.json();
+          console.log(message);
           setLoading({
             _basic: false,
           });
@@ -201,7 +204,7 @@ const Pricing = () => {
           });
           history.push('/customer/pay');
         } else {
-          const message = response.jon();
+          const message = await response.json();
           setLoading({
             _xtra: false,
           });

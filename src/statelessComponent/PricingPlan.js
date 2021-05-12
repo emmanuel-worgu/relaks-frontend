@@ -65,9 +65,9 @@ const PricingPlan = (props) => {
                 <h3 className="card-title">Relaks Basic</h3>
                 <h4 className="card-title">{props.mon ? '₦4,000/mon' : '₦46,000/yr'}</h4>
                 <p className="card-text">1 job/Mon/Yr</p>
-                <p className="card-text">One Electrical Work</p>
-                <p className="card-text">One Carpentary Work</p>
-                <p className="card-text">Unlimited for other jobs</p>
+                <p className="card-text">Happiness Guarantee</p>
+                <p className="card-text">7 days cancelation policy</p>
+                <p className="card-text">Relaks let's take of your home</p>
                 <div className="pricing-button">
                   <button className="submit-button" id="pricing-button" onClick={props.isAuth ? props.basic : handleButton}>
                     {props.loading._basic ? <h5><b>Loading...</b></h5> : <h5><b>Buy Basic</b></h5>}
@@ -80,11 +80,11 @@ const PricingPlan = (props) => {
             <div className="card" id="card-pricing2">
               <div className="card-body">
                 <h3 className="card-title">Relaks Xtra</h3>
-                <h4 className="card-title">{props.mon ? '₦12,000/mon' : '₦100,000/yr'}</h4>
+                <h4 className="card-title">{props.mon ? '₦12,000/mon' : '₦70,000/yr'}</h4>
                 <p className="card-text">3 jobs/Mon/Yr</p>
-                <p className="card-text">Five Electrical Work</p>
-                <p className="card-text">Five Carpentary Work</p>
-                <p className="card-text">Unlimited for other works</p>
+                <p className="card-text">Happiness Guarantee</p>
+                <p className="card-text">7 days cancelation policy</p>
+                <p className="card-text">Relaks let's take of your home</p>
                 <div className="pricing-button">
                   <button className="submit-button" id="pricing-button" onClick={props.isAuth ? props.xtra : handleButton}>
                     {props.loading._xtra ? <h5><b>Loading...</b></h5> : <h5><b>Buy Xtra</b></h5>}
@@ -97,11 +97,11 @@ const PricingPlan = (props) => {
             <div className="card" id="card-pricing3">
               <div className="card-body">
                 <h3 className="card-title">Relaks Prime</h3>
-                <h4 className="card-title">{props.mon ? '₦20,000/mon' : '₦120,000/yr'}</h4>
+                <h4 className="card-title">{props.mon ? '₦20,000/mon' : '₦100,000/yr'}</h4>
                 <p className="card-text">5 jobs/Mon/Yr</p>
-                <p className="card-text">Ten Electricals Works</p>
-                <p className="card-text">Ten Carpentary Work</p>
-                <p className="card-text">Unlimited for other jobs</p>
+                <p className="card-text">Happiness Guarantee</p>
+                <p className="card-text">7 days cancelation policy</p>
+                <p className="card-text">Relaks let's take of your home</p>
                 <div className="pricing-button">
                   <button className="submit-button" id="pricing-button" onClick={props.isAuth ? props.prime : handleButton}>
                     {props.loading._prime ? <h5><b>Loading...</b></h5> : <h5><b>Buy Prime</b></h5>}

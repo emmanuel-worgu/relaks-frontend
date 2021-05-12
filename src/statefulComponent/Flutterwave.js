@@ -16,6 +16,7 @@ function Flutterwave() {
     phonenumber: '',
     planName: '',
     amount: 0,
+    period: ''
   });
 
   const history = useHistory();
@@ -39,6 +40,7 @@ function Flutterwave() {
         phonenumber: user.phone,
         planName: user.subscriptionPlan.planName,
         amount: user.subscriptionPlan.planAmount,
+        period: user.subscriptionPlan.period
       });
       mixpanel.identify(user._id);
       mixpanel.people.set({
@@ -55,6 +57,7 @@ function Flutterwave() {
         phonenumber: user.authUser.phone,
         planName: user.authUser.subscriptionPlan.planName,
         amount: user.authUser.subscriptionPlan.planAmount,
+        period: user.subscriptionPlan.period,
       });
       mixpanel.identify(user._id);
       mixpanel.people.set({
@@ -84,8 +87,8 @@ function Flutterwave() {
     },
     customizations: {
       title: `Relaks ${user.planName}`,
-      description: 'Payment for items in cart',
-      // logo: NavLogo,
+      description: `Relaks ${user.planName} `,
+      logo: 'https://tryrelaks.com.ng/flutter.png',
     },
   };
 
@@ -115,13 +118,10 @@ function Flutterwave() {
           //  const verificationResponse = await verifyTransaction.json();
            if (verifyTransaction.status !== 200) {
              history.push('/customer/pricing');
+           } else {
+            closePaymentModal();  // this will close the modal programmatically
+            history.push('/customer/thank-you');
            }
-           
-           closePaymentModal();  // this will close the modal programmatically
-           history.push('/customer/thank-you');
-           // Test ATM CARD =  5531 8866 5214 2950
-           // CVV = 564
-           // EXPIRY DATE = 09/32
           } catch (error) {
             history.push('/customer/pricing');
           }
@@ -145,7 +145,7 @@ function Flutterwave() {
     return (
       <div>
         <Helmet>
-          <title>Relaks Pay | Pay {user.amount} Let's take care of your home.</title>
+          <title>{`Relaks Pay | Pay ${user.amount} Let's take care of your home.`}</title>
         </Helmet>
         <div>Please Wait While we setup everything...</div>
       </div>
