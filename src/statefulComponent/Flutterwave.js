@@ -57,7 +57,7 @@ function Flutterwave() {
         phonenumber: user.authUser.phone,
         planName: user.authUser.subscriptionPlan.planName,
         amount: user.authUser.subscriptionPlan.planAmount,
-        period: user.subscriptionPlan.period,
+        period: user.authUser.subscriptionPlan.period,
       });
       mixpanel.identify(user._id);
       mixpanel.people.set({

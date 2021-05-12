@@ -81,8 +81,10 @@
 }
 
 .sub-button {
-  border: 1px thin grey;
+  border: 1px solid grey;
   width: 100px;
+  outline: #52C8FA;
+  box-shadow: 0 14px 28px rgb(0 0 0 / 15%), 0 10px 10px rgb(0 0 0 / 5%);
 }
 
 .pricing-err-div {
