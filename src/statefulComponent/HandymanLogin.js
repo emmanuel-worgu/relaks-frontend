@@ -2,11 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import LoginForm from '../statelessComponent/loginForm';
-import mixpanel from 'mixpanel-browser';
 
 const HandymanLogin = () => {
-  mixpanel.init("784360e9005522fb8d2cccd326b57f78");
-  mixpanel.track('Handyman Login Page Loaded');
 
 
   const[emailValue, setEmailValue] = useState('');

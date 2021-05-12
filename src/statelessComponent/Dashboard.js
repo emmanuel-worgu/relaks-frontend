@@ -68,7 +68,13 @@ const Dashboard = (props) => {
 
     const logic = () => {
       if (jobs === undefined) {
-        return <p>Fetching....</p>
+        return (
+          <tr>
+            <td>N/A</td>
+            <td>N/A</td>
+            <td>N/A</td>
+          </tr>
+        );
       }
 
       if (jobs.length === 0) {
@@ -79,7 +85,11 @@ const Dashboard = (props) => {
             <td>N/A</td>
           </tr>
         );
-      }
+      };
+
+      
+
+      console.log(typeof jobs)
       
       const mappedJob = jobs.map(job => <CustomerJobTable
         id={job._id}

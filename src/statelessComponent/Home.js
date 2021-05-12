@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { NormalNav } from './Nav';
 import Footer from './Footer';
 import NeedHelpTemplate from './NeedHelpTemplate';
-import mixpanel from 'mixpanel-browser';
 import { faUserAlt,
   faCreditCard,
   faHeadset,
@@ -27,30 +26,14 @@ import RelaksCta from './relaks__cta';
 
 const Home = () => {
 
-  mixpanel.init("784360e9005522fb8d2cccd326b57f78");
-  mixpanel.track('Page View', {
-    Page: 'Home Page',
-    url: document.location.href,
-  });
-
-  const scrollFunc = () => {
-    console.log('scrolling');
-  };
-
   const[loading, setLoading] = useState(false);
   const[offSet, setOffSet] = useState(0);
-  const[lg, setLg] = useState('');
   const[ph, setPh] = useState('');
-  const[abj, setAbj] = useState('')
 
   const history = useHistory();
 
   const customerRoute = () => {
     setLoading(true);
-    mixpanel.track('Customer Registration Page', {
-      page: 'Home Page',
-      url: document.location.href,
-    });
     history.push('/customer/register');
   };
 
@@ -69,15 +52,13 @@ const Home = () => {
 
 
   useEffect(() => {
-    if (offSet > 4000) {
+    if (offSet > 1000) {
       setPh('portharcourt');
-      setLg('lagos');
-      setAbj('abuja');
     }
   }, [offSet]);
 
   return (
-    <div onScroll={scrollFunc}>
+    <div>
       <div>
         <NeedHelpTemplate />
       </div>
@@ -268,37 +249,13 @@ const Home = () => {
               <div style={{
                 background: '#818181',
                 overflow: 'hidden',
+                marginRight: 'auto',
+                marginLeft: 'auto',
               }}className="card" id="card-pricing1">
                 <div className="card-body" id={ph}>
                   <h5 style={{
                     color: 'white'
                   }}className="card-title">Port Harcourt</h5>
-                  <p className="card-text">
-                    <b></b>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-12 col-md-4 col-xl-4">
-              <div style={{
-                background: '#818181',
-                overflow: 'hidden',
-              }}className="card" id="card-pricing1">
-                <div className="card-body" id={lg}>
-                  <h5 className="card-title">Lagos</h5>
-                  <p className="card-text">
-                    <b></b>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-12 col-md-4 col-xl-4">
-              <div style={{
-                background: '#818181',
-                overflow: 'hidden',
-              }}className="card" id="card-pricing1">
-                <div className="card-body" id={abj}>
-                  <h5 className="card-title">Abuja</h5>
                   <p className="card-text">
                     <b></b>
                   </p>

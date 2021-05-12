@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router-dom';
 import PricingPlan from '../statelessComponent/PricingPlan';
-import mixpanel from 'mixpanel-browser';
 import Loading from '../statelessComponent/Loading';
 
 const Pricing = () => {
-  mixpanel.init("784360e9005522fb8d2cccd326b57f78");
   const[pageLoad, setPageLoad] = useState(false);
   const[isAuth, setIsAuth] = useState(false);
   const[loading, setLoading] = useState({
@@ -35,6 +33,7 @@ const Pricing = () => {
   };
 
   const getData = async () => {
+    try {
     setPageLoad(true);
     const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/dashboard';
     const response = await fetch(url, {
@@ -45,27 +44,25 @@ const Pricing = () => {
         'Accept': 'application/json'
       }
     });
+
     if (response.status === 200 || response.status === 201) {
       if (response.status === 200) {
         setIsAuth(true);
-        const user = await response.json()
         setPageLoad(false);
 
-        mixpanel.identify(user._id)
       } else if (response.status === 201) {
         setIsAuth(true);
-        const user = await response.json();
         setPageLoad(false)
 
-        mixpanel.identify(user.authUser._id);
-        mixpanel.people.set({
-          stage: 'Pricing Page',
-        });
       }
       setIsAuth(true);
       setPageLoad(false);
     } else {
+      console.log('error');
       setIsAuth(false);
+      setPageLoad(false);
+    }
+    } catch (error) {
       setPageLoad(false);
     }
   };
@@ -100,9 +97,6 @@ const Pricing = () => {
         })
 
         if (response.status === 200) {
-          mixpanel.people.set({
-            planName: 'Relaks Prime'
-          });
           setLoading({
             _prime: false
           });
@@ -149,9 +143,6 @@ const Pricing = () => {
         })
 
         if (response.status === 200) {
-          mixpanel.people.set({
-            planName: 'Relaks Basic'
-          });
           setLoading({
             _basic: false,
           });
@@ -196,9 +187,6 @@ const Pricing = () => {
         })
 
         if (response.status === 200) {
-          mixpanel.people.set({
-            planName: 'Relaks Xtra'
-          });
           setLoading({
             _xtra: false,
           });
@@ -220,23 +208,17 @@ const Pricing = () => {
       }
     };
 
-  // if (pageLoad) {
-  //   return (
-  //     <Loading />
-  //   );
-  // }
+  if (pageLoad) {
+    return (
+      <Loading />
+    );
+  }
 
   return (
     <div>
       <Helmet>
         <title>Relaks Pricing | Subcribe, let's Relaks pay for your next home project</title>
         <meta name="description" content="Let's pay for your next home project" />
-        {/* <script>
-          fbq('track', 'ViewContent', {
-            value: 0,
-            currency: 'NGN',
-          });
-        </script> */}
       </Helmet>
       <PricingPlan basic={basic}
         xtra={xtra}

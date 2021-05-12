@@ -2,11 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import RegisterForm from '../statelessComponent/registerForm';
-import mixpanel from 'mixpanel-browser';
 
 const Register = () => {
-  mixpanel.init("784360e9005522fb8d2cccd326b57f78");
-  mixpanel.track('Customer Registration Page Loaded');
 
   const[nameValue, setNameValue] = useState('')
   const[emailValue, setEmailValue] = useState('');

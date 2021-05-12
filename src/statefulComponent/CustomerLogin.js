@@ -2,11 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import LoginForm from '../statelessComponent/loginForm';
 import Helmet from 'react-helmet';
-import mixpanel from 'mixpanel-browser';
 
 const CustomerLogin = () => {
-  mixpanel.init("784360e9005522fb8d2cccd326b57f78");
-  mixpanel.track('Customer Login Page Loaded');
 
   const[emailValue, setEmailValue] = useState('');
   const[passwordValue, setPasswordValue] = useState('');
@@ -82,18 +79,10 @@ const CustomerLogin = () => {
         isAuth: true,
         message,
       });
-      mixpanel.identify(message.user._id);
-      mixpanel.people.set({
-        lastSeen: new Date(Date.now().toLocaleString('en-us'))
-      })
       localStorage.setItem("jwt_token", message.token);
       history.push('/customer');
     } else {
       const message = await response.json();
-      mixpanel.track('Error in Login', {
-        email_or_phone: emailValue,
-        error: message.errMessage,
-      });
       return setResponse({
         isAuth: false,
         loading: false,
@@ -101,10 +90,6 @@ const CustomerLogin = () => {
       });
     }
     } catch (error) {
-      mixpanel.track('Error in Login', {
-        $email: emailValue,
-        error: error.TypeError,
-      });
       return setResponse({
         loading: false,
         error: 'There was a problem!! Our Engineers have been Notified. Try Again!!'

@@ -5,12 +5,8 @@ import Dashboard from '../statelessComponent/Dashboard';
 import { CustomerDashboardNav } from '../statelessComponent/Nav';
 import MiniFooter from '../statelessComponent/MiniFooter';
 import Loading from '../statelessComponent/Loading';
-import mixpanel from 'mixpanel-browser';
 
 const CustomerDashboard = () => {
-
-  mixpanel.init("784360e9005522fb8d2cccd326b57f78");
-  mixpanel.track('Customer Dashboard Loaded');
 
   const[userInfo, setUserInfo] = useState([]);
   const[jobs, setJobs] = useState([]);
@@ -36,14 +32,6 @@ const CustomerDashboard = () => {
       const data = await response.json();
       if(mounted.current && response.status === 200) {
         setLoading(false);
-        mixpanel.identify(data._id);
-        mixpanel.people.set({
-          "$name": data.name,
-          "$email": data.email,
-          "$phone": data.phone,
-          "planActive": data.subscriptionPlan.isActive,
-          "plan_name": data.subscriptionPlan.planName,
-        });
         setUserInfo(data);
       }
       if (mounted.current && response.status === 201) {
@@ -90,7 +78,7 @@ const CustomerDashboard = () => {
       };
     } catch (error) {
       setError(true);
-      setJobs(error);
+      setJobs([]);
     }
   };
   getJobs();

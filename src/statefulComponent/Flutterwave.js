@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import { useHistory } from 'react-router-dom';
-import mixpanel from 'mixpanel-browser';
 import { Helmet } from 'react-helmet';
 
 function Flutterwave() {
-  mixpanel.init("784360e9005522fb8d2cccd326b57f78");
-
-  mixpanel.track('Pricing Loaded', {
-    title: 'pricing page'
-  })
   const[user, setUser] = useState({
     name: '',
     email: '',
@@ -42,15 +36,9 @@ function Flutterwave() {
         amount: user.subscriptionPlan.planAmount,
         period: user.subscriptionPlan.period
       });
-      mixpanel.identify(user._id);
-      mixpanel.people.set({
-        "name": user.name,
-        "$email": user.email,
-        "user_id": user._id
-      });
     } 
     if (response.status === 201) {
-      const user = await response.json()
+      const user = await response.json();
       setUser({
         name: user.authUser.name,
         email: user.authUser.email,
@@ -59,20 +47,12 @@ function Flutterwave() {
         amount: user.authUser.subscriptionPlan.planAmount,
         period: user.authUser.subscriptionPlan.period,
       });
-      mixpanel.identify(user._id);
-      mixpanel.people.set({
-        "name": user.authUser.name,
-        "$email": user.authUser.email,
-        "user_id": user.authUser._id
-      });
     }
    };
 
   useEffect(() => {
     getUser();
   }, []);
-
-  // FLWPUBK-12312993f6d2b838c0c92154e059f86f-X
   
   const config = {
     public_key: 'FLWPUBK-12312993f6d2b838c0c92154e059f86f-X',
