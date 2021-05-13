@@ -60,7 +60,7 @@ const Footer = () => {
               }}/>support@tryrelaks.com</a></li>
               <li><a href="tel:+2349055681957"><FontAwesomeIcon icon={faPhoneAlt} style={{
                 marginRight: '4px'
-              }} />+2349055681975</a></li>
+              }} />+2349085876383</a></li>
             </ul>
           </div>
         </div>

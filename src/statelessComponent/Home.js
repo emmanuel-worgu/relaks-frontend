@@ -181,7 +181,7 @@ const Home = () => {
             </div>
             <div>
               Give Us A Call at
-              <a href="tel:+2349055681975"> (+234)9055681975</a>
+              <a href="tel:+2349055681975"> (+234)9085876383</a>
             </div>
           </div>
         </div>
