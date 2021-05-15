@@ -57,7 +57,7 @@ const Footer = () => {
               }}/>Facebook</a></li>
               <li><a href="mailto:support@tryrelaks.com"><FontAwesomeIcon icon={faEnvelope} style={{
                 marginRight: '4px',
-              }}/>support@tryrelaks.com</a></li>
+              }}/>support@tryrelaks.com.ng</a></li>
               <li><a href="tel:+2349055681957"><FontAwesomeIcon icon={faPhoneAlt} style={{
                 marginRight: '4px'
               }} />+2349085876383</a></li>

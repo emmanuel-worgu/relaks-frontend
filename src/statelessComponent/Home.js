@@ -185,7 +185,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> 
         <div className="benefit-section">
           <div className="how-its-works">
             <h2>Benefit of Relaks</h2>
