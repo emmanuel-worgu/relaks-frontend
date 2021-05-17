@@ -86,7 +86,7 @@ function Flutterwave() {
 
           //  Make a request to verify if the transaction was successful
            const verifyTransaction = await fetch(url, {
-             method: 'POST',
+             method: 'PUT',
              body: JSON.stringify(data),
              headers: {
                'auth-token': token,

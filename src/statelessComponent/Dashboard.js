@@ -152,7 +152,7 @@ const Dashboard = (props) => {
                     borderBottom: '1px solid grey',
                     marginBottom: '1em'
                   }}>
-                    <Link to='/customer/job'>
+                    <Link to='/customer/book-service'>
                       <h5 className="card-title" style={{
                         justifyContent: 'flex-start',
                         marginBottom: '10px'

@@ -13,6 +13,7 @@ const ThankYouPage = () => {
   const history = useHistory();
 
   const confirmationMessage = document.location.pathname === '/customer/book-service/confirm' ? <p><em>RELAKS!!</em> Your Job Request has been Received!!</p> : 'Transaction Successful.. You will be redirected in two seconds!!'
+
   const redirect = () => {
     document.location.pathname === '/customer/book-service/confirm' ? history.push('/customer/job') : history.push('/customer');
   };
