@@ -77,12 +77,15 @@ const Register = () => {
       })
     }
 
+    const eventID = `${nameValue.slice(0,3)}-${Date.now()}${Math.floor(Math.random() * 1000000)}`;
+
     const data = {
       name: nameValue,
       email: emailValue,
       phone: phoneValue,
       password: passwordValue,
       url: document.location.href,
+      eventID,
     }
     try {
       const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/register';
@@ -103,6 +106,7 @@ const Register = () => {
         message,
       });
       localStorage.setItem('jwt_token', message.token);
+      window.fbq('track', 'CompleteRegistration', eventID);
       history.push('/customer/pricing');
     }
     if (response.status === 201) {
