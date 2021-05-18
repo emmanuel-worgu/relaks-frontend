@@ -1,8 +1,16 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import MiniFooter from './MiniFooter';
 import SuperImg from '../assest/superhero.svg';
 import '../css/handymanIsVerify.css';
 
 const HandymanIsVerified = () => {
+
+  const history = useHistory();
+
+  const verifyme = () => {
+    history.push('/handyman/pay');
+  }
   return (
     <div>
       <div>
@@ -18,11 +26,16 @@ const HandymanIsVerified = () => {
               <img src={SuperImg} alt="relaks-verify-handyman" className="verify-image"></img>
             </div>
             <div className="col-sm-12 col-md-4">
-              <p>Oopps!! You have not been Verify. Don't worry just fill in the form below and wait for up to 30mins</p>
+              <h4>One More Step to Start Earning!!</h4>
+              <p>Oopps!! You have not been Verify. Don't worry just click on the button below. You will be charged ₦500. This money will be used to verify your identity nothing more</p>
+              <div>
+                <button className="submit-button" onClick={verifyme}>Verify Me</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <MiniFooter />
     </div>
   );
 };

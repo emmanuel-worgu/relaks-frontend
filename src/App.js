@@ -17,6 +17,7 @@ const VerifyCustomer = lazy(() => import('./statefulComponent/VerifyCustomer'));
 const HandymanRegister = lazy(() => import('./statefulComponent/HandymanRegister'));
 const VerifyHandyman = lazy(() => import('./statefulComponent/VerifyHandyman'));
 const Flutterwave = lazy(() => import('./statefulComponent/Flutterwave'));
+const HandymanFlutter = lazy(() => import('./statefulComponent/HandymanFlutter'));
 const NotFoundPage = lazy(() => import('./statelessComponent/404'));
 const ThankYouPage = lazy(() => import('./statelessComponent/ThankYouPage'));
 const ContactUs = lazy(() => import('./statelessComponent/ContactUs'));
@@ -63,9 +64,9 @@ function App() {
           <Route path = '/handyman/register' component = {HandymanRegister} />
           <Route path = '/handyman/request-payment' component = {RequestPayment} />
           <Route path = '/handyman/setting' component = {Settings} />
+          <Route path = '/handyman/pay' component = {HandymanFlutter} />
           <Route path = '/handyman/forgot-password' exact component = {HandymanForgotPassword} />
           <Route path = '/handyman/forgot-password/verify-user' component = {VerifyHandyman} />
-          <Route path = '/pay' component={Flutterwave} />
           <Route component = {NotFoundPage} />
         </Switch>
       </Suspense>

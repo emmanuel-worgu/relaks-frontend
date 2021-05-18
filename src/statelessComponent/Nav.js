@@ -17,6 +17,7 @@ import {
   faClipboardCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import HandymanIsVerified from './HandymanIsVerified';
 
 
 // This is the Homepage Nav when not authenticated

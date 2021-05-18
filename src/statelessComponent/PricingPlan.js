@@ -217,7 +217,7 @@ const PricingPlan = (props) => {
                   }}/>
                 </div>
                 <h4 className="how-its-works-content">Secured Payment</h4>
-                <p className="how-its-works-text">Relaks uses industry standard payment security to make to sure your payment are secured</p>
+                <p className="how-its-works-text">Relaks uses industry standard payment security to make sure your payment are secured</p>
               </div>
             </div>
           </div>
