@@ -277,8 +277,24 @@ li {
   font-size: 2em;
 }
 
+#enugu > .card-title{
+  color: rgb(255,255,255,1) !important;
+  opacity: 1;
+  font-size: 2em;
+}
+
 #lagos {
   background-image: url('../assest/Lagos.jpg');
+  width: 100%;
+  opacity: 0.6;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+#enugu {
+  background-image: url('../assest/enugu.jpg');
   width: 100%;
   opacity: 0.6;
   background-position: center;

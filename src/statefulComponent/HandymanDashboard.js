@@ -45,11 +45,6 @@ const HandymanDashboard = () => {
       if(mounted.current && response.status === 401) {
          history.push('/handyman/login');
       };
-      if (mounted.current && data.isVerified === false) {
-        return (
-          <HandymanIsVerified />
-        );
-      };
       if(mounted.current && response.status === 201) {
         return (
           <HandymanIsVerified />

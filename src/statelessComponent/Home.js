@@ -30,6 +30,7 @@ const Home = () => {
   const[offSet, setOffSet] = useState(0);
   const[ph, setPh] = useState('');
   const[lg, setLg] = useState('');
+  const[enu, setEnu] = useState('');
 
   const history = useHistory();
 
@@ -56,6 +57,7 @@ const Home = () => {
     if (offSet > 1000) {
       setPh('portharcourt');
       setLg('lagos');
+      setEnu('enugu');
     }
   }, [offSet]);
 
@@ -258,6 +260,23 @@ const Home = () => {
                   <h5 style={{
                     color: 'white'
                   }}className="card-title">Port Harcourt</h5>
+                  <p className="card-text">
+                    <b></b>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-4 col-xl-4">
+              <div style={{
+                background: '#818181',
+                overflow: 'hidden',
+                marginRight: 'auto',
+                marginLeft: 'auto',
+              }}className="card" id="card-pricing1">
+                <div className="card-body" id={enu}>
+                  <h5 style={{
+                    color: 'white'
+                  }}className="card-title">Enugu</h5>
                   <p className="card-text">
                     <b></b>
                   </p>
