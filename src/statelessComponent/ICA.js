@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import Footer from './Footer';
 import { NormalNav } from './Nav';
 import NeedHelpTemplate from './NeedHelpTemplate';
@@ -7,6 +8,10 @@ import RelaksCta from './relaks__cta';
 const ICA = () => {
   return (
     <div>
+      <Helmet>
+        <title>Relaks Technician Agreement</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <NeedHelpTemplate />
       <NormalNav />
       <div className="container">

@@ -141,8 +141,10 @@ const Register = () => {
   return (
     <div>
       <Helmet>
-        <title>Relaks Register | Let's pay for your next home project!!</title>
-        <meta name="description" content="Register You Account"/>
+        <title>Relaks Customer Register | Let's pay for your next home project!!</title>
+        <meta name="title" content="Relaks Register | Let's pay for your next home project!!"/>
+        <meta name="description" content="You don't have to worry about keeping your home in good shape. Register and get started with Relaks" />
+        <meta name="keywords" content="relaks, relaks customer, relaks customer register, subscribe to relaks, relaks home inc, cheap home service in nigeria, home repairs in nigeria, home care in nigeria, how to get my home repaired in nigeria, where to find electrician in nigeria, where to find a plumber in nigeria" />
       </Helmet>
       <RegisterForm
         nameValue={nameValue}

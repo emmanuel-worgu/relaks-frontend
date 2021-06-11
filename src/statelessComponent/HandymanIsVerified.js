@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import { useHistory } from 'react-router-dom';
 import MiniFooter from './MiniFooter';
 import SuperImg from '../assest/superhero.svg';
@@ -13,6 +14,10 @@ const HandymanIsVerified = () => {
   }
   return (
     <div>
+      <Helmet>
+        <title>Verify Your Identity</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div>
         <div className="need-help">
           <p className="need-help-para">Need Help? Call 09055681975</p>

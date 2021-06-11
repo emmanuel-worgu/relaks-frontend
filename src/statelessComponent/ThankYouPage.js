@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import Helmet from 'react-helmet';
 
 import { 
   faCheckCircle,
@@ -29,6 +30,10 @@ const ThankYouPage = () => {
   setTimeout(redirect, 2000)
   return (
     <div>
+      <Helmet>
+        <title>Thank You</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <NeedHelpTemplate />
       <div style={{
         marginTop: '15%'

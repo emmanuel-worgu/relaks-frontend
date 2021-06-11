@@ -89,7 +89,9 @@ const HandymanForgotPassword = () => {
     <div>
       <Helmet>
         <title>Forgot Password | Let's help you recover your account</title>
-        <meta name = "description" content = "View Your Dashboard" />
+        <meta name = "title" content = "Forgot Password | Let's help you recover your account" />
+        <meta name="description" content="So sorry to hear you forgot your password. Input your email and we will send you a recover code." />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <ForgotPasswordForm
         value = {value}

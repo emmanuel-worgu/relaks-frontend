@@ -125,6 +125,7 @@ const HandymanJob = () => {
         <Helmet>
           <title>Relaks Dashboard | View your account, manage all your job request.</title>
           <meta name = "description" content = "View Your Dashboard" />
+          <meta name="robots" content="noindex, nofollow" />
         </Helmet>
         <NeedHelpTemplate />
         {mappedJob}

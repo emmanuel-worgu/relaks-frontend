@@ -120,6 +120,8 @@ function HandymanFlutter() {
       <div>
         <Helmet>
           <title>Verify Your Identity</title>
+          <meta name="title" content="Verify Your Identity" />
+          <meta name="robots" content="noindex, nofollow" />
         </Helmet>
         <div>Please Wait While we setup everything...</div>
       </div>

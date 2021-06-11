@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import NeedHelpTemplate from './NeedHelpTemplate';
 import Footer from './Footer';
 import { NormalNav } from './Nav';
@@ -14,6 +15,10 @@ const NotFoundPage = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Page Not Found</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <NeedHelpTemplate />
       <NormalNav />
       <div>

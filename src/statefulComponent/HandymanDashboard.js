@@ -115,7 +115,9 @@ const HandymanDashboard = () => {
     <div>
       <Helmet>
         <title>Relaks Dashboard | View your account, Accept Job, Request Payment!!</title>
+        <meta name="title" content="Relaks Dashboard | View your account, Accept Job, Request Payment!!" />
         <meta name = "description" content = "View Your Dashboard" />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <HandymanDashboardNav />
       <Dashboard jobs={jobs.jobs}

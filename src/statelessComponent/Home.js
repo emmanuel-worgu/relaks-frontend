@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import { NormalNav } from './Nav';
 import Footer from './Footer';
 import NeedHelpTemplate from './NeedHelpTemplate';
@@ -63,6 +64,12 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Relaks Home | Live Frustration Free Life with Relaks</title>
+        <meta name="title" content="Relaks Home | Live Frustration Free Life with Relaks - Get all your home repairs and care for one fee"/>
+        <meta name="description" content="Relaks is a subscription service that provide care and repair for your home. "/>
+        <meta name="keywords" content="relaks, relaks home, relaks home inc, cheap home service in nigeria, home repairs in nigeria, home care in nigeria, how to get my home repaired in nigeria, where to find electrician in nigeria, where to find a plumber in nigeria"/>
+      </Helmet>
       <div>
         <NeedHelpTemplate />
       </div>

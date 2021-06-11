@@ -131,6 +131,7 @@ const JobList =  () => {
       <Helmet>
         <title>Relaks Jobs | Accept Jobs and Earn Money!!</title>
         <meta name="description" content="Login to Your Account"/>
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <HandymanDashboardNav />
       {logic()}

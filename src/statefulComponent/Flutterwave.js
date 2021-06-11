@@ -126,6 +126,7 @@ function Flutterwave() {
       <div>
         <Helmet>
           <title>{`Relaks Pay | Pay ${user.amount} Let's take care of your home.`}</title>
+          <meta name="robots" content="noindex, nofollow" />
         </Helmet>
         <div>Please Wait While we setup everything...</div>
       </div>

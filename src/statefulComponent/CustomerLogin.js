@@ -107,8 +107,10 @@ const CustomerLogin = () => {
   return (
     <div>
       <Helmet>
-        <title>Relaks Login | Login in to see your Dashboard</title>
-        <meta name="description" content="Login to Your Account"/>
+        <title>Relaks Customer Login | Login to see your Dashboard</title>
+        <meta name="title" content="Relaks Login | Login to see your Dashboard" />
+        <meta name="description" content="Welcome Back!! Login to enjoy Relaks benefits"/>
+        <meta name="keywords" content="relaks customer login, relaks customer, relaks home inc, relaks home inc, cheap home service in nigeria, home repairs in nigeria, home care in nigeria, how to get my home repaired in nigeria, where to find electrician in nigeria, where to find a plumber in nigeria" />
       </Helmet>
       <LoginForm
         emailValue={emailValue}

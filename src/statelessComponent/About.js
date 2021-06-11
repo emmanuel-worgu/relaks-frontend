@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import Footer from './Footer';
 import { NormalNav } from './Nav';
 import NeedHelpTemplate from './NeedHelpTemplate';
@@ -20,6 +21,12 @@ import RelaksCta from './relaks__cta';
 const About = () => {
   return (
     <div>
+      <Helmet>
+        <title>About Relaks</title>
+        <meta name="title" content="About Relaks" />
+        <meta name="description" content="Relaks is a subscription that provide care and repair for your home" />
+        <meta name="keywords" content="relaks, about relaks, relaks founded when, relaks founder, when did relaks start" />
+      </Helmet>
       <NeedHelpTemplate />
       <NormalNav />
       <div className="contact-us-header">

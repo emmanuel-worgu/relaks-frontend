@@ -149,8 +149,10 @@ const HandymanRegister = () => {
   return (
     <div>
       <Helmet>
-        <title>Relaks Register | Find Jobs Easily!!</title>
-        <meta name="description" content="Register You Account"/>
+        <title>Relaks Technicians Register | Find Jobs Easily!!</title>
+        <meta name="title" content="Relaks Technicians Register | Find Jobs Easily!!" />
+        <meta name="description" content="Jobs Available. Register and earn 100,000 monthly helping homeowners provide care and repair for their home"/>
+        <meta name="keywords" content="relaks technicians register, how do i join relaks as a technician, earn with relaks, register as a technician with relaks" />
       </Helmet>
       <RegisterForm
         nameValue={nameValue}

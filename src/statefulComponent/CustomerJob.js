@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import Helmet from 'react-helmet';
 import { useHistory } from 'react-router-dom';
 import CustomerJobComponent from '../statelessComponent/CustomerJobComponent';
 import MiniFooter from '../statelessComponent/MiniFooter';
@@ -113,6 +114,10 @@ const CustomerJob = () => {
   // const mappedJob = jobs.map(job => <p className="card-tex">{job.Description}</p>)
   return (
     <div>
+      <Helmet>
+        <title>Your Jobs</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <CustomerDashboardNav />
       {logic()}
     </div>

@@ -63,7 +63,8 @@ const Review = () => {
     <div>
       <Helmet>
         <title>Review Handyman | Mark Your Job complete and pay your technician</title>
-        <meta name="description" content="Login to Your Account"/>
+        <meta name="title" content="Review Handyman | Mark Your Job complete and pay your technician"/>
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <ReviewForm responseMessage={responseMessage}
         reviewMessage={reviewMessage}

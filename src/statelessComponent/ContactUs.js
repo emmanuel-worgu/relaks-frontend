@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import Footer from './Footer';
 import { NormalNav } from './Nav';
 import NeedHelpTemplate from './NeedHelpTemplate';
@@ -13,6 +14,12 @@ import RelaksCta from './relaks__cta';
 const ContactUs = () => {
   return (
     <div>
+      <Helmet>
+        <title>Contact Relaks</title>
+        <meta name="title" content="Contact Relaks | Relaks Home Inc." />
+        <meta name="description" content="We Would love to answer any questions you have. Let's get started" />
+        <meta name="keywords" content="contact relaks, relaks support, relaks customer support" />
+      </Helmet>
       <NeedHelpTemplate />
       <NormalNav />
       <div className="contact-us-header">

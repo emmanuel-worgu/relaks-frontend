@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import Helmet from 'react-helmet';
 
 import VerifyUserForm from '../statelessComponent/verifyUserForm';
 
@@ -93,14 +94,20 @@ const VerifyCustomer = () => {
   }, [])
 
   return (
-    <VerifyUserForm
-      token = {token}
-      newPassword = {newPassword}
-      handleToken = {handleToken}
-      handleNewPassword = {handleNewPassword}
-      handleSubmit = {handleSubmit}
-      response = {response}
-    />
+    <div>
+      <Helmet>
+        <title>Request A New Password</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+      <VerifyUserForm
+        token = {token}
+        newPassword = {newPassword}
+        handleToken = {handleToken}
+        handleNewPassword = {handleNewPassword}
+        handleSubmit = {handleSubmit}
+        response = {response}
+      />
+    </div>
   );
 };
 

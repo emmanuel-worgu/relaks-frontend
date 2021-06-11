@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef} from 'react';
+import Helmet from 'react-helmet';
 import { useHistory } from 'react-router-dom';
 import Job from '../statelessComponent/Job';
 import { CustomerDashboardNav } from '../statelessComponent/Nav';
@@ -228,6 +229,10 @@ const BookJob = () => {
   });
   return (
     <div>
+      <Helmet>
+        <title>Request Service</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <CustomerDashboardNav />
       <Job work={work}
         handleWork={handleWork}

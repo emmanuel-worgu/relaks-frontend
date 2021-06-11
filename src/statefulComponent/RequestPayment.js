@@ -106,7 +106,8 @@ const RequestPayment = () => {
     <div>
       <Helmet>
         <title>Request Payment | Request Payment!! Receive Payment in Minutes!!</title>
-        <meta name="description" content="Login to Your Account"/>
+        <meta name="title" content="Request Payment | Request Payment!! Receive Payment in Minutes!!"/>
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <HandymanDashboardNav />
       <RequestPaymentForm //bankCode={bankCode}

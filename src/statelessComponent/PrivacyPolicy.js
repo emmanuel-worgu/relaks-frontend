@@ -1,5 +1,6 @@
 import React from 'react';
 import NeedHelpTemplate from './NeedHelpTemplate';
+import Helmet from 'react-helmet';
 import { NormalNav } from './Nav';
 import RelaksCta from './relaks__cta';
 import Footer from './Footer';
@@ -7,6 +8,10 @@ import Footer from './Footer';
 const PrivacyPolicy = () => {
   return (
     <div>
+      <Helmet>
+        <title>Relaks Privacy Policy</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <NeedHelpTemplate />
       <NormalNav />
       <div className="container">

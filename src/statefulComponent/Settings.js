@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import Helmet from 'react-helmet';
 import MiniFooter from '../statelessComponent/MiniFooter';
 import { CustomerDashboardNav, HandymanDashboardNav } from '../statelessComponent/Nav';
-import NeedHelpTemplate from '../statelessComponent/NeedHelpTemplate';
 import SettingsForm from '../statelessComponent/settingsform';
 
 const Settings = ()  => {
@@ -112,6 +112,10 @@ const Settings = ()  => {
 
   return (
     <div>
+      <Helmet>
+        <title>Relaks Settings | Manage your account here.</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       {document.location.pathname === '/customer/setting' ? <CustomerDashboardNav /> : <HandymanDashboardNav />}
       <SettingsForm oldPassword={oldPassword}
         newPassword={newPassword}
