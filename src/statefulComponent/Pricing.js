@@ -218,7 +218,9 @@ const Pricing = () => {
     <div>
       <Helmet>
         <title>Relaks Pricing | Subcribe, let's Relaks pay for your next home project</title>
-        <meta name="description" content="Let's pay for your next home project" />
+        <meta name="title" content="Relaks Pricing | Subcribe, let's Relaks pay for your next home project" />
+        <meta name="description" content="With as low as 4,000 you can cover your home care and repairs need. Sign up and get 20% off your first subscription" />
+        <meta name="keywords" content="relaks plan, relaks basic, relaks xtra, relaks prime, how much is relaks plans, how much is relaks basic, how much is relaks xtra, how much is relaks prime, relaks pricing, how much does relaks cost, cost of using relaks" />
       </Helmet>
       <PricingPlan basic={basic}
         xtra={xtra}
