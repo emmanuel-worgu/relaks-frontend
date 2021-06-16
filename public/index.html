@@ -1,6 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script async="true">
+
+      const getUserlocation = () => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+          alert('This Browser does not Support Geolocation. Please use a browser that support it to get the most out of it')
+        };
+      };
+
+      const showPosition = (position) => {
+        localStorage.setItem("lat", position.coords.latitude);
+        localStorage.setItem("lng", position.coords.longitude);
+      };
+
+      const showError = (error) => {
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            alert('You denied the request for geolocation. Please Accept it to get the most out of this website');
+            break;
+          case error.POSITION_UNAVAILABLE:
+            alert('Location information is unavailable!!');
+            break;
+          case error.TIMEOUT:
+            alert('Geolocation Request timeout!!');
+            break;
+          case error.UNKNOWN_ERROR:
+            alert('Unknown Error occured!!');
+            break;
+        }
+      }
+
+      getUserlocation();
+
+    </script>
     <meta charset="utf-8" />
     <link rel="icon" href="favicon.ico" type="image/jpg" width="100px" height="100px"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
