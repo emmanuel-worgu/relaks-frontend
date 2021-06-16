@@ -5,7 +5,7 @@
 
       const getUserlocation = () => {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition, showError);
+          navigator.geolocation.watchPosition(showPosition, showError);
         } else {
           alert('This Browser does not Support Geolocation. Please use a browser that support it to get the most out of it')
         };
