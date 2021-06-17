@@ -86,8 +86,8 @@ const Register = () => {
       password: passwordValue,
       url: document.location.href,
       eventID,
-      lat: localStorage.getItem("lat"),
-      lng: localStorage.getItem("lng"),
+      lat: localStorage.getItem("lat") + '',
+      lng: localStorage.getItem("lng") + '',
     }
     try {
       const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/register';
