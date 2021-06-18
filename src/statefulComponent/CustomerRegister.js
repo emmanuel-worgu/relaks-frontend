@@ -18,6 +18,9 @@ const Register = () => {
   const history = useHistory();
   let mounted = useRef(true);
 
+  const lat = localStorage.getItem("lat") + '';
+  const lng = localStorage.getItem("lng") + '';
+
   const handleName = (e) => {
     setNameValue(e.target.value);
     e.preventDefault();
@@ -42,6 +45,23 @@ const Register = () => {
     setResponse({
       loading: true
     });
+
+    if (lat === '' || !lat) {
+      setResponse({
+        loading: false,
+        error: 'Your Location is off. Please turn it on to continue',
+      });
+      return alert('Your Location is off. Please turn it on to continue');
+    };
+  
+    if (lng === '' || !lng) {
+      setResponse({
+        loading: false,
+        error: 'Your Location is off. Please turn it on to continue',
+      });
+      return alert('Your Location is off. Please turn it on to continue');
+    };
+
     if (nameValue === '') {
       return setResponse({
         loading: false,
@@ -86,8 +106,8 @@ const Register = () => {
       password: passwordValue,
       url: document.location.href,
       eventID,
-      lat: localStorage.getItem("lat") + '',
-      lng: localStorage.getItem("lng") + '',
+      lat,
+      lng,
     }
     try {
       const url = 'https://enigmatic-ocean-25180.herokuapp.com/api/customers/register';

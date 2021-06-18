@@ -88,8 +88,6 @@ const Dashboard = (props) => {
       };
 
       
-
-      console.log(typeof jobs)
       
       const mappedJob = jobs.map(job => <CustomerJobTable
         id={job._id}
