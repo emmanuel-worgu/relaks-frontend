@@ -103,7 +103,7 @@
   /></noscript>
 <!-- End Facebook Pixel Code -->
 <!-- Start of Async Drift Code -->
-<script async="true">
+<!-- <script async="true">
   "use strict";
   
   !function() {
@@ -113,7 +113,9 @@
       t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
       t.factory = function(e) {
         return function() {
-          var n = Array.prototype.slice.call(arguments);
+          var n .getElementsByTagName("script")[0];
+        i.parentNode.insertBefore(o, i);
+      };= Array.prototype.slice.call(arguments);
           return n.unshift(e), t.push(n), t;
         };
       }, t.methods.forEach(function(e) {
@@ -121,14 +123,12 @@
       }), t.load = function(t) {
         var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
         o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-        var i = document.getElementsByTagName("script")[0];
-        i.parentNode.insertBefore(o, i);
-      };
+        var i = document
     }
   }();
   drift.SNIPPET_VERSION = '0.3.1';
   drift.load('p2br3mihteds');
-  </script>
+  </script> -->
   <!-- End of Async Drift Code -->
   </head>
   <body>
@@ -138,5 +138,34 @@
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPQ84G5"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+  <!-- Messenger Chat Plugin Code -->
+  <div id="fb-root"></div>
+
+  <!-- Messenger Chat Plugin Code -->
+  <div id="fb-root"></div>
+
+  <!-- Your Chat Plugin code -->
+  <div id="fb-customer-chat" class="fb-customerchat">
+  </div>
+
+  <script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "100598445516384");
+    chatbox.setAttribute("attribution", "biz_inbox");
+    window.fbAsyncInit = function() {
+      FB.init({
+        xfbml            : true,
+        version          : 'v11.0'
+      });
+    };
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
   </body>
 </html>
