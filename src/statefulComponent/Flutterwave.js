@@ -54,17 +54,44 @@ function Flutterwave() {
     getUser();
   }, []);
   
+  let plan_ID;
+
+  if (user.period === 'monthly' && user.amount === 5000) {
+    plan_ID = 46956;
+  }
+
+  if (user.period === 'monthly' && user.amount === 15000) {
+    plan_ID = 46958;
+  }
+
+  if (user.period === 'monthly' && user.amount === 25000) {
+    plan_ID = 46959;
+  }
+
+  if (user.period === 'yearly' && user.amount === 50000) {
+    plan_ID = 46964;
+  }
+
+  if (user.period === 'yearly' && user.amount === 150000) {
+    plan_ID = 46965;
+  }
+
+  if (user.period === 'yearly' && user.amount === 250000) {
+    plan_ID = 46966;
+  }
+  
   const config = {
-    public_key: 'FLWPUBK-12312993f6d2b838c0c92154e059f86f-X',
+    public_key: 'FLWPUBK_TEST-a69503fa38db11ad11dc4ea595059e4c-X',
     tx_ref: `${user.name.slice(0,3)}-${Date.now()}${Math.floor(Math.random() * 1000000)}-X`,
     amount: user.amount,
     currency: 'NGN',
     payment_options: 'card,mobilemoney,ussd',
     customer: {
       email: user.email,
-      phone_number: parseInt(user.phone),
+      phone_number: user.phone,
       name: user.name,
     },
+    payment_plan: plan_ID,
     customizations: {
       title: `Relaks ${user.planName}`,
       description: `Relaks ${user.planName} `,
