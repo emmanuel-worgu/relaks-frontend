@@ -81,7 +81,7 @@ function Flutterwave() {
   }
   
   const config = {
-    public_key: 'FLWPUBK_TEST-a69503fa38db11ad11dc4ea595059e4c-X',
+    public_key: 'FLWPUBK-12312993f6d2b838c0c92154e059f86f-X',
     tx_ref: `${user.name.slice(0,3)}-${Date.now()}${Math.floor(Math.random() * 1000000)}-X`,
     amount: user.amount,
     currency: 'NGN',
