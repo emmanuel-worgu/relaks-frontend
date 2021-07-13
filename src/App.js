@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Loading from './statelessComponent/Loading';
+import './css/loginForm.css';
 
 const Home = lazy(() => import('./statelessComponent/Home'));
 const CustomerLogin = lazy(() => import('./statefulComponent/CustomerLogin'));

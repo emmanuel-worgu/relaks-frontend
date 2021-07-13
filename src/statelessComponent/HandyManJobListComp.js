@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import '../css/dashboard.css';
+
 const HandymanJobComp = ({ job }) => {
   const[loading, setLoading] = useState(false);
   const[success, setSuccess] = useState(false);

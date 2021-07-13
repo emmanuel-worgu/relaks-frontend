@@ -8,3 +8,11 @@
   justify-content: center;
   border-radius: 4em;
 }
+
+.submit-button {
+  width: 100%;
+  display: block;
+  padding: 14px 16px;
+  line-height: 1.71;
+  text-align: center;
+}
