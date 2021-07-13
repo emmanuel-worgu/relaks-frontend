@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../css/customerjobcomponent.css';
+import '../css/dashboard.css';
 import {
   faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
